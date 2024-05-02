@@ -1,0 +1,7 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://dt5ji516eqric"]
+
+[ext_resource type="Texture2D" uid="uid://bheivb5sub332" path="res://resources/textures/astronaut1p_color.png" id="1_jitmw"]
+
+[resource]
+albedo_texture = ExtResource("1_jitmw")
+texture_filter = 0

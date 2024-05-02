@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://cgqiols21e00m"]
+[gd_scene load_steps=7 format=3 uid="uid://cgqiols21e00m"]
 
 [ext_resource type="Script" path="res://scripts/actors/Player.cs" id="1_k8op2"]
 [ext_resource type="Script" path="res://scripts/actors/PlayerCamera.cs" id="2_un03f"]
+[ext_resource type="PackedScene" uid="uid://itmeo0lyf24v" path="res://resources/models/astronaut1p.blend" id="3_60o5t"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_p3us1"]
 radius = 0.432098
@@ -42,3 +43,6 @@ mesh = SubResource("PlaneMesh_f87gg")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_30h1p")
+
+[node name="astronaut1p" parent="." instance=ExtResource("3_60o5t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0345947, 1.81607, 0.312099)
