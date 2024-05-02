@@ -1,0 +1,44 @@
+[gd_scene load_steps=6 format=3 uid="uid://cgqiols21e00m"]
+
+[ext_resource type="Script" path="res://scripts/actors/Player.cs" id="1_k8op2"]
+[ext_resource type="Script" path="res://scripts/actors/PlayerCamera.cs" id="2_un03f"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_p3us1"]
+radius = 0.432098
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_f87gg"]
+size = Vector2(10, 10)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_30h1p"]
+data = PackedVector3Array(5, 0, 5, -5, 0, 5, 5, 0, -5, -5, 0, 5, -5, 0, -5, 5, 0, -5)
+
+[node name="Root" type="Node3D"]
+
+[node name="Player" type="CharacterBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+script = ExtResource("1_k8op2")
+movementSpeed = 10.0
+airTraction = 0.8
+maxJumps = 1
+jumpHeight = 8.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Player"]
+shape = SubResource("CapsuleShape3D_p3us1")
+
+[node name="CameraHolder" type="Node3D" parent="Player"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.628926, 0)
+script = ExtResource("2_un03f")
+bodyPath = NodePath("..")
+verticalSensitivity = 0.6
+horizontalSensitivity = 0.7
+
+[node name="Camera3D" type="Camera3D" parent="Player/CameraHolder"]
+fov = 90.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("PlaneMesh_f87gg")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_30h1p")
