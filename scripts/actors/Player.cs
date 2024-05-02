@@ -53,10 +53,10 @@ public partial class Player : Actor
 	float coyoteTime = 0f;
 	float jumpBuffer = 0f;
 
-    #endregion
+	#endregion
 
-    public override void _Ready()
-    {
+	public override void _Ready()
+	{
 
 		base._Ready();
 
@@ -64,21 +64,21 @@ public partial class Player : Actor
 		jumpBuffer = 0f;
 		Velocity = Vector3.Zero;
 
-    }
+	}
 
-    public override void _Process(double delta)
-    {
+	public override void _Process(double delta)
+	{
 
 		coyoteTime = Mathf.Max(0f, coyoteTime - (float)delta);
 		jumpBuffer = Mathf.Max(0f, jumpBuffer - (float)delta);
 
 		if (Input.IsActionJustPressed("Jump")) jumpBuffer = maximumJumpBuffer;
 
-    }
+	}
 
-    public override void _PhysicsProcess(double delta)
-    {
-        
+	public override void _PhysicsProcess(double delta)
+	{
+		
 		Vector3 velocity = Velocity;
 		Vector2 inputVector = Input.GetVector("Left", "Right", "Forward", "Back").Normalized();
 
@@ -246,6 +246,6 @@ public partial class Player : Actor
 
 		MoveAndSlide();
 
-    }
+	}
 
 }
