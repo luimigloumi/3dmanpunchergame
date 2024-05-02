@@ -36,6 +36,9 @@ horizontalSensitivity = 0.7
 [node name="Camera3D" type="Camera3D" parent="Player/CameraHolder"]
 fov = 90.0
 
+[node name="astronaut1p" parent="Player/CameraHolder/Camera3D" instance=ExtResource("3_60o5t")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -0.0345947, -0.0459129, -0.349703)
+
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("PlaneMesh_f87gg")
 
@@ -43,6 +46,3 @@ mesh = SubResource("PlaneMesh_f87gg")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_30h1p")
-
-[node name="astronaut1p" parent="." instance=ExtResource("3_60o5t")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0345947, 1.81607, 0.312099)
