@@ -1,11 +1,15 @@
-[gd_scene load_steps=7 format=3 uid="uid://cgqiols21e00m"]
+[gd_scene load_steps=9 format=3 uid="uid://cgqiols21e00m"]
 
 [ext_resource type="Script" path="res://scripts/actors/Player.cs" id="1_k8op2"]
 [ext_resource type="Script" path="res://scripts/actors/PlayerCamera.cs" id="2_un03f"]
 [ext_resource type="PackedScene" uid="uid://itmeo0lyf24v" path="res://resources/models/astronaut1p.blend" id="3_60o5t"]
+[ext_resource type="PackedScene" uid="uid://wockwms4x7vt" path="res://scenes/crossfire.tscn" id="4_8q577"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_p3us1"]
 radius = 0.432098
+
+[sub_resource type="SeparationRayShape3D" id="SeparationRayShape3D_kr75r"]
+length = 1.23331
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_f87gg"]
 size = Vector2(10, 10)
@@ -39,10 +43,18 @@ fov = 90.0
 [node name="astronaut1p" parent="Player/CameraHolder/Camera3D" instance=ExtResource("3_60o5t")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -0.0345947, -0.0459129, -0.349703)
 
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Player"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+shape = SubResource("SeparationRayShape3D_kr75r")
+
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1.05746, 0, 0, 0, 1, 0, 0, 0, 1.25508, 0, 0, 0)
 mesh = SubResource("PlaneMesh_f87gg")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_30h1p")
+
+[node name="crossfire" parent="." instance=ExtResource("4_8q577")]
+transform = Transform3D(1.37285, 0, 0, 0, 1.37285, 0, 0, 0, 1.37285, 0.127957, 0.404329, -0.411785)
