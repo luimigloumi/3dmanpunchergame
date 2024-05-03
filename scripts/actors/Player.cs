@@ -84,6 +84,8 @@ public partial class Player : Actor
 
 		Vector3 movementDirection = inputVector.X * Transform.Basis.X + inputVector.Y * Transform.Basis.Z;
 
+		velocity.Y += gravity * (float)delta;
+
 		switch(currentState) {
 
 			case PlayerState.Idle:
@@ -166,8 +168,6 @@ public partial class Player : Actor
 			case PlayerState.Jumping:
 			{
 
-				velocity.Y += gravity * (float)delta;
-
 				if (IsOnFloor()) {
 
 					currentState = PlayerState.Idle;
@@ -206,8 +206,6 @@ public partial class Player : Actor
 			}
 			case PlayerState.Falling:
 			{
-
-				velocity.Y += gravity * (float)delta;
 
 				if (IsOnFloor()) {
 

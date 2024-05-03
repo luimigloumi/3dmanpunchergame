@@ -1,15 +1,16 @@
-[gd_scene load_steps=9 format=3 uid="uid://cgqiols21e00m"]
+[gd_scene load_steps=10 format=3 uid="uid://cgqiols21e00m"]
 
 [ext_resource type="Script" path="res://scripts/actors/Player.cs" id="1_k8op2"]
 [ext_resource type="Script" path="res://scripts/actors/PlayerCamera.cs" id="2_un03f"]
 [ext_resource type="PackedScene" uid="uid://itmeo0lyf24v" path="res://resources/models/astronaut1p.blend" id="3_60o5t"]
-[ext_resource type="PackedScene" uid="uid://wockwms4x7vt" path="res://scenes/crossfire.tscn" id="4_8q577"]
+[ext_resource type="Script" path="res://scripts/CameraFollow.cs" id="4_6qa2x"]
+[ext_resource type="PackedScene" uid="uid://dnstobo7toeix" path="res://scenes/crossfire.tscn" id="4_8q577"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_p3us1"]
 radius = 0.432098
 
 [sub_resource type="SeparationRayShape3D" id="SeparationRayShape3D_kr75r"]
-length = 1.23331
+length = 0.5
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_f87gg"]
 size = Vector2(10, 10)
@@ -21,11 +22,13 @@ data = PackedVector3Array(5, 0, 5, -5, 0, 5, 5, 0, -5, -5, 0, 5, -5, 0, -5, 5, 0
 
 [node name="Player" type="CharacterBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+floor_snap_length = 0.3
 script = ExtResource("1_k8op2")
 movementSpeed = 10.0
 airTraction = 0.8
 maxJumps = 1
 jumpHeight = 8.0
+maximumCoyoteTime = 0.1
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Player"]
 shape = SubResource("CapsuleShape3D_p3us1")
@@ -37,14 +40,36 @@ bodyPath = NodePath("..")
 verticalSensitivity = 0.6
 horizontalSensitivity = 0.7
 
-[node name="Camera3D" type="Camera3D" parent="Player/CameraHolder"]
-fov = 90.0
-
-[node name="astronaut1p" parent="Player/CameraHolder/Camera3D" instance=ExtResource("3_60o5t")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -0.0345947, -0.0459129, -0.349703)
-
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="Player"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, -0.589873, -0.577135)
+shape = SubResource("SeparationRayShape3D_kr75r")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="Player"]
+transform = Transform3D(-4.37114e-08, -1, 4.37114e-08, 0, -4.37114e-08, -1, 1, -4.37114e-08, 1.91069e-15, 0.577135, -0.589873, 2.52274e-08)
+shape = SubResource("SeparationRayShape3D_kr75r")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="Player"]
+transform = Transform3D(-1, 8.74228e-08, -3.82137e-15, 0, -4.37114e-08, -1, -8.74228e-08, -1, 4.37114e-08, -5.04548e-08, -0.589873, 0.577135)
+shape = SubResource("SeparationRayShape3D_kr75r")
+
+[node name="CollisionShape3D5" type="CollisionShape3D" parent="Player"]
+transform = Transform3D(1.31134e-07, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, 1.31134e-07, -5.73206e-15, -0.577135, -0.589873, -7.56821e-08)
+shape = SubResource("SeparationRayShape3D_kr75r")
+
+[node name="CollisionShape3D6" type="CollisionShape3D" parent="Player"]
+transform = Transform3D(0.707107, 0.707107, -3.09086e-08, 0, -4.37114e-08, -1, -0.707107, 0.707107, -3.09086e-08, -0.408096, -0.589873, -0.408096)
+shape = SubResource("SeparationRayShape3D_kr75r")
+
+[node name="CollisionShape3D7" type="CollisionShape3D" parent="Player"]
+transform = Transform3D(0.707107, -0.707107, 3.09086e-08, 0, -4.37114e-08, -1, 0.707107, 0.707107, -3.09086e-08, 0.408096, -0.589873, -0.408096)
+shape = SubResource("SeparationRayShape3D_kr75r")
+
+[node name="CollisionShape3D8" type="CollisionShape3D" parent="Player"]
+transform = Transform3D(-0.707107, -0.707107, 3.09086e-08, 0, -4.37114e-08, -1, 0.707107, -0.707107, 3.09086e-08, 0.408096, -0.589873, 0.408096)
+shape = SubResource("SeparationRayShape3D_kr75r")
+
+[node name="CollisionShape3D9" type="CollisionShape3D" parent="Player"]
+transform = Transform3D(-0.707107, 0.707107, -3.09086e-08, 0, -4.37114e-08, -1, -0.707107, -0.707107, 3.09086e-08, -0.408096, -0.589873, 0.408096)
 shape = SubResource("SeparationRayShape3D_kr75r")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
@@ -58,3 +83,12 @@ shape = SubResource("ConcavePolygonShape3D_30h1p")
 
 [node name="crossfire" parent="." instance=ExtResource("4_8q577")]
 transform = Transform3D(1.37285, 0, 0, 0, 1.37285, 0, 0, 0, 1.37285, 0.127957, 0.404329, -0.411785)
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.62893, 0)
+fov = 90.0
+script = ExtResource("4_6qa2x")
+targetPath = NodePath("../Player/CameraHolder")
+
+[node name="astronaut1p" parent="Camera3D" instance=ExtResource("3_60o5t")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, -0.046, -0.35)
