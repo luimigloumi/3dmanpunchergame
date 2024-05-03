@@ -2,9 +2,9 @@
 
 [ext_resource type="Script" path="res://scripts/actors/Player.cs" id="1_k8op2"]
 [ext_resource type="Script" path="res://scripts/actors/PlayerCamera.cs" id="2_un03f"]
-[ext_resource type="PackedScene" uid="uid://itmeo0lyf24v" path="res://resources/models/astronaut1p.blend" id="3_60o5t"]
 [ext_resource type="Script" path="res://scripts/CameraFollow.cs" id="4_6qa2x"]
 [ext_resource type="PackedScene" uid="uid://dnstobo7toeix" path="res://scenes/crossfire.tscn" id="4_8q577"]
+[ext_resource type="PackedScene" uid="uid://b6gkr10e4se6p" path="res://scenes/astronaut_1p.tscn" id="5_bl14n"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_p3us1"]
 radius = 0.432098
@@ -86,9 +86,9 @@ transform = Transform3D(1.37285, 0, 0, 0, 1.37285, 0, 0, 0, 1.37285, 0.127957, 0
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.62893, 0)
-fov = 90.0
+fov = 75.4
 script = ExtResource("4_6qa2x")
 targetPath = NodePath("../Player/CameraHolder")
 
-[node name="astronaut1p" parent="Camera3D" instance=ExtResource("3_60o5t")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, -0.046, -0.35)
+[node name="astronaut1p" parent="Camera3D" instance=ExtResource("5_bl14n")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, 0)

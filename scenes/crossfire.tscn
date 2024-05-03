@@ -24,8 +24,8 @@ data = PackedVector3Array(6.7051, -26.2128, 3.0475, 4.2667, -26.8416, 3.0475, 6.
 transform = Transform3D(4.56152, 0, 0, 0, 4.56152, 0, 0, 0, 4.56152, 0, 0, 0)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
-light_color = Color(0.686275, 0.513726, 0.541176, 1)
+transform = Transform3D(0.219225, 0, 0, 0, 0.00100628, 0.219223, 0, -0.219223, 0.00100628, 0, 0, 0)
+light_color = Color(0.936011, 0.932005, 0.943211, 1)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_gm3ty")
@@ -69,7 +69,6 @@ bones/18/rotation = Quaternion(0.0226248, -0.047899, -0.163298, 0.985154)
 bones/19/rotation = Quaternion(-5.04211e-06, 7.26211e-07, -0.0998319, 0.995004)
 bones/20/rotation = Quaternion(0.70404, 0.0585779, -0.0584704, 0.705321)
 bones/21/rotation = Quaternion(-2.4677e-08, -8.09768e-08, -0.0284853, 0.999594)
-bones/21/scale = Vector3(1, 1, 1)
 bones/22/rotation = Quaternion(0.760376, 0.649484, 5.42957e-07, -9.78128e-07)
 
 [node name="Skeleton3D" parent="crossfire2/barney_ARM_001" index="0"]
@@ -104,7 +103,6 @@ bones/18/rotation = Quaternion(0.0226248, -0.047899, -0.163298, 0.985154)
 bones/19/rotation = Quaternion(-5.04211e-06, 7.26211e-07, -0.0998319, 0.995004)
 bones/20/rotation = Quaternion(0.70404, 0.0585779, -0.0584704, 0.705321)
 bones/21/rotation = Quaternion(-2.4677e-08, -8.09768e-08, -0.0284853, 0.999594)
-bones/21/scale = Vector3(1, 1, 1)
 bones/22/rotation = Quaternion(0.760376, 0.649484, 5.42957e-07, -9.78128e-07)
 
 [node name="Skeleton3D" parent="crossfire2/barney_ARM_002" index="0"]
@@ -139,7 +137,6 @@ bones/18/rotation = Quaternion(0.0226248, -0.047899, -0.163298, 0.985154)
 bones/19/rotation = Quaternion(-5.04211e-06, 7.26211e-07, -0.0998319, 0.995004)
 bones/20/rotation = Quaternion(0.70404, 0.0585779, -0.0584704, 0.705321)
 bones/21/rotation = Quaternion(-2.4677e-08, -8.09768e-08, -0.0284853, 0.999594)
-bones/21/scale = Vector3(1, 1, 1)
 bones/22/rotation = Quaternion(0.760376, 0.649484, 5.42957e-07, -9.78128e-07)
 
 [node name="Skeleton3D" parent="crossfire2/w_crossbow_clip_ARM" index="0"]
@@ -223,140 +220,79 @@ bones/0/rotation = Quaternion(-0.707107, 0, 0, 0.707107)
 [node name="Skeleton3D" parent="crossfire2/w_shotbox_ARM_008" index="0"]
 bones/0/rotation = Quaternion(-0.707107, 0, 0, 0.707107)
 
-[node name="Skeleton3D" parent="crossfire2/w_gaussammo_ARM" index="0"]
-bones/0/scale = Vector3(1, 1, 1)
-
-[node name="Skeleton3D" parent="crossfire2/w_gaussammo_ARM_001" index="0"]
-bones/0/scale = Vector3(1, 1, 1)
-
-[node name="Skeleton3D" parent="crossfire2/w_gaussammo_ARM_002" index="0"]
-bones/0/scale = Vector3(1, 1, 1)
-
-[node name="Skeleton3D" parent="crossfire2/w_gaussammo_ARM_003" index="0"]
-bones/0/scale = Vector3(1, 1, 1)
-
-[node name="Skeleton3D" parent="crossfire2/w_gaussammo_ARM_004" index="0"]
-bones/0/scale = Vector3(1, 1, 1)
-
-[node name="Skeleton3D" parent="crossfire2/w_gaussammo_ARM_005" index="0"]
-bones/0/scale = Vector3(1, 1, 1)
-
-[node name="Skeleton3D" parent="crossfire2/w_gaussammo_ARM_006" index="0"]
-bones/0/scale = Vector3(1, 1, 1)
-
-[node name="Skeleton3D" parent="crossfire2/w_gaussammo_ARM_007" index="0"]
-bones/0/scale = Vector3(1, 1, 1)
-
-[node name="Skeleton3D" parent="crossfire2/w_gaussammo_ARM_008" index="0"]
-bones/0/scale = Vector3(1, 1, 1)
-
-[node name="Skeleton3D" parent="crossfire2/w_gaussammo_ARM_009" index="0"]
-bones/0/scale = Vector3(1, 1, 1)
-
-[node name="Skeleton3D" parent="crossfire2/w_gaussammo_ARM_010" index="0"]
-bones/0/scale = Vector3(1, 1, 1)
-
-[node name="Skeleton3D" parent="crossfire2/w_gaussammo_ARM_011" index="0"]
-bones/0/scale = Vector3(1, 1, 1)
-
-[node name="Skeleton3D" parent="crossfire2/w_gaussammo_ARM_012" index="0"]
-bones/0/scale = Vector3(1, 1, 1)
-
-[node name="Skeleton3D" parent="crossfire2/w_gaussammo_ARM_013" index="0"]
-bones/0/scale = Vector3(1, 1, 1)
-
 [node name="Skeleton3D" parent="crossfire2/w_rpgammo_ARM" index="0"]
-bones/0/scale = Vector3(1, 1, 1)
 bones/1/rotation = Quaternion(-0.344427, 0.0980102, 0.0361823, 0.932982)
 bones/1/scale = Vector3(1, 1, 1)
 
 [node name="Skeleton3D" parent="crossfire2/w_rpgammo_ARM_001" index="0"]
-bones/0/scale = Vector3(1, 1, 1)
 bones/1/rotation = Quaternion(-0.344427, 0.0980102, 0.0361823, 0.932982)
 bones/1/scale = Vector3(1, 1, 1)
 
 [node name="Skeleton3D" parent="crossfire2/w_rpgammo_ARM_002" index="0"]
-bones/0/scale = Vector3(1, 1, 1)
 bones/1/rotation = Quaternion(-0.344427, 0.0980102, 0.0361823, 0.932982)
 bones/1/scale = Vector3(1, 1, 1)
 
 [node name="Skeleton3D" parent="crossfire2/w_rpgammo_ARM_003" index="0"]
-bones/0/scale = Vector3(1, 1, 1)
 bones/1/rotation = Quaternion(-0.344427, 0.0980102, 0.0361823, 0.932982)
 bones/1/scale = Vector3(1, 1, 1)
 
 [node name="Skeleton3D" parent="crossfire2/w_rpgammo_ARM_004" index="0"]
-bones/0/scale = Vector3(1, 1, 1)
 bones/1/rotation = Quaternion(-0.344427, 0.0980102, 0.0361823, 0.932982)
 bones/1/scale = Vector3(1, 1, 1)
 
 [node name="Skeleton3D" parent="crossfire2/w_rpgammo_ARM_005" index="0"]
-bones/0/scale = Vector3(1, 1, 1)
 bones/1/rotation = Quaternion(-0.344427, 0.0980102, 0.0361823, 0.932982)
 bones/1/scale = Vector3(1, 1, 1)
 
 [node name="Skeleton3D" parent="crossfire2/w_rpgammo_ARM_006" index="0"]
-bones/0/scale = Vector3(1, 1, 1)
 bones/1/rotation = Quaternion(-0.344427, 0.0980102, 0.0361823, 0.932982)
 bones/1/scale = Vector3(1, 1, 1)
 
 [node name="Skeleton3D" parent="crossfire2/w_rpgammo_ARM_007" index="0"]
-bones/0/scale = Vector3(1, 1, 1)
 bones/1/rotation = Quaternion(-0.344427, 0.0980102, 0.0361823, 0.932982)
 bones/1/scale = Vector3(1, 1, 1)
 
 [node name="Skeleton3D" parent="crossfire2/w_rpgammo_ARM_008" index="0"]
-bones/0/scale = Vector3(1, 1, 1)
 bones/1/rotation = Quaternion(-0.344427, 0.0980102, 0.0361823, 0.932982)
 bones/1/scale = Vector3(1, 1, 1)
 
 [node name="Skeleton3D" parent="crossfire2/w_rpgammo_ARM_009" index="0"]
-bones/0/scale = Vector3(1, 1, 1)
 bones/1/rotation = Quaternion(-0.344427, 0.0980102, 0.0361823, 0.932982)
 bones/1/scale = Vector3(1, 1, 1)
 
 [node name="Skeleton3D" parent="crossfire2/w_rpgammo_ARM_010" index="0"]
-bones/0/scale = Vector3(1, 1, 1)
 bones/1/rotation = Quaternion(-0.344427, 0.0980102, 0.0361823, 0.932982)
 bones/1/scale = Vector3(1, 1, 1)
 
 [node name="Skeleton3D" parent="crossfire2/w_rpgammo_ARM_011" index="0"]
-bones/0/scale = Vector3(1, 1, 1)
 bones/1/rotation = Quaternion(-0.344427, 0.0980102, 0.0361823, 0.932982)
 bones/1/scale = Vector3(1, 1, 1)
 
 [node name="Skeleton3D" parent="crossfire2/w_rpgammo_ARM_012" index="0"]
-bones/0/scale = Vector3(1, 1, 1)
 bones/1/rotation = Quaternion(-0.344427, 0.0980102, 0.0361823, 0.932982)
 bones/1/scale = Vector3(1, 1, 1)
 
 [node name="Skeleton3D" parent="crossfire2/w_rpgammo_ARM_013" index="0"]
-bones/0/scale = Vector3(1, 1, 1)
 bones/1/rotation = Quaternion(-0.344427, 0.0980102, 0.0361823, 0.932982)
 bones/1/scale = Vector3(1, 1, 1)
 
 [node name="Skeleton3D" parent="crossfire2/w_rpgammo_ARM_014" index="0"]
-bones/0/scale = Vector3(1, 1, 1)
 bones/1/rotation = Quaternion(-0.344427, 0.0980102, 0.0361823, 0.932982)
 bones/1/scale = Vector3(1, 1, 1)
 
 [node name="Skeleton3D" parent="crossfire2/w_rpgammo_ARM_015" index="0"]
-bones/0/scale = Vector3(1, 1, 1)
 bones/1/rotation = Quaternion(-0.344427, 0.0980102, 0.0361823, 0.932982)
 bones/1/scale = Vector3(1, 1, 1)
 
 [node name="Skeleton3D" parent="crossfire2/w_rpgammo_ARM_016" index="0"]
-bones/0/scale = Vector3(1, 1, 1)
 bones/1/rotation = Quaternion(-0.344427, 0.0980102, 0.0361823, 0.932982)
 bones/1/scale = Vector3(1, 1, 1)
 
 [node name="Skeleton3D" parent="crossfire2/w_rpgammo_ARM_017" index="0"]
-bones/0/scale = Vector3(1, 1, 1)
 bones/1/rotation = Quaternion(-0.344427, 0.0980102, 0.0361823, 0.932982)
 bones/1/scale = Vector3(1, 1, 1)
 
 [node name="Skeleton3D" parent="crossfire2/w_rpgammo_ARM_018" index="0"]
-bones/0/scale = Vector3(1, 1, 1)
 bones/1/rotation = Quaternion(-0.344427, 0.0980102, 0.0361823, 0.932982)
 bones/1/scale = Vector3(1, 1, 1)
 
@@ -372,15 +308,6 @@ bones/0/rotation = Quaternion(-0.707107, 0, 0, 0.707107)
 [node name="Skeleton3D" parent="crossfire2/w_357ammobox_ARM_003" index="0"]
 bones/0/rotation = Quaternion(-0.707107, 0, 0, 0.707107)
 
-[node name="Skeleton3D" parent="crossfire2/w_9mmAR_ARM" index="0"]
-bones/0/scale = Vector3(1, 1, 1)
-
-[node name="Skeleton3D" parent="crossfire2/w_9mmAR_ARM_001" index="0"]
-bones/0/scale = Vector3(1, 1, 1)
-
-[node name="Skeleton3D" parent="crossfire2/w_9mmAR_ARM_002" index="0"]
-bones/0/scale = Vector3(1, 1, 1)
-
 [node name="Skeleton3D" parent="crossfire2/w_SQKNEST_ARM" index="0"]
 bones/0/rotation = Quaternion(-0.491202, -0.491202, -0.508646, 0.508646)
 bones/1/rotation = Quaternion(-0.5, -0.5, -0.499999, 0.500001)
@@ -389,11 +316,9 @@ bones/3/rotation = Quaternion(1.66109e-07, 4.33327e-08, -0.25418, 0.967157)
 bones/4/rotation = Quaternion(-0.190988, -0.325925, 0.785312, -0.490491)
 bones/5/rotation = Quaternion(4.30481e-07, 1.92974e-07, -0.233032, 0.972469)
 bones/6/rotation = Quaternion(-2.06294e-06, -1.48447e-06, 0.707106, 0.707108)
-bones/6/scale = Vector3(1, 1, 1)
 bones/9/rotation = Quaternion(0.632981, -0.000253467, 0.774167, 0.000306293)
 bones/9/scale = Vector3(1, 1, 1)
 bones/10/rotation = Quaternion(0.0841478, -0.462252, -0.178764, 0.864457)
-bones/10/scale = Vector3(1, 1, 1)
 bones/12/rotation = Quaternion(-0.632981, 0.000250438, 0.774167, 0.000308769)
 bones/12/scale = Vector3(1, 1, 1)
 bones/13/rotation = Quaternion(-0.0821329, 0.462615, -0.17499, 0.865228)
@@ -408,11 +333,9 @@ bones/3/rotation = Quaternion(1.66109e-07, 4.33327e-08, -0.25418, 0.967157)
 bones/4/rotation = Quaternion(-0.190988, -0.325925, 0.785312, -0.490491)
 bones/5/rotation = Quaternion(4.30481e-07, 1.92974e-07, -0.233032, 0.972469)
 bones/6/rotation = Quaternion(-2.06294e-06, -1.48447e-06, 0.707106, 0.707108)
-bones/6/scale = Vector3(1, 1, 1)
 bones/9/rotation = Quaternion(0.632981, -0.000253467, 0.774167, 0.000306293)
 bones/9/scale = Vector3(1, 1, 1)
 bones/10/rotation = Quaternion(0.0841478, -0.462252, -0.178764, 0.864457)
-bones/10/scale = Vector3(1, 1, 1)
 bones/12/rotation = Quaternion(-0.632981, 0.000250438, 0.774167, 0.000308769)
 bones/12/scale = Vector3(1, 1, 1)
 bones/13/rotation = Quaternion(-0.0821329, 0.462615, -0.17499, 0.865228)
@@ -421,23 +344,18 @@ bones/14/rotation = Quaternion(1.73367e-06, -5.18523e-08, -0.245736, 0.969337)
 
 [node name="Skeleton3D" parent="crossfire2/w_crossbow_ARM" index="0"]
 bones/0/rotation = Quaternion(-1.10986e-07, -0.707107, -1.10986e-07, 0.707107)
-bones/0/scale = Vector3(1, 1, 1)
 
 [node name="Skeleton3D" parent="crossfire2/w_crossbow_ARM_001" index="0"]
 bones/0/rotation = Quaternion(-1.10986e-07, -0.707107, -1.10986e-07, 0.707107)
-bones/0/scale = Vector3(1, 1, 1)
 
 [node name="Skeleton3D" parent="crossfire2/w_crossbow_ARM_002" index="0"]
 bones/0/rotation = Quaternion(-1.10986e-07, -0.707107, -1.10986e-07, 0.707107)
-bones/0/scale = Vector3(1, 1, 1)
 
 [node name="Skeleton3D" parent="crossfire2/w_gauss_ARM" index="0"]
 bones/0/rotation = Quaternion(-1.38277e-07, -0.707107, -1.38277e-07, 0.707107)
-bones/0/scale = Vector3(1, 1, 1)
 
 [node name="Skeleton3D" parent="crossfire2/w_gauss_ARM_001" index="0"]
 bones/0/rotation = Quaternion(-1.38277e-07, -0.707107, -1.38277e-07, 0.707107)
-bones/0/scale = Vector3(1, 1, 1)
 
 [node name="Skeleton3D" parent="crossfire2/w_egon_ARM" index="0"]
 bones/0/rotation = Quaternion(-0.707107, 0, 0, 0.707107)
@@ -458,35 +376,27 @@ bones/0/scale = Vector3(1, 1, 1)
 
 [node name="Skeleton3D" parent="crossfire2/w_satchel_ARM" index="0"]
 bones/0/rotation = Quaternion(-1.10986e-07, -0.707107, -1.10986e-07, 0.707107)
-bones/0/scale = Vector3(1, 1, 1)
 
 [node name="Skeleton3D" parent="crossfire2/w_satchel_ARM_001" index="0"]
 bones/0/rotation = Quaternion(-1.10986e-07, -0.707107, -1.10986e-07, 0.707107)
-bones/0/scale = Vector3(1, 1, 1)
 
 [node name="Skeleton3D" parent="crossfire2/w_satchel_ARM_002" index="0"]
 bones/0/rotation = Quaternion(-1.10986e-07, -0.707107, -1.10986e-07, 0.707107)
-bones/0/scale = Vector3(1, 1, 1)
 
 [node name="Skeleton3D" parent="crossfire2/w_satchel_ARM_003" index="0"]
 bones/0/rotation = Quaternion(-1.10986e-07, -0.707107, -1.10986e-07, 0.707107)
-bones/0/scale = Vector3(1, 1, 1)
 
 [node name="Skeleton3D" parent="crossfire2/w_satchel_ARM_004" index="0"]
 bones/0/rotation = Quaternion(-1.10986e-07, -0.707107, -1.10986e-07, 0.707107)
-bones/0/scale = Vector3(1, 1, 1)
 
 [node name="Skeleton3D" parent="crossfire2/w_satchel_ARM_005" index="0"]
 bones/0/rotation = Quaternion(-1.10986e-07, -0.707107, -1.10986e-07, 0.707107)
-bones/0/scale = Vector3(1, 1, 1)
 
 [node name="Skeleton3D" parent="crossfire2/w_satchel_ARM_006" index="0"]
 bones/0/rotation = Quaternion(-1.10986e-07, -0.707107, -1.10986e-07, 0.707107)
-bones/0/scale = Vector3(1, 1, 1)
 
 [node name="Skeleton3D" parent="crossfire2/w_satchel_ARM_007" index="0"]
 bones/0/rotation = Quaternion(-1.10986e-07, -0.707107, -1.10986e-07, 0.707107)
-bones/0/scale = Vector3(1, 1, 1)
 
 [node name="Skeleton3D" parent="crossfire2/w_shotgun_ARM" index="0"]
 bones/0/rotation = Quaternion(0.5, -0.5, -0.5, -0.5)
