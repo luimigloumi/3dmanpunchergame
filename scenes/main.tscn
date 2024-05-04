@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://ci1ahg2jvo6qo"]
+[gd_scene load_steps=4 format=3 uid="uid://ci1ahg2jvo6qo"]
 
 [ext_resource type="PackedScene" uid="uid://cgqiols21e00m" path="res://scenes/player.tscn" id="1_q8ups"]
 [ext_resource type="PackedScene" uid="uid://cu62bholwltmr" path="res://scenes/dust_2.tscn" id="2_1j7qe"]
+[ext_resource type="PackedScene" uid="uid://ckq1ehhq1yf1n" path="res://scenes/medicalassistant.tscn" id="3_hq5p4"]
 
 [node name="Main" type="Node3D"]
 
@@ -10,3 +11,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.305906, 0, 0.184018)
 
 [node name="classicdust2" parent="." instance=ExtResource("2_1j7qe")]
 transform = Transform3D(1.35853, 0, 0, 0, 1.35853, 0, 0, 0, 1.35853, -5.86602, 0, -2.66075)
+
+[node name="medicalassistant" parent="." instance=ExtResource("3_hq5p4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.77113, 0.270542, -3.11965)
