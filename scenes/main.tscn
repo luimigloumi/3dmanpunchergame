@@ -1,12 +1,12 @@
 [gd_scene load_steps=3 format=3 uid="uid://ci1ahg2jvo6qo"]
 
 [ext_resource type="PackedScene" uid="uid://cgqiols21e00m" path="res://scenes/player.tscn" id="1_q8ups"]
-[ext_resource type="PackedScene" uid="uid://dnstobo7toeix" path="res://scenes/crossfire.tscn" id="2_jsbyv"]
+[ext_resource type="PackedScene" uid="uid://cu62bholwltmr" path="res://scenes/dust_2.tscn" id="2_1j7qe"]
 
 [node name="Main" type="Node3D"]
 
 [node name="Root" parent="." instance=ExtResource("1_q8ups")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0337299, -1.19209e-07, -0.0398312)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.305906, 0, 0.184018)
 
-[node name="crossfire" parent="." instance=ExtResource("2_jsbyv")]
-transform = Transform3D(1.50924, 0, 0, 0, 1.50924, 0, 0, 0, 1.50924, 0.0875192, 37.5106, -0.327483)
+[node name="classicdust2" parent="." instance=ExtResource("2_1j7qe")]
+transform = Transform3D(1.35853, 0, 0, 0, 1.35853, 0, 0, 0, 1.35853, -5.86602, 0, -2.66075)

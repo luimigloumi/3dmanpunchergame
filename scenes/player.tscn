@@ -1,9 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://cgqiols21e00m"]
+[gd_scene load_steps=7 format=3 uid="uid://cgqiols21e00m"]
 
 [ext_resource type="Script" path="res://scripts/actors/Player.cs" id="1_xuh7l"]
 [ext_resource type="Script" path="res://scripts/actors/PlayerCamera.cs" id="2_k4j2s"]
 [ext_resource type="Script" path="res://scripts/CameraFollow.cs" id="3_pesm3"]
-[ext_resource type="Script" path="res://scenes/Arms.gd" id="4_l0hpu"]
 [ext_resource type="PackedScene" uid="uid://b6gkr10e4se6p" path="res://scenes/astronaut_1p.tscn" id="4_u1alp"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_p3us1"]
@@ -12,7 +11,7 @@ radius = 0.432098
 [sub_resource type="SeparationRayShape3D" id="SeparationRayShape3D_kr75r"]
 length = 0.5
 
-[node name="Root" type="Node3D"]
+[node name="Player" type="Node3D"]
 
 [node name="Player" type="CharacterBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
@@ -73,7 +72,6 @@ script = ExtResource("3_pesm3")
 targetPath = NodePath("../Player/CameraHolder")
 
 [node name="Arms" type="Node3D" parent="Camera3D"]
-script = ExtResource("4_l0hpu")
 
 [node name="astronaut1p" parent="Camera3D/Arms" instance=ExtResource("4_u1alp")]
-transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, 0)
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, 0.235284)
