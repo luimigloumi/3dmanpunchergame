@@ -1,0 +1,14 @@
+[remap]
+
+importer="func_godot.map"
+type="Resource"
+uid="uid://djy7sivbxvtp2"
+path="res://.godot/imported/pingas.map-825f4e8094638104d983c0d96e1edc4b.tres"
+
+[deps]
+
+source_file="res://trenchbroom_resources/maps/pingas.map"
+dest_files=["res://.godot/imported/pingas.map-825f4e8094638104d983c0d96e1edc4b.tres"]
+
+[params]
+

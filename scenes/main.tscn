@@ -1,16 +1,18 @@
-[gd_scene load_steps=4 format=3 uid="uid://ci1ahg2jvo6qo"]
+[gd_scene load_steps=3 format=3 uid="uid://ci1ahg2jvo6qo"]
 
 [ext_resource type="PackedScene" uid="uid://cgqiols21e00m" path="res://scenes/player.tscn" id="1_q8ups"]
-[ext_resource type="PackedScene" uid="uid://cu62bholwltmr" path="res://scenes/dust_2.tscn" id="2_1j7qe"]
-[ext_resource type="PackedScene" uid="uid://ckq1ehhq1yf1n" path="res://scenes/medicalassistant.tscn" id="3_hq5p4"]
+[ext_resource type="PackedScene" uid="uid://bgtwb4j2dq3je" path="res://scenes/testmap.tscn" id="2_ppjio"]
 
 [node name="Main" type="Node3D"]
 
 [node name="Root" parent="." instance=ExtResource("1_q8ups")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.305906, 0, 0.184018)
 
-[node name="classicdust2" parent="." instance=ExtResource("2_1j7qe")]
-transform = Transform3D(1.35853, 0, 0, 0, 1.35853, 0, 0, 0, 1.35853, -5.86602, 0, -2.66075)
+[node name="FuncGodotMap" parent="." instance=ExtResource("2_ppjio")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.1852, 0, 0.760747)
 
-[node name="medicalassistant" parent="." instance=ExtResource("3_hq5p4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.77113, 0.270542, -3.11965)
+[node name="SpotLight3D" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 15.334, 0)
+light_energy = 16.0
+spot_range = 21.3852
+spot_angle = 59.5997
