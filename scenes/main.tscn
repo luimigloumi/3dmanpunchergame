@@ -1,18 +1,21 @@
 [gd_scene load_steps=3 format=3 uid="uid://ci1ahg2jvo6qo"]
 
 [ext_resource type="PackedScene" uid="uid://cgqiols21e00m" path="res://scenes/player.tscn" id="1_q8ups"]
-[ext_resource type="PackedScene" uid="uid://bgtwb4j2dq3je" path="res://scenes/testmap.tscn" id="2_ppjio"]
+[ext_resource type="PackedScene" uid="uid://dnstobo7toeix" path="res://scenes/crossfire.tscn" id="2_ub2j7"]
 
 [node name="Main" type="Node3D"]
 
 [node name="Root" parent="." instance=ExtResource("1_q8ups")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.305906, 0, 0.184018)
 
-[node name="FuncGodotMap" parent="." instance=ExtResource("2_ppjio")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.1852, 0, 0.760747)
-
 [node name="SpotLight3D" type="SpotLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 15.334, 0)
 light_energy = 16.0
 spot_range = 21.3852
 spot_angle = 59.5997
+
+[node name="crossfire" parent="." instance=ExtResource("2_ub2j7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[editable path="Root"]
+[editable path="Root/Camera3D/Arms/astronaut1p"]

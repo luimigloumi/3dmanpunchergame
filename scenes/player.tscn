@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://cgqiols21e00m"]
+[gd_scene load_steps=8 format=3 uid="uid://cgqiols21e00m"]
 
 [ext_resource type="Script" path="res://scripts/actors/Player.cs" id="1_xuh7l"]
 [ext_resource type="Script" path="res://scripts/actors/PlayerCamera.cs" id="2_k4j2s"]
 [ext_resource type="Script" path="res://scripts/CameraFollow.cs" id="3_pesm3"]
 [ext_resource type="PackedScene" uid="uid://b6gkr10e4se6p" path="res://scenes/astronaut_1p.tscn" id="4_u1alp"]
+[ext_resource type="Texture2D" uid="uid://df8gcmpayk3qw" path="res://resources/textures/ui/reticle.png" id="5_pdm2i"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_p3us1"]
 radius = 0.432098
@@ -17,6 +18,7 @@ length = 0.5
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 floor_snap_length = 0.3
 script = ExtResource("1_xuh7l")
+vmAnimatorPath = NodePath("")
 movementSpeed = 10.0
 airTraction = 0.8
 maxJumps = 1
@@ -30,8 +32,8 @@ shape = SubResource("CapsuleShape3D_p3us1")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.628926, 0)
 script = ExtResource("2_k4j2s")
 bodyPath = NodePath("..")
-verticalSensitivity = 0.6
-horizontalSensitivity = 0.7
+verticalSensitivity = 0.4
+horizontalSensitivity = 0.5
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="Player"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, -0.589873, -0.577135)
@@ -74,4 +76,71 @@ targetPath = NodePath("../Player/CameraHolder")
 [node name="Arms" type="Node3D" parent="Camera3D"]
 
 [node name="astronaut1p" parent="Camera3D/Arms" instance=ExtResource("4_u1alp")]
-transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, 0.235284)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.180751)
+
+[node name="Skeleton3D" parent="Camera3D/Arms/astronaut1p/metarig" index="0"]
+bones/1/rotation = Quaternion(0.13066, 0.237754, 0.899858, 0.341551)
+bones/2/rotation = Quaternion(0.75758, -0.0431873, -0.0214651, 0.650959)
+bones/3/rotation = Quaternion(0.0648055, 0.00309503, -0.0299957, 0.997442)
+bones/5/rotation = Quaternion(0.491367, 0.0181453, -0.0498452, 0.869336)
+bones/6/rotation = Quaternion(0.74016, 0.0453515, -0.121518, 0.659802)
+bones/7/rotation = Quaternion(0.770265, 0.0161251, 0.00671272, 0.637485)
+bones/8/rotation = Quaternion(0.256246, -0.560561, -0.363211, 0.698704)
+bones/9/rotation = Quaternion(0.67594, 0.0853357, -0.130624, 0.72025)
+bones/10/rotation = Quaternion(0.27189, 0.00199137, 0.107822, 0.956267)
+bones/12/rotation = Quaternion(0.397931, 0.0660679, -0.0439798, 0.913976)
+bones/13/rotation = Quaternion(0.757474, 0.044862, -0.0132777, 0.651187)
+bones/14/rotation = Quaternion(0.73023, -0.00443096, 0.138162, 0.669071)
+bones/16/rotation = Quaternion(0.442392, 0.123414, -0.0292517, 0.887808)
+bones/18/rotation = Quaternion(0.41121, 0.0479334, 0.258935, 0.872675)
+bones/19/rotation = Quaternion(0.130402, -0.667393, 0.164904, 0.714415)
+bones/20/rotation = Quaternion(0.658768, -0.00589019, -0.136537, 0.739829)
+bones/21/rotation = Quaternion(0.683886, 0.161489, 0.228918, 0.67366)
+bones/22/rotation = Quaternion(0.642646, 0.00758785, 0.197093, 0.74034)
+bones/23/rotation = Quaternion(-0.13066, 0.237754, 0.899858, -0.341551)
+bones/24/rotation = Quaternion(0.75758, 0.0431873, 0.021465, 0.650959)
+bones/25/rotation = Quaternion(0.0648055, -0.00309504, 0.0299957, 0.997442)
+bones/27/rotation = Quaternion(0.491367, -0.0181453, 0.0498452, 0.869336)
+bones/28/rotation = Quaternion(0.74016, -0.0453514, 0.121518, 0.659803)
+bones/29/rotation = Quaternion(0.770265, -0.0161251, -0.00671266, 0.637485)
+bones/30/rotation = Quaternion(0.256246, 0.560561, 0.363211, 0.698704)
+bones/31/rotation = Quaternion(0.67594, -0.0853357, 0.130624, 0.72025)
+bones/32/rotation = Quaternion(0.27189, -0.00199137, -0.107822, 0.956267)
+bones/34/rotation = Quaternion(0.397931, -0.0660679, 0.0439798, 0.913976)
+bones/35/rotation = Quaternion(0.757474, -0.0448621, 0.0132777, 0.651187)
+bones/36/rotation = Quaternion(0.73023, 0.00443097, -0.138162, 0.669071)
+bones/38/rotation = Quaternion(0.442392, -0.123414, 0.0292517, 0.887808)
+bones/39/rotation = Quaternion(0.643523, -0.0282183, -0.084956, 0.760174)
+bones/40/rotation = Quaternion(0.41121, -0.0479335, -0.258935, 0.872675)
+bones/41/rotation = Quaternion(0.130402, 0.667393, -0.164904, 0.714415)
+bones/42/rotation = Quaternion(0.658768, 0.00589012, 0.136537, 0.739829)
+bones/43/rotation = Quaternion(0.683886, -0.161489, -0.228918, 0.67366)
+bones/44/rotation = Quaternion(0.642646, -0.0075879, -0.197093, 0.74034)
+
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="TextureRect" type="TextureRect" parent="UI"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -25.0
+offset_top = -25.0
+offset_right = 25.0
+offset_bottom = 25.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("5_pdm2i")
+expand_mode = 1
+
+[editable path="Camera3D/Arms/astronaut1p"]

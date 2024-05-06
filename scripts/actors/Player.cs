@@ -12,6 +12,16 @@ public enum PlayerState
 	Falling
 }
 
+public enum VMState {
+
+	Idle, 
+	Punching, 
+	Grabbing,
+	Holding,
+	Throwing
+
+}
+
 public partial class Player : Actor
 {
 	
@@ -19,12 +29,18 @@ public partial class Player : Actor
 
 	[ExportCategory("References")]
 
+	[Export]
+	public NodePath vmAnimatorPath;
+	public AnimationPlayer vmAnimator;
+
 	#endregion
 
 	#region Variables
 
 	[Export]
 	public PlayerState currentState = PlayerState.Idle;
+	
+	public VMState vmState = VMState.Idle;
 
 	[ExportCategory("Movement")]
 	[ExportGroup("Horizontal Movement")]
@@ -53,12 +69,20 @@ public partial class Player : Actor
 	float coyoteTime = 0f;
 	float jumpBuffer = 0f;
 
+	[ExportGroup("Combat")]
+	[ExportSubgroup("Punch")]
+	[Export]
+	public float maxPunchBuffer = 0.2f;
+	public float punchBuffer = 0f;
+
 	#endregion
 
 	public override void _Ready()
 	{
 
 		base._Ready();
+
+		vmAnimator = GetNode<AnimationPlayer>(vmAnimatorPath);
 
 		coyoteTime = 0f;
 		jumpBuffer = 0f;
@@ -73,6 +97,38 @@ public partial class Player : Actor
 		jumpBuffer = Mathf.Max(0f, jumpBuffer - (float)delta);
 
 		if (Input.IsActionJustPressed("Jump")) jumpBuffer = maximumJumpBuffer;
+
+		if (Input.IsActionJustPressed("Attack")) punchBuffer = maxPunchBuffer;
+
+		switch(vmState) {
+
+			case VMState.Idle:
+
+				vmAnimator.Play("Idle");
+
+				if (punchBuffer > 0) {
+
+					punchBuffer = 0;
+					vmState = VMState.Punching;
+					vmAnimator.Play("Punch");
+					break;
+
+				}
+
+			break;
+
+			case VMState.Punching:
+
+				if (!vmAnimator.IsPlaying()) {
+					
+					vmState = VMState.Idle;
+					break;	
+
+				}
+
+			break;
+
+		}
 
 	}
 
