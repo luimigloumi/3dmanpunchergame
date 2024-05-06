@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://ci1ahg2jvo6qo"]
+[gd_scene load_steps=4 format=3 uid="uid://ci1ahg2jvo6qo"]
 
 [ext_resource type="PackedScene" uid="uid://cgqiols21e00m" path="res://scenes/player.tscn" id="1_q8ups"]
 [ext_resource type="PackedScene" uid="uid://dnstobo7toeix" path="res://scenes/crossfire.tscn" id="2_ub2j7"]
+[ext_resource type="PackedScene" uid="uid://cu62bholwltmr" path="res://scenes/dust_2.tscn" id="2_vmqac"]
+[ext_resource type="PackedScene" uid="uid://ckq1ehhq1yf1n" path="res://scenes/medicalassistant.tscn" id="3_soj4h"]
 
 [node name="Main" type="Node3D"]
 
@@ -19,3 +21,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 
 [editable path="Root"]
 [editable path="Root/Camera3D/Arms/astronaut1p"]
+
+[node name="dust2" parent="." instance=ExtResource("2_vmqac")]
+transform = Transform3D(1.16937, 0, 0, 0, 1.16937, 0, 0, 0, 1.16937, -4.58496, 0, 0.937907)
+
+[node name="medicalassistant" parent="." instance=ExtResource("3_soj4h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.128451, 0, -4.93957)
