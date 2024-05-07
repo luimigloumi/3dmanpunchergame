@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://cxgahy5rf2iv3"]
+
+[ext_resource type="Texture2D" uid="uid://bshxkjiwj5xnm" path="res://textures/{GRATE2A_RM4.png" id="1_7cgip"]
+
+[resource]
+albedo_texture = ExtResource("1_7cgip")
+metallic_specular = 0.0
+texture_filter = 2
