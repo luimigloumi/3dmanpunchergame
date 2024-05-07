@@ -74,6 +74,7 @@ script = ExtResource("3_pesm3")
 targetPath = NodePath("../Player/CameraHolder")
 
 [node name="Arms" type="Node3D" parent="Camera3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.320688)
 
 [node name="astronaut1p" parent="Camera3D/Arms" instance=ExtResource("4_p2hoh")]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, 0)

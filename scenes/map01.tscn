@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://addons/func_godot/src/map/func_godot_map.gd" id="1_keyuq"]
 [ext_resource type="Resource" uid="uid://bkhxcqsquw1yg" path="res://addons/func_godot/func_godot_default_map_settings.tres" id="2_w7xri"]
-[ext_resource type="Material" uid="uid://htr15y61bak7" path="res://textures/WHITE.tres" id="3_1lthy"]
+[ext_resource type="Material" path="res://textures/WHITE.tres" id="3_1lthy"]
 [ext_resource type="Texture2D" uid="uid://bshxkjiwj5xnm" path="res://textures/{GRATE2A_RM4.png" id="4_ks7nu"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_b8bmi"]
