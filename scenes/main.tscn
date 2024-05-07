@@ -1,7 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://ci1ahg2jvo6qo"]
+[gd_scene load_steps=4 format=3 uid="uid://ci1ahg2jvo6qo"]
 
 [ext_resource type="PackedScene" uid="uid://cgqiols21e00m" path="res://scenes/player.tscn" id="1_q8ups"]
-[ext_resource type="PackedScene" uid="uid://dnstobo7toeix" path="res://scenes/crossfire.tscn" id="2_ub2j7"]
 [ext_resource type="PackedScene" uid="uid://cu62bholwltmr" path="res://scenes/dust_2.tscn" id="2_vmqac"]
 [ext_resource type="PackedScene" uid="uid://ckq1ehhq1yf1n" path="res://scenes/medicalassistant.tscn" id="3_soj4h"]
 
@@ -10,20 +9,54 @@
 [node name="Root" parent="." instance=ExtResource("1_q8ups")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.305906, 0, 0.184018)
 
+[node name="Skeleton3D" parent="Root/Camera3D/Arms/astronaut1p/metarig" index="0"]
+bones/0/rotation = Quaternion(-0.0142814, 0, 0, 0.999898)
+bones/1/scale = Vector3(1, 1, 1)
+bones/2/scale = Vector3(1, 1, 1)
+bones/3/scale = Vector3(1, 1, 1)
+bones/4/rotation = Quaternion(0.0532764, -0.719635, -0.0913677, 0.68625)
+bones/4/scale = Vector3(1, 1, 1)
+bones/6/scale = Vector3(1, 1, 1)
+bones/8/scale = Vector3(1, 1, 1)
+bones/11/rotation = Quaternion(0.0624014, -0.716053, 0.0137833, 0.695115)
+bones/11/scale = Vector3(1, 1, 1)
+bones/12/scale = Vector3(1, 1, 1)
+bones/13/scale = Vector3(1, 1, 1)
+bones/14/scale = Vector3(1, 1, 1)
+bones/15/rotation = Quaternion(0.0661558, -0.687064, 0.0500621, 0.721845)
+bones/15/scale = Vector3(1, 1, 1)
+bones/19/scale = Vector3(1, 1, 1)
+bones/21/scale = Vector3(1, 1, 1)
+bones/22/scale = Vector3(1, 1, 1)
+bones/23/scale = Vector3(1, 1, 1)
+bones/24/scale = Vector3(1, 1, 1)
+bones/25/scale = Vector3(1, 1, 1)
+bones/26/rotation = Quaternion(0.0532764, 0.719635, 0.0913677, 0.68625)
+bones/26/scale = Vector3(1, 1, 1)
+bones/28/scale = Vector3(1, 1, 1)
+bones/30/scale = Vector3(1, 1, 1)
+bones/33/rotation = Quaternion(0.0624014, 0.716053, -0.0137833, 0.695115)
+bones/33/scale = Vector3(1, 1, 1)
+bones/34/scale = Vector3(1, 1, 1)
+bones/35/scale = Vector3(1, 1, 1)
+bones/36/scale = Vector3(1, 1, 1)
+bones/37/rotation = Quaternion(0.0661558, 0.687064, -0.0500621, 0.721845)
+bones/37/scale = Vector3(1, 1, 1)
+bones/41/scale = Vector3(1, 1, 1)
+bones/43/scale = Vector3(1, 1, 1)
+bones/44/scale = Vector3(1, 1, 1)
+
 [node name="SpotLight3D" type="SpotLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 15.334, 0)
 light_energy = 16.0
 spot_range = 21.3852
 spot_angle = 59.5997
 
-[node name="crossfire" parent="." instance=ExtResource("2_ub2j7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
-
 [node name="dust2" parent="." instance=ExtResource("2_vmqac")]
 transform = Transform3D(1.16937, 0, 0, 0, 1.16937, 0, 0, 0, 1.16937, -4.58496, 0, 0.937907)
 
 [node name="medicalassistant" parent="." instance=ExtResource("3_soj4h")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.128451, 0, -4.93957)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.128451, 0.321746, -4.93957)
 
 [editable path="Root"]
 [editable path="Root/Camera3D/Arms/astronaut1p"]
