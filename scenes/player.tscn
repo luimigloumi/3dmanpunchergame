@@ -18,6 +18,7 @@ length = 0.5
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 floor_snap_length = 0.3
 script = ExtResource("1_xuh7l")
+vmAnimatorPath = NodePath("../Camera3D/Arms/astronaut1p/AnimationPlayer")
 movementSpeed = 10.0
 airTraction = 0.8
 maxJumps = 1
