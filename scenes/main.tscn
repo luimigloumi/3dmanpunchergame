@@ -70,6 +70,27 @@ transform = Transform3D(1.16937, 0, 0, 0, 1.16937, 0, 0, 0, 1.16937, -4.58496, 0
 [node name="medicalassistant" parent="NavigationRegion3D" instance=ExtResource("3_soj4h")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.128, 0, -4.94)
 
+[node name="medicalassistant2" parent="NavigationRegion3D" instance=ExtResource("3_soj4h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.01415, 0, -2.38632)
+
+[node name="medicalassistant3" parent="NavigationRegion3D" instance=ExtResource("3_soj4h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.53572, 0, 4.12676)
+
+[node name="medicalassistant4" parent="NavigationRegion3D" instance=ExtResource("3_soj4h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.47294, 0, -6.80124)
+
+[node name="medicalassistant5" parent="NavigationRegion3D" instance=ExtResource("3_soj4h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.08382, -4.76837e-07, -7.10004)
+
+[node name="medicalassistant6" parent="NavigationRegion3D" instance=ExtResource("3_soj4h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0838203, -4.76837e-07, -2.10004)
+
+[node name="medicalassistant7" parent="NavigationRegion3D" instance=ExtResource("3_soj4h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.96843, -4.76837e-07, 2.012)
+
+[node name="medicalassistant8" parent="NavigationRegion3D" instance=ExtResource("3_soj4h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.59961, -4.76837e-07, -0.82053)
+
 [editable path="Root"]
 [editable path="Root/Camera3D/Arms/astronaut1p"]
 [editable path="NavigationRegion3D/dust2"]

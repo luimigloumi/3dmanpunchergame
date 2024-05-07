@@ -8,15 +8,12 @@ public partial class Enemy : Actor
 	public NodePath navAgentPath;
 	public NavigationAgent3D navAgent;
 
-	Player player;
+	public Player player;
 
 	[Export]
-	public float updateTime = 1f;
+	public float updateTime = 0.2f;
 
-	[Export]
-	public float speed = 50f;
-
-	bool ready = false;
+	public bool ready = false;
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
@@ -31,22 +28,6 @@ public partial class Enemy : Actor
 		CallDeferred("UpdatePosition");
 
 	}	
-
-	// Called every frame. 'delta' is the elapsed time since the previous frame.
-	public override void _PhysicsProcess(double delta)
-	{
-
-		if (ready) {
-
-			Velocity = (navAgent.GetNextPathPosition() - GlobalPosition).Normalized() * speed;
-
-		}
-
-		ready = true;
-
-		MoveAndSlide();
-
-	}
 
 	public async void UpdatePosition() {
 
