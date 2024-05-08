@@ -66,6 +66,13 @@ Grab={
 ]
 }
 
+[layer_names]
+
+3d_physics/layer_1="Ground"
+3d_physics/layer_2="Player"
+3d_physics/layer_3="Enemies"
+
 [physics]
 
+3d/physics_engine="GodotPhysics3D"
 3d/default_gravity=7.0

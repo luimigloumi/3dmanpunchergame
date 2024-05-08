@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://cgqiols21e00m"]
+[gd_scene load_steps=9 format=3 uid="uid://cgqiols21e00m"]
 
 [ext_resource type="Script" path="res://scripts/actors/Player.cs" id="1_xuh7l"]
 [ext_resource type="Script" path="res://scripts/actors/PlayerCamera.cs" id="2_k4j2s"]
@@ -9,6 +9,8 @@
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_p3us1"]
 radius = 0.432098
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_0uo03"]
+
 [sub_resource type="SeparationRayShape3D" id="SeparationRayShape3D_kr75r"]
 length = 0.5
 
@@ -16,14 +18,19 @@ length = 0.5
 
 [node name="Player" type="CharacterBody3D" parent="." groups=["Player"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+collision_layer = 2
+collision_mask = 7
 floor_snap_length = 0.3
 script = ExtResource("1_xuh7l")
 vmAnimatorPath = NodePath("../Camera3D/Arms/astronaut1p/AnimationPlayer")
+punchCastPath = NodePath("CameraHolder/ShapeCast3D")
 movementSpeed = 10.0
 airTraction = 0.8
 maxJumps = 1
 jumpHeight = 8.0
 maximumCoyoteTime = 0.1
+prioritizedVMAnimations = ["Punch"]
+punchTimeMaximum = 0.3
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Player"]
 shape = SubResource("CapsuleShape3D_p3us1")
@@ -34,6 +41,11 @@ script = ExtResource("2_k4j2s")
 bodyPath = NodePath("..")
 verticalSensitivity = 0.4
 horizontalSensitivity = 0.5
+
+[node name="ShapeCast3D" type="ShapeCast3D" parent="Player/CameraHolder"]
+shape = SubResource("SphereShape3D_0uo03")
+target_position = Vector3(0, 0, -1.5)
+collision_mask = 4
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="Player"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, -0.589873, -0.577135)
