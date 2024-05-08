@@ -377,6 +377,8 @@ points = PackedVector3Array(37.5, 5, -19.5, 37.5, 6, -19.5, -7.5, 6, -19.5, -7.5
 [sub_resource type="Environment" id="Environment_h3lag"]
 background_mode = 2
 sdfgi_use_occlusion = true
+fog_enabled = true
+fog_light_energy = 0.07
 
 [node name="Node3D" type="Node3D"]
 
