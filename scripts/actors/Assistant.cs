@@ -74,4 +74,10 @@ public partial class Assistant : Enemy
 		ready = true;
 	}
 
+	public override void OnDeath() {
+
+		QueueFree();
+
+	}
+
 }
