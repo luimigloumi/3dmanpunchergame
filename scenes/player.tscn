@@ -29,7 +29,7 @@ airTraction = 0.8
 maxJumps = 1
 jumpHeight = 8.0
 maximumCoyoteTime = 0.1
-prioritizedVMAnimations = ["Punch"]
+prioritizedVMAnimations = ["Punch", "Grab"]
 punchTimeMaximum = 0.3
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Player"]

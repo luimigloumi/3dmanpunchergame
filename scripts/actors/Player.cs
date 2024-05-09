@@ -86,6 +86,13 @@ public partial class Player : Actor
 	public float punchBuffer = 0f;
 
 	[Export]
+	public float maxGrabBuffer = 0.2f;
+	public float grabBuffer = 0f;
+	[Export]
+	public float grabTimeMaximum = 0.5f;
+	public float grabTimer = 0;
+
+	[Export]
 	public float punchTimeMaximum = 0.2f;
 	public float punchTimer = 0;
 	[Export]
@@ -103,6 +110,7 @@ public partial class Player : Actor
 
 		coyoteTime = 0f;
 		jumpBuffer = 0f;
+		grabBuffer = 0f;
 		punchBuffer = 0f;
 		Velocity = Vector3.Zero;
 
@@ -115,10 +123,14 @@ public partial class Player : Actor
 		jumpBuffer = Mathf.Max(0f, jumpBuffer - (float)delta);
 		punchBuffer = Mathf.Max(0f, punchBuffer - (float)delta);
 		punchTimer = Mathf.Max(0f, punchTimer - (float)delta);
+		grabBuffer = Mathf.Max(0f, grabBuffer - (float)delta);
+		grabTimer = Mathf.Max(0f, grabTimer - (float)delta);
 
 		if (Input.IsActionJustPressed("Jump")) jumpBuffer = maximumJumpBuffer;
 
 		if (Input.IsActionJustPressed("Attack")) punchBuffer = maxPunchBuffer;
+
+		if (Input.IsActionJustPressed("Grab")) grabBuffer = maxGrabBuffer;
 
 		switch(vmState) {
 
@@ -148,6 +160,17 @@ public partial class Player : Actor
 						}
 
 					}
+					break;
+
+				}
+
+				if (grabBuffer > 0) { 
+
+					grabBuffer = 0;
+					vmState = VMState.Grabbing;
+					vmAnimator.Play("Grab");
+					vmAnimator.Seek(0);
+					grabTimer = grabTimeMaximum;
 					break;
 
 				}
@@ -220,6 +243,16 @@ public partial class Player : Actor
 					vmState = VMState.Idle;
 					
 					
+				}
+
+			break;
+
+			case VMState.Grabbing:	
+
+				if (grabTimer <= 0) {
+					
+					vmState = VMState.Idle;
+
 				}
 
 			break;
