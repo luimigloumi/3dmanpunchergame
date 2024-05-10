@@ -1,8 +1,11 @@
-[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://d1w0egyllxjm4"]
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://cul7xil4ss5vy"]
 
 [ext_resource type="Texture2D" uid="uid://bldlj8dj1h62k" path="res://textures/dev_glass_64.png" id="1_vc4av"]
 
 [resource]
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
 albedo_texture = ExtResource("1_vc4av")
 metallic_specular = 0.0
 texture_filter = 2

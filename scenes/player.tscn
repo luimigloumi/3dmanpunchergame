@@ -23,11 +23,13 @@ collision_mask = 7
 floor_snap_length = 0.3
 script = ExtResource("1_xuh7l")
 vmAnimatorPath = NodePath("../Camera3D/Arms/astronaut1p/AnimationPlayer")
+punchCastPath = NodePath("CameraHolder/ShapeCast3D")
 movementSpeed = 10.0
 airTraction = 0.8
 maxJumps = 1
 jumpHeight = 8.0
 maximumCoyoteTime = 0.1
+prioritizedVMAnimations = ["Grab", "Punch"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Player"]
 shape = SubResource("CapsuleShape3D_p3us1")
