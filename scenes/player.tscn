@@ -22,7 +22,9 @@ collision_layer = 2
 collision_mask = 7
 floor_snap_length = 0.3
 script = ExtResource("1_xuh7l")
+cameraPath = NodePath("../Camera3D")
 vmAnimatorPath = NodePath("../Camera3D/Arms/astronaut1p/AnimationPlayer")
+grabPointPath = NodePath("GrabPosition")
 punchCastPath = NodePath("CameraHolder/ShapeCast3D")
 movementSpeed = 10.0
 airTraction = 0.8
@@ -78,11 +80,15 @@ shape = SubResource("SeparationRayShape3D_kr75r")
 transform = Transform3D(-0.707107, 0.707107, -3.09086e-08, 0, -4.37114e-08, -1, -0.707107, -0.707107, 3.09086e-08, -0.408096, -0.589873, 0.408096)
 shape = SubResource("SeparationRayShape3D_kr75r")
 
+[node name="GrabPosition" type="Node3D" parent="Player"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000196159, -0.280161, -0.333636)
+
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.62893, 0)
 fov = 75.4
 script = ExtResource("3_pesm3")
 targetPath = NodePath("../Player/CameraHolder")
+lerpValue = 0.7
 
 [node name="Arms" type="Node3D" parent="Camera3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.320688)
