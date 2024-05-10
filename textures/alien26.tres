@@ -1,0 +1,11 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://36myagtinorn"]
+
+[ext_resource type="Texture2D" uid="uid://dejhipbywv0y0" path="res://textures/alien26.jpg" id="1_ko8i3"]
+
+[resource]
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
+albedo_texture = ExtResource("1_ko8i3")
+metallic_specular = 0.0
+texture_filter = 2

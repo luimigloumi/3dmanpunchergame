@@ -2,21 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://kfi4xcgjpy36"
-path.s3tc="res://.godot/imported/pat.jpg-e222b1f26eaa4866ba3f2bf9e034dc93.s3tc.ctex"
+uid="uid://cmxbhuqisbiri"
+path="res://.godot/imported/spacesky_right.png-b03244280b617b2dbfa05d64a27568a3.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
-source_file="res://textures/pat.jpg"
-dest_files=["res://.godot/imported/pat.jpg-e222b1f26eaa4866ba3f2bf9e034dc93.s3tc.ctex"]
+source_file="res://textures/spacesky_right.png"
+dest_files=["res://.godot/imported/spacesky_right.png-b03244280b617b2dbfa05d64a27568a3.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

@@ -1,0 +1,11 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://ch6e1vij1xhtu"]
+
+[ext_resource type="Texture2D" uid="uid://bbmo28orjrcoj" path="res://textures/dirt3.jpg" id="1_hdfj7"]
+
+[resource]
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
+albedo_texture = ExtResource("1_hdfj7")
+metallic_specular = 0.0
+texture_filter = 2
