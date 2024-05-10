@@ -31,9 +31,15 @@ public partial class Player : Actor
 
 	[ExportCategory("References")]
 
+	[Export] public NodePath cameraPath;
+	public Camera3D camera;
+
 	[Export]
 	public NodePath vmAnimatorPath;
 	public AnimationPlayer vmAnimator;
+
+	[Export] public NodePath grabPointPath;
+	public Node3D grabPoint;
 
 	[Export]
 	public NodePath punchCastPath;
@@ -98,6 +104,8 @@ public partial class Player : Actor
 	[Export]
 	public float punchDamage = 1f;
 
+	public Enemy heldEnemy;
+
 	#endregion
 
 	public override void _Ready()
@@ -107,6 +115,9 @@ public partial class Player : Actor
 
 		vmAnimator = GetNode<AnimationPlayer>(vmAnimatorPath);
 		punchCast = GetNode<ShapeCast3D>(punchCastPath);
+		grabPoint = GetNode<Node3D>(grabPointPath);
+		camera = GetNode<Camera3D>(cameraPath);
+
 
 		coyoteTime = 0f;
 		jumpBuffer = 0f;
@@ -144,23 +155,7 @@ public partial class Player : Actor
 
 				if (punchBuffer > 0) {
 
-					punchBuffer = 0;
-					vmState = VMState.Punching;
-					vmAnimator.Play("Punch");
-					vmAnimator.Seek(0);
-					punchTimer = punchTimeMaximum;
-					if (punchCast.IsColliding()) {
-
-						for (int i = 0; i < punchCast.GetCollisionCount(); i++) {
-
-							Actor en = punchCast.GetCollider(i) as Actor;
-							en.OnHit(punchDamage, punchCast.GetCollisionPoint(0), punchCast.GetCollisionNormal(0), this);
-
-
-						}
-
-					}
-					break;
+					Punch(0);
 
 				}
 
@@ -183,23 +178,8 @@ public partial class Player : Actor
 					
 					vmState = VMState.Idle;
 					if (punchBuffer > 0) {
-						vmState = VMState.PunchingSecond;
-						punchBuffer = 0;
-						vmAnimator.Play("Punch");
-						vmAnimator.Seek(0);
-						punchTimer = punchTimeMaximum;
-						if (punchCast.IsColliding()) {
 
-							for (int i = 0; i < punchCast.GetCollisionCount(); i++) {
-
-								Actor en = punchCast.GetCollider(i) as Actor;
-								en.OnHit(punchDamage, punchCast.GetCollisionPoint(0), punchCast.GetCollisionNormal(0), this);
-
-
-							}
-
-						}
-						break;
+						Punch(1);
 
 					}
 					
@@ -212,23 +192,8 @@ public partial class Player : Actor
 					
 					vmState = VMState.Idle;
 					if (punchBuffer > 0) {
-						vmState = VMState.PunchingFinish;
-						punchBuffer = 0;
-						vmAnimator.Play("Punch");
-						vmAnimator.Seek(0);
-						punchTimer = punchTimeMaximum * 3;
-						if (punchCast.IsColliding()) {
 
-							for (int i = 0; i < punchCast.GetCollisionCount(); i++) {
-
-								Actor en = punchCast.GetCollider(i) as Actor;
-								en.OnHit(punchDamage, punchCast.GetCollisionPoint(0), punchCast.GetCollisionNormal(0), this);
-
-
-							}
-
-						}
-						break;
+						Punch(2);
 
 					}
 					
@@ -242,7 +207,6 @@ public partial class Player : Actor
 					
 					vmState = VMState.Idle;
 					
-					
 				}
 
 			break;
@@ -251,6 +215,44 @@ public partial class Player : Actor
 
 				if (grabTimer <= 0) {
 					
+					vmState = VMState.Idle;
+
+				}
+
+				if (punchCast.IsColliding()) {
+
+					Enemy en = punchCast.GetCollider(0) as Enemy;
+
+					en.currentState = EnemyState.Grabbed;
+
+					vmState = VMState.Holding;
+
+					heldEnemy = en;
+
+				}
+
+			break;
+
+			case VMState.Holding:
+
+				if (!vmAnimator.IsPlaying() || !prioritizedVMAnimations.Contains(vmAnimator.CurrentAnimation)) {
+
+					vmAnimator.Play("Idle");
+
+				}
+
+				if (punchBuffer > 0 || grabBuffer > 0) {
+
+					punchBuffer = 0;
+					grabBuffer = 0;	
+					
+					heldEnemy.Velocity = -camera.GlobalTransform.Basis.Z * 20f + Velocity;
+					heldEnemy.GlobalPosition = grabPoint.GlobalPosition - Vector3.Up * 0.5f;
+					heldEnemy.currentState = EnemyState.Thrown;
+					heldEnemy.projectileCast.Enabled = false;
+
+					heldEnemy = null;
+
 					vmState = VMState.Idle;
 
 				}
@@ -428,6 +430,47 @@ public partial class Player : Actor
 		Velocity = velocity;
 
 		MoveAndSlide();
+
+	}
+
+	void Punch(int number) {
+
+		punchBuffer = 0;
+		switch (number) {
+			
+			case 0:
+			
+				vmState = VMState.Punching;
+				vmAnimator.Play("Punch");
+
+			break;
+			case 1:
+			
+				vmState = VMState.PunchingSecond;
+				vmAnimator.Play("Punch");
+				
+			break;
+
+			case 2:
+			
+				vmState = VMState.PunchingFinish;
+				vmAnimator.Play("Punch");
+			
+			break;
+
+		}
+		vmAnimator.Seek(0);
+		punchTimer = number == 2 ? punchTimeMaximum * 3f : punchTimeMaximum;
+		if (punchCast.IsColliding()) {
+
+			for (int i = 0; i < punchCast.GetCollisionCount(); i++) {
+
+				Actor en = punchCast.GetCollider(i) as Actor;
+				en.OnHit(punchDamage, punchCast.GetCollisionPoint(0), punchCast.GetCollisionNormal(0), this);
+
+			}
+
+		}
 
 	}
 
