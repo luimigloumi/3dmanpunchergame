@@ -41,9 +41,9 @@ public partial class Assistant : Enemy
 
 			case AssistantState.Pursuing:
 
-				if (!(Velocity.IsEqualApprox(Vector3.Zero))) 
+				if (!(new Vector3(velocity.X, 0, velocity.Z).IsEqualApprox(Vector3.Zero))) 
 				{
-					LookAt(GlobalPosition + new Vector3(Velocity.X, 0, Velocity.Z), Vector3.Up);
+					LookAt(GlobalPosition + new Vector3(velocity.X, 0, velocity.Z), Vector3.Up);
 				}
 
 				Vector3 direction = (navAgent.GetNextPathPosition() - GlobalPosition).Normalized();
