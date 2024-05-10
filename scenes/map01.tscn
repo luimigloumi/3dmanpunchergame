@@ -2,9 +2,9 @@
 
 [ext_resource type="Script" path="res://addons/func_godot/src/map/func_godot_map.gd" id="1_keyuq"]
 [ext_resource type="Resource" uid="uid://bkhxcqsquw1yg" path="res://addons/func_godot/func_godot_default_map_settings.tres" id="2_w7xri"]
-[ext_resource type="Material" uid="uid://dfrh88hlittw0" path="res://textures/dev_grey_64.tres" id="3_vkgse"]
-[ext_resource type="Material" uid="uid://x36pft7gkv4m" path="res://textures/dev_orange_64.tres" id="4_unjgt"]
-[ext_resource type="Material" uid="uid://cul7xil4ss5vy" path="res://textures/dev_glass_64.tres" id="5_l6oow"]
+[ext_resource type="Material" path="res://textures/dev_grey_64.tres" id="3_vkgse"]
+[ext_resource type="Material" path="res://textures/dev_orange_64.tres" id="4_unjgt"]
+[ext_resource type="Material" path="res://textures/dev_glass_64.tres" id="5_l6oow"]
 [ext_resource type="Material" uid="uid://bpfmqnscd8ki1" path="res://textures/panel01.tres" id="6_qqcau"]
 [ext_resource type="Texture2D" uid="uid://dshsxigsnhff0" path="res://textures/alien_1.jpg" id="7_8uiow"]
 

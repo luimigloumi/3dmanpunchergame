@@ -141,12 +141,8 @@ public partial class Enemy : Actor
 		if (projectileCast.IsColliding()) 
 		{
 
-			GD.Print("gloobus");
-
 			if (projectileCast.GetCollider(0) is Enemy) {
 
-				GD.Print("guaahg");
-				
 				Enemy en = projectileCast.GetCollider(0) as Enemy;
 				en.OnHit(throwDamage, projectileCast.GetCollisionPoint(0), projectileCast.GetCollisionNormal(0), this);
 
