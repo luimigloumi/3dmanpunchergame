@@ -88,7 +88,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.62893, 0)
 fov = 75.4
 script = ExtResource("3_pesm3")
 targetPath = NodePath("../Player/CameraHolder")
-lerpValue = 0.7
+lerpValue = 0.5
 
 [node name="Arms" type="Node3D" parent="Camera3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.320688)
