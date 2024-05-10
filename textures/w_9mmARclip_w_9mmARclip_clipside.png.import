@@ -3,20 +3,19 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://d1lg1mwbln141"
-path.s3tc="res://.godot/imported/w_9mmARclip_w_9mmARclip_clipside.png-ec3516450d457ae69047e3bd99359138.s3tc.ctex"
+path="res://.godot/imported/w_9mmARclip_w_9mmARclip_clipside.png-ec3516450d457ae69047e3bd99359138.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
 source_file="res://textures/w_9mmARclip_w_9mmARclip_clipside.png"
-dest_files=["res://.godot/imported/w_9mmARclip_w_9mmARclip_clipside.png-ec3516450d457ae69047e3bd99359138.s3tc.ctex"]
+dest_files=["res://.godot/imported/w_9mmARclip_w_9mmARclip_clipside.png-ec3516450d457ae69047e3bd99359138.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

@@ -3,20 +3,19 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cbayudkpwj4ec"
-path.s3tc="res://.godot/imported/w_longjump_w_longjump_filler.png-2c0d01890f1f0a3ec63d71122d110063.s3tc.ctex"
+path="res://.godot/imported/w_longjump_w_longjump_filler.png-2c0d01890f1f0a3ec63d71122d110063.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
 source_file="res://textures/w_longjump_w_longjump_filler.png"
-dest_files=["res://.godot/imported/w_longjump_w_longjump_filler.png-2c0d01890f1f0a3ec63d71122d110063.s3tc.ctex"]
+dest_files=["res://.godot/imported/w_longjump_w_longjump_filler.png-2c0d01890f1f0a3ec63d71122d110063.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

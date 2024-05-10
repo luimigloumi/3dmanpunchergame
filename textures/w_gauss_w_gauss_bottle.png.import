@@ -3,20 +3,19 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cdmwf46rf14xb"
-path.s3tc="res://.godot/imported/w_gauss_w_gauss_bottle.png-9efc0df36212034b6e2bf77062644a67.s3tc.ctex"
+path="res://.godot/imported/w_gauss_w_gauss_bottle.png-9efc0df36212034b6e2bf77062644a67.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
 source_file="res://textures/w_gauss_w_gauss_bottle.png"
-dest_files=["res://.godot/imported/w_gauss_w_gauss_bottle.png-9efc0df36212034b6e2bf77062644a67.s3tc.ctex"]
+dest_files=["res://.godot/imported/w_gauss_w_gauss_bottle.png-9efc0df36212034b6e2bf77062644a67.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

@@ -3,20 +3,19 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dmklwnbcggihp"
-path.s3tc="res://.godot/imported/{FENCE2_RM4.png-61906545c25d41d51f1800c5dd6b4333.s3tc.ctex"
+path="res://.godot/imported/{FENCE2_RM4.png-61906545c25d41d51f1800c5dd6b4333.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
 source_file="res://textures/{FENCE2_RM4.png"
-dest_files=["res://.godot/imported/{FENCE2_RM4.png-61906545c25d41d51f1800c5dd6b4333.s3tc.ctex"]
+dest_files=["res://.godot/imported/{FENCE2_RM4.png-61906545c25d41d51f1800c5dd6b4333.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

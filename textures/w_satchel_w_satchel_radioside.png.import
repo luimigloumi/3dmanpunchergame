@@ -3,20 +3,19 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://b5kw4hums1gj8"
-path.s3tc="res://.godot/imported/w_satchel_w_satchel_radioside.png-5d227316ff53d3b2e659752deffc62bd.s3tc.ctex"
+path="res://.godot/imported/w_satchel_w_satchel_radioside.png-5d227316ff53d3b2e659752deffc62bd.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
 source_file="res://textures/w_satchel_w_satchel_radioside.png"
-dest_files=["res://.godot/imported/w_satchel_w_satchel_radioside.png-5d227316ff53d3b2e659752deffc62bd.s3tc.ctex"]
+dest_files=["res://.godot/imported/w_satchel_w_satchel_radioside.png-5d227316ff53d3b2e659752deffc62bd.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

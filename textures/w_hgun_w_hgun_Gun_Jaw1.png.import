@@ -3,20 +3,19 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bmcox0kfgu0r8"
-path.s3tc="res://.godot/imported/w_hgun_w_hgun_Gun_Jaw1.png-d096ccfb59aadf6db88f60a7c24b8c77.s3tc.ctex"
+path="res://.godot/imported/w_hgun_w_hgun_Gun_Jaw1.png-d096ccfb59aadf6db88f60a7c24b8c77.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
 source_file="res://textures/w_hgun_w_hgun_Gun_Jaw1.png"
-dest_files=["res://.godot/imported/w_hgun_w_hgun_Gun_Jaw1.png-d096ccfb59aadf6db88f60a7c24b8c77.s3tc.ctex"]
+dest_files=["res://.godot/imported/w_hgun_w_hgun_Gun_Jaw1.png-d096ccfb59aadf6db88f60a7c24b8c77.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

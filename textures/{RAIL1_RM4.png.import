@@ -3,20 +3,19 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cjtt77gayrd7j"
-path.s3tc="res://.godot/imported/{RAIL1_RM4.png-920bf6c6fd3ec792940dab6d98f66c9f.s3tc.ctex"
+path="res://.godot/imported/{RAIL1_RM4.png-920bf6c6fd3ec792940dab6d98f66c9f.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
 source_file="res://textures/{RAIL1_RM4.png"
-dest_files=["res://.godot/imported/{RAIL1_RM4.png-920bf6c6fd3ec792940dab6d98f66c9f.s3tc.ctex"]
+dest_files=["res://.godot/imported/{RAIL1_RM4.png-920bf6c6fd3ec792940dab6d98f66c9f.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

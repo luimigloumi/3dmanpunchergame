@@ -3,20 +3,19 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://ckelubi21rj5d"
-path.s3tc="res://.godot/imported/w_grenade_w_grenade_grenade_side.png-b05a9e1b024898c9f4536f984645494f.s3tc.ctex"
+path="res://.godot/imported/w_grenade_w_grenade_grenade_side.png-b05a9e1b024898c9f4536f984645494f.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
 source_file="res://textures/w_grenade_w_grenade_grenade_side.png"
-dest_files=["res://.godot/imported/w_grenade_w_grenade_grenade_side.png-b05a9e1b024898c9f4536f984645494f.s3tc.ctex"]
+dest_files=["res://.godot/imported/w_grenade_w_grenade_grenade_side.png-b05a9e1b024898c9f4536f984645494f.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

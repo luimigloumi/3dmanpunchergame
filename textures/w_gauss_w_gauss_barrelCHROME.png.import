@@ -3,20 +3,19 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bjjst4e04se2y"
-path.s3tc="res://.godot/imported/w_gauss_w_gauss_barrelCHROME.png-62e627148195cd718aa8506bbbf1fdfe.s3tc.ctex"
+path="res://.godot/imported/w_gauss_w_gauss_barrelCHROME.png-62e627148195cd718aa8506bbbf1fdfe.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
 source_file="res://textures/w_gauss_w_gauss_barrelCHROME.png"
-dest_files=["res://.godot/imported/w_gauss_w_gauss_barrelCHROME.png-62e627148195cd718aa8506bbbf1fdfe.s3tc.ctex"]
+dest_files=["res://.godot/imported/w_gauss_w_gauss_barrelCHROME.png-62e627148195cd718aa8506bbbf1fdfe.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

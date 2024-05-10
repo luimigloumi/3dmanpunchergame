@@ -3,20 +3,19 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bpsmvxv1kgu3j"
-path.s3tc="res://.godot/imported/w_crossbow_clip_w_crossbow_clip_cliprear.png-3f31a78b11b9edb3ef5fdb422812be8b.s3tc.ctex"
+path="res://.godot/imported/w_crossbow_clip_w_crossbow_clip_cliprear.png-3f31a78b11b9edb3ef5fdb422812be8b.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
 source_file="res://textures/w_crossbow_clip_w_crossbow_clip_cliprear.png"
-dest_files=["res://.godot/imported/w_crossbow_clip_w_crossbow_clip_cliprear.png-3f31a78b11b9edb3ef5fdb422812be8b.s3tc.ctex"]
+dest_files=["res://.godot/imported/w_crossbow_clip_w_crossbow_clip_cliprear.png-3f31a78b11b9edb3ef5fdb422812be8b.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

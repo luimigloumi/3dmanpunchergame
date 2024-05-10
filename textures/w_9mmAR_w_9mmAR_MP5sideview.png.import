@@ -3,20 +3,19 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://chfaw2iot4b8e"
-path.s3tc="res://.godot/imported/w_9mmAR_w_9mmAR_MP5sideview.png-73b3626da3e5a6ff5df14867283908e4.s3tc.ctex"
+path="res://.godot/imported/w_9mmAR_w_9mmAR_MP5sideview.png-73b3626da3e5a6ff5df14867283908e4.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
 source_file="res://textures/w_9mmAR_w_9mmAR_MP5sideview.png"
-dest_files=["res://.godot/imported/w_9mmAR_w_9mmAR_MP5sideview.png-73b3626da3e5a6ff5df14867283908e4.s3tc.ctex"]
+dest_files=["res://.godot/imported/w_9mmAR_w_9mmAR_MP5sideview.png-73b3626da3e5a6ff5df14867283908e4.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

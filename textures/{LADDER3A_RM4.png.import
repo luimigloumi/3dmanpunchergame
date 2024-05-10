@@ -3,20 +3,19 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dic1w3dbsy5eh"
-path.s3tc="res://.godot/imported/{LADDER3A_RM4.png-0e57d0d36eb7e25811439795725f066b.s3tc.ctex"
+path="res://.godot/imported/{LADDER3A_RM4.png-0e57d0d36eb7e25811439795725f066b.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
 source_file="res://textures/{LADDER3A_RM4.png"
-dest_files=["res://.godot/imported/{LADDER3A_RM4.png-0e57d0d36eb7e25811439795725f066b.s3tc.ctex"]
+dest_files=["res://.godot/imported/{LADDER3A_RM4.png-0e57d0d36eb7e25811439795725f066b.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

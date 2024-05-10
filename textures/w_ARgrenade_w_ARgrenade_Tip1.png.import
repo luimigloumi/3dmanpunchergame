@@ -3,20 +3,19 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://o5xtylnwcd4g"
-path.s3tc="res://.godot/imported/w_ARgrenade_w_ARgrenade_Tip1.png-55c7a2e1101a64b4aabb7302b9b612d7.s3tc.ctex"
+path="res://.godot/imported/w_ARgrenade_w_ARgrenade_Tip1.png-55c7a2e1101a64b4aabb7302b9b612d7.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
 source_file="res://textures/w_ARgrenade_w_ARgrenade_Tip1.png"
-dest_files=["res://.godot/imported/w_ARgrenade_w_ARgrenade_Tip1.png-55c7a2e1101a64b4aabb7302b9b612d7.s3tc.ctex"]
+dest_files=["res://.godot/imported/w_ARgrenade_w_ARgrenade_Tip1.png-55c7a2e1101a64b4aabb7302b9b612d7.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

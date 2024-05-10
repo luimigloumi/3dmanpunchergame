@@ -3,20 +3,19 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://xmq41p8lm0bm"
-path.s3tc="res://.godot/imported/w_shotbox_w_shotbox_shell.png-3cd819b51a5917b70e6950c9ab4b29ff.s3tc.ctex"
+path="res://.godot/imported/w_shotbox_w_shotbox_shell.png-3cd819b51a5917b70e6950c9ab4b29ff.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
 source_file="res://textures/w_shotbox_w_shotbox_shell.png"
-dest_files=["res://.godot/imported/w_shotbox_w_shotbox_shell.png-3cd819b51a5917b70e6950c9ab4b29ff.s3tc.ctex"]
+dest_files=["res://.godot/imported/w_shotbox_w_shotbox_shell.png-3cd819b51a5917b70e6950c9ab4b29ff.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

@@ -3,20 +3,19 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://0bo1gxkqisx0"
-path.s3tc="res://.godot/imported/w_battery_w_battery_grey.png-20e2595a459cea6ddb13ff02cea0d523.s3tc.ctex"
+path="res://.godot/imported/w_battery_w_battery_grey.png-20e2595a459cea6ddb13ff02cea0d523.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
 source_file="res://textures/w_battery_w_battery_grey.png"
-dest_files=["res://.godot/imported/w_battery_w_battery_grey.png-20e2595a459cea6ddb13ff02cea0d523.s3tc.ctex"]
+dest_files=["res://.godot/imported/w_battery_w_battery_grey.png-20e2595a459cea6ddb13ff02cea0d523.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

@@ -3,20 +3,19 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dne7min4ek2p1"
-path.s3tc="res://.godot/imported/w_357ammobox_w_357ammobox_bulletCHROME.png-8437ebb885d42f4948a3cb1e671feefa.s3tc.ctex"
+path="res://.godot/imported/w_357ammobox_w_357ammobox_bulletCHROME.png-8437ebb885d42f4948a3cb1e671feefa.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
 source_file="res://textures/w_357ammobox_w_357ammobox_bulletCHROME.png"
-dest_files=["res://.godot/imported/w_357ammobox_w_357ammobox_bulletCHROME.png-8437ebb885d42f4948a3cb1e671feefa.s3tc.ctex"]
+dest_files=["res://.godot/imported/w_357ammobox_w_357ammobox_bulletCHROME.png-8437ebb885d42f4948a3cb1e671feefa.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

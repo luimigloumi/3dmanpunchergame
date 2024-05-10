@@ -3,20 +3,19 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://rgvbqp5vyysr"
-path.s3tc="res://.godot/imported/w_medkit_w_medkit_medkit_top.png-216ab0db9164989736a0231d39ab850a.s3tc.ctex"
+path="res://.godot/imported/w_medkit_w_medkit_medkit_top.png-216ab0db9164989736a0231d39ab850a.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
 source_file="res://textures/w_medkit_w_medkit_medkit_top.png"
-dest_files=["res://.godot/imported/w_medkit_w_medkit_medkit_top.png-216ab0db9164989736a0231d39ab850a.s3tc.ctex"]
+dest_files=["res://.godot/imported/w_medkit_w_medkit_medkit_top.png-216ab0db9164989736a0231d39ab850a.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
