@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://cgqiols21e00m"]
+[gd_scene load_steps=10 format=3 uid="uid://cgqiols21e00m"]
 
 [ext_resource type="Script" path="res://scripts/actors/Player.cs" id="1_xuh7l"]
 [ext_resource type="Script" path="res://scripts/actors/PlayerCamera.cs" id="2_k4j2s"]
 [ext_resource type="Script" path="res://scripts/CameraFollow.cs" id="3_pesm3"]
 [ext_resource type="PackedScene" uid="uid://itmeo0lyf24v" path="res://resources/models/astronaut1p.blend" id="4_p2hoh"]
+[ext_resource type="Script" path="res://addons/jigglebones/jigglebone.gd" id="5_dswpv"]
 [ext_resource type="Texture2D" uid="uid://df8gcmpayk3qw" path="res://resources/textures/ui/reticle.png" id="5_pdm2i"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_p3us1"]
@@ -168,6 +169,14 @@ bones/43/rotation = Quaternion(0.683886, -0.161489, -0.228918, 0.67366)
 bones/43/scale = Vector3(1, 1, 1)
 bones/44/rotation = Quaternion(0.642646, -0.0075879, -0.197093, 0.74034)
 bones/44/scale = Vector3(1, 1, 1)
+
+[node name="Jigglebone" type="Node3D" parent="Camera3D/Arms/astronaut1p/metarig/Skeleton3D" index="1"]
+transform = Transform3D(-1, -4.99147e-09, 8.72802e-08, -3.04366e-16, 0.998369, 0.0570957, -8.74228e-08, 0.0570957, -0.998369, -8.76178e-08, 1.42623, 1.32292)
+top_level = true
+script = ExtResource("5_dswpv")
+bone_name = "spine.003"
+damping = 20.5
+gravity = Vector3(0, 0, 0)
 
 [node name="UI" type="Control" parent="."]
 layout_mode = 3

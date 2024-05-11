@@ -21,7 +21,7 @@ project/assembly_name="3cmanpunchergame"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/func_godot/plugin.cfg")
+enabled=PackedStringArray("res://addons/func_godot/plugin.cfg", "res://addons/jigglebones/plugin.cfg")
 
 [importer_defaults]
 
