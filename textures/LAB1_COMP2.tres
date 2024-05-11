@@ -1,0 +1,11 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://dn32d3xu8lbx7"]
+
+[ext_resource type="Texture2D" uid="uid://bds78hngxvxw7" path="res://textures/LAB1_COMP2.png" id="1_4ckxa"]
+
+[resource]
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
+albedo_texture = ExtResource("1_4ckxa")
+metallic_specular = 0.0
+texture_filter = 2
