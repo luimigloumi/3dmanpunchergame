@@ -171,12 +171,15 @@ bones/44/rotation = Quaternion(0.642646, -0.0075879, -0.197093, 0.74034)
 bones/44/scale = Vector3(1, 1, 1)
 
 [node name="Jigglebone" type="Node3D" parent="Camera3D/Arms/astronaut1p/metarig/Skeleton3D" index="1"]
-transform = Transform3D(-1, -4.99147e-09, 8.72802e-08, -3.04366e-16, 0.998369, 0.0570957, -8.74228e-08, 0.0570957, -0.998369, -8.76178e-08, 1.42623, 1.32292)
+transform = Transform3D(-1, -2.49713e-09, 8.73871e-08, 7.10281e-16, 0.999592, 0.0285638, -8.74228e-08, 0.0285638, -0.999592, -8.7903e-08, 1.48326, 1.32618)
 top_level = true
 script = ExtResource("5_dswpv")
 bone_name = "spine.003"
 damping = 20.5
 gravity = Vector3(0, 0, 0)
+
+[node name="AudioListener3D" type="AudioListener3D" parent="Camera3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0199909, 0)
 
 [node name="UI" type="Control" parent="."]
 layout_mode = 3
