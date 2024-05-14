@@ -56,33 +56,31 @@ public partial class Enemy : Actor
 
 	}	
 
-	public override void _PhysicsProcess(double delta) {
+	public override void _IntegrateForces(PhysicsDirectBodyState3D state) {
 
 		if (ready) {
 
-			Vector3 velocity = Velocity;
+			Vector3 velocity = LinearVelocity;
 
 			switch(currentState) {
 
 				case EnemyState.Normal:
-					velocity = NormalPhysicsProcess(delta, velocity);
+					velocity = NormalPhysicsProcess(state.Step, velocity);
 				break;
 
 				case EnemyState.Grabbed:
-					velocity = GrabbedPhysicsProcess(delta, velocity);
+					velocity = GrabbedPhysicsProcess(state.Step, velocity);
 				break;
 
 				case EnemyState.Thrown:
-					velocity = ThrownPhysicsProcess(delta, velocity);
+					velocity = ThrownPhysicsProcess(state.Step, velocity);
 				break;
 
 			}
 
-			Velocity = velocity;
+			LinearVelocity = velocity;
 
-			MoveAndSlide();
-
-			base._PhysicsProcess(delta);
+			base._PhysicsProcess(state.Step);
 
 		}
 
@@ -136,7 +134,7 @@ public partial class Enemy : Actor
 		CollisionLayer = 0;
 
 		velocity = velocity.Lerp(new(0, velocity.Y, 0), 0.005f);
-		velocity.Y += gravity * (float)delta;
+		velocity += gravity * (float)delta;
 
 		if (projectileCast.IsColliding()) 
 		{

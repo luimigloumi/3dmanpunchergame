@@ -1,19 +1,19 @@
-[gd_scene load_steps=361 format=3 uid="uid://btsthklb5c1ds"]
+[gd_scene load_steps=364 format=3 uid="uid://btsthklb5c1ds"]
 
 [ext_resource type="Script" path="res://addons/func_godot/src/map/func_godot_map.gd" id="1_keyuq"]
 [ext_resource type="Resource" uid="uid://bkhxcqsquw1yg" path="res://addons/func_godot/func_godot_default_map_settings.tres" id="2_w7xri"]
 [ext_resource type="Texture2D" uid="uid://dqyq1l4unvd0g" path="res://textures/panel_generic_white_32.png" id="3_8km58"]
-[ext_resource type="Material" uid="uid://dfrh88hlittw0" path="res://textures/dev_grey_64.tres" id="3_vkgse"]
-[ext_resource type="Material" uid="uid://x36pft7gkv4m" path="res://textures/dev_orange_64.tres" id="4_unjgt"]
-[ext_resource type="Material" uid="uid://cul7xil4ss5vy" path="res://textures/dev_glass_64.tres" id="5_l6oow"]
+[ext_resource type="Material" path="res://textures/dev_grey_64.tres" id="3_vkgse"]
+[ext_resource type="Material" path="res://textures/dev_orange_64.tres" id="4_unjgt"]
+[ext_resource type="Material" path="res://textures/dev_glass_64.tres" id="5_l6oow"]
 [ext_resource type="Texture2D" uid="uid://gguklobpgodq" path="res://textures/panel_generic_white_64.png" id="5_vum17"]
 [ext_resource type="Texture2D" uid="uid://cyg2snr1w5xw5" path="res://addons/func_godot/textures/default_texture.png" id="6_xcb88"]
 [ext_resource type="Texture2D" uid="uid://bsulxrjk3xavv" path="res://textures/spacesky_panorama.png" id="7_05c0b"]
-[ext_resource type="Material" uid="uid://ch6e1vij1xhtu" path="res://textures/dirt3.tres" id="7_gcg24"]
-[ext_resource type="Material" uid="uid://btixxxmmnpuhm" path="res://textures/iron.tres" id="8_i8wsh"]
+[ext_resource type="Material" path="res://textures/dirt3.tres" id="7_gcg24"]
+[ext_resource type="Material" path="res://textures/iron.tres" id="8_i8wsh"]
 [ext_resource type="Texture2D" uid="uid://dt8u6wiqqwpuc" path="res://textures/panel01.png" id="9_mab1x"]
 [ext_resource type="Material" uid="uid://f0ifcffpvpxm" path="res://textures/LAB1_COMP3B.tres" id="10_m6l1r"]
-[ext_resource type="Material" uid="uid://36myagtinorn" path="res://textures/alien26.tres" id="11_qvnhc"]
+[ext_resource type="Material" path="res://textures/alien26.tres" id="11_qvnhc"]
 [ext_resource type="Material" uid="uid://dn32d3xu8lbx7" path="res://textures/LAB1_COMP2.tres" id="11_ubyhs"]
 [ext_resource type="LightmapGIData" uid="uid://g2jafl788oqe" path="res://scenes/map01.lmbake" id="12_1r4bi"]
 [ext_resource type="Material" uid="uid://d2oarsvvw2u6p" path="res://textures/barney_barney_BX_Face1.tres" id="15_27aq6"]
@@ -1201,6 +1201,18 @@ points = PackedVector3Array(41.75, -30, -45, 42.5, -30, -45.75, 42.5, -26.5, -45
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_12xrl"]
 points = PackedVector3Array(46, -29, -48, 46, -29, -48, 46, -29, -48, 46, -29, -48, 42.5, -28.5, -48, 42.5, -28.5, -48, 42.5, -28.5, -48, 42.5, -29, -48, 44, -28, -46, 44, -28, -46, 44, -28, -46, 45, -28, -44, 45, -28, -44, 45, -28, -44, 42.5, -28.5, -43.5, 42.5, -28.5, -43.5, 42.5, -28.5, -43.5, 42.5, -28.5, -43.5, 42.5, -28.5, -43.5, 42.5, -29, -43.5, 46, -29, -43.5, 46, -29, -43.5, 46, -29, -43.5)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_y3wr2"]
+size = Vector3(5, 5, 5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xn5a4"]
+transparency = 1
+shading_mode = 0
+albedo_color = Color(0.576471, 0.482353, 1, 0.52549)
+
+[sub_resource type="BoxMesh" id="BoxMesh_g7rpa"]
+material = SubResource("StandardMaterial3D_xn5a4")
+size = Vector3(5, 5, 5)
+
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_gjvy1"]
 panorama = ExtResource("7_05c0b")
 
@@ -2236,6 +2248,21 @@ shape = SubResource("ConvexPolygonShape3D_en1jr")
 [node name="entity_0_brush_332_collision_shape" type="CollisionShape3D" parent="FuncGodotMap/entity_0_worldspawn"]
 shape = SubResource("ConvexPolygonShape3D_12xrl")
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="FuncGodotMap/entity_0_worldspawn"]
+
+[node name="Area3D" type="Area3D" parent="FuncGodotMap/entity_0_worldspawn"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.6236, 2.2418, -8.54115)
+collision_layer = 0
+collision_mask = 7
+gravity_space_override = 3
+gravity = 0.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="FuncGodotMap/entity_0_worldspawn/Area3D"]
+shape = SubResource("BoxShape3D_y3wr2")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="FuncGodotMap/entity_0_worldspawn/Area3D"]
+mesh = SubResource("BoxMesh_g7rpa")
+
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_h3lag")
 
@@ -2374,12 +2401,6 @@ transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, -4.59379, 12.535, -53.1701)
 light_energy = 16.0
 spot_range = 22.1747
 
-[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.15, 3.3821, -18.2293)
-stream = ExtResource("17_ai73k")
-autoplay = true
-doppler_tracking = 1
-
 [node name="cropsbackroom" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38.2587, 0.585471, -38.8959)
 light_color = Color(0.511313, 0.944296, 0.765599, 1)
@@ -2424,3 +2445,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.58426, -19.8492, -45.1005)
 light_color = Color(0.397355, 0.826387, 1, 1)
 light_energy = 7.343
 omni_range = 13.0484
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("17_ai73k")
+autoplay = true

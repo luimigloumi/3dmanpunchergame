@@ -6,7 +6,10 @@ public partial class PlayerCamera : Node3D
 
 	[Export]
 	public NodePath bodyPath;
-	public Player body;
+	public Node3D body;
+	[Export]
+	public NodePath playerPath;
+	public Player player;
 	[Export]
 	public bool lockInAir = true;
 
@@ -21,7 +24,8 @@ public partial class PlayerCamera : Node3D
 	public override void _Ready()
 	{
 
-		body = GetNode<Player>(bodyPath);
+		body = GetNode<Node3D>(bodyPath);
+		player = GetNode<Player>(playerPath);
 		Input.MouseMode = Input.MouseModeEnum.Captured;
 
 	}
@@ -44,7 +48,7 @@ public partial class PlayerCamera : Node3D
     public override void _Process(double delta)
     {
 
-		if (body.IsOnFloor() || lockInAir) {
+		if (player.IsOnFloor() || lockInAir) {
 
 			RotationDegrees = new(Mathf.Lerp(RotationDegrees.X, Mathf.Clamp(RotationDegrees.X, -angleLimit, 90), 0.5f), RotationDegrees.Y, RotationDegrees.Z);
 

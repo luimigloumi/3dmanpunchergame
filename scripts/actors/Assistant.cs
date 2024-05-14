@@ -17,7 +17,7 @@ public partial class Assistant : Enemy
 
 	public override Vector3 NormalPhysicsProcess(double delta, Vector3 velocity) {
 	
-		velocity.Y += gravity * (float)delta;
+		velocity += gravity * (float)delta;
 
 		CollisionMask = defaultMask;
 		CollisionLayer = defaultLayer;

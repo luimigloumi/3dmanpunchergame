@@ -31,6 +31,9 @@ public partial class Player : Actor
 
 	[ExportCategory("References")]
 
+	[Export] public NodePath headPath;
+	public Node3D head;
+
 	[Export] public NodePath cameraPath;
 	public Camera3D camera;
 
@@ -117,18 +120,20 @@ public partial class Player : Actor
 		punchCast = GetNode<ShapeCast3D>(punchCastPath);
 		grabPoint = GetNode<Node3D>(grabPointPath);
 		camera = GetNode<Camera3D>(cameraPath);
-
+		head = GetNode<Node3D>(headPath);
 
 		coyoteTime = 0f;
 		jumpBuffer = 0f;
 		grabBuffer = 0f;
 		punchBuffer = 0f;
-		Velocity = Vector3.Zero;
+		LinearVelocity = Vector3.Zero;
 
 	}
 
-	public override void _Process(double delta)
+    public override void _Process(double delta)
 	{
+
+		
 
 		coyoteTime = Mathf.Max(0f, coyoteTime - (float)delta);
 		jumpBuffer = Mathf.Max(0f, jumpBuffer - (float)delta);
@@ -246,7 +251,7 @@ public partial class Player : Actor
 					punchBuffer = 0;
 					grabBuffer = 0;	
 					
-					heldEnemy.Velocity = -camera.GlobalTransform.Basis.Z * 20f + Velocity;
+					heldEnemy.LinearVelocity = -camera.GlobalTransform.Basis.Z * 20f + LinearVelocity;
 					heldEnemy.GlobalPosition = grabPoint.GlobalPosition - Vector3.Up * 0.5f;
 					heldEnemy.currentState = EnemyState.Thrown;
 					heldEnemy.projectileCast.Enabled = false;
@@ -263,15 +268,17 @@ public partial class Player : Actor
 
 	}
 
-	public override void _PhysicsProcess(double delta)
+	public override void _IntegrateForces(PhysicsDirectBodyState3D state)
 	{
+
+		base._IntegrateForces(state);
 		
-		Vector3 velocity = Velocity;
+		Vector3 velocity = LinearVelocity;
 		Vector2 inputVector = Input.GetVector("Left", "Right", "Forward", "Back").Normalized();
 
-		Vector3 movementDirection = inputVector.X * Transform.Basis.X + inputVector.Y * Transform.Basis.Z;
+		Vector3 movementDirection = inputVector.X * head.Transform.Basis.X + inputVector.Y * head.Transform.Basis.Z;
 
-		velocity.Y += gravity * (float)delta;
+		velocity += gravity * state.Step;
 
 		switch(currentState) {
 
@@ -427,9 +434,7 @@ public partial class Player : Actor
 
 		}
 
-		Velocity = velocity;
-
-		MoveAndSlide();
+		LinearVelocity = velocity;
 
 	}
 

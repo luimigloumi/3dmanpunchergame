@@ -6,88 +6,67 @@
 [ext_resource type="PackedScene" uid="uid://itmeo0lyf24v" path="res://resources/models/astronaut1p.blend" id="4_p2hoh"]
 [ext_resource type="Texture2D" uid="uid://df8gcmpayk3qw" path="res://resources/textures/ui/reticle.png" id="5_pdm2i"]
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_p3us1"]
-radius = 0.432098
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_s7c7b"]
+friction = 0.0
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_atad1"]
+margin = 0.001
+radius = 0.360839
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_0uo03"]
 
-[sub_resource type="SeparationRayShape3D" id="SeparationRayShape3D_kr75r"]
-length = 0.5
-
 [node name="Player" type="Node3D"]
 
-[node name="Player" type="CharacterBody3D" parent="." groups=["Player"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+[node name="Player" type="RigidBody3D" parent="." groups=["Player"]]
 collision_layer = 2
 collision_mask = 7
-floor_snap_length = 0.3
+physics_material_override = SubResource("PhysicsMaterial_s7c7b")
+custom_integrator = true
 script = ExtResource("1_xuh7l")
+headPath = NodePath("Head")
 cameraPath = NodePath("../Camera3D")
 vmAnimatorPath = NodePath("../Camera3D/Arms/astronaut1p/AnimationPlayer")
-grabPointPath = NodePath("GrabPosition")
-punchCastPath = NodePath("CameraHolder/ShapeCast3D")
+grabPointPath = NodePath("Head/GrabPosition")
+punchCastPath = NodePath("Head/CameraHolder/PunchCast")
 movementSpeed = 10.0
 airTraction = 0.8
 maxJumps = 1
 jumpHeight = 8.0
 maximumCoyoteTime = 0.1
 prioritizedVMAnimations = ["Grab", "Punch"]
+groundedCastPath = NodePath("CollisionShape3D/GroundedCast")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Player"]
-shape = SubResource("CapsuleShape3D_p3us1")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CylinderShape3D_atad1")
 
-[node name="CameraHolder" type="Node3D" parent="Player"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.628926, 0)
+[node name="GroundedCast" type="ShapeCast3D" parent="Player/CollisionShape3D"]
+shape = SubResource("CylinderShape3D_atad1")
+target_position = Vector3(0, -0.025, 0)
+
+[node name="Head" type="Node3D" parent="Player"]
+
+[node name="CameraHolder" type="Node3D" parent="Player/Head"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.62893, 0)
 script = ExtResource("2_k4j2s")
 bodyPath = NodePath("..")
+playerPath = NodePath("../..")
 verticalSensitivity = 0.4
 horizontalSensitivity = 0.5
 
-[node name="ShapeCast3D" type="ShapeCast3D" parent="Player/CameraHolder"]
+[node name="PunchCast" type="ShapeCast3D" parent="Player/Head/CameraHolder"]
 shape = SubResource("SphereShape3D_0uo03")
 target_position = Vector3(0, 0, -1.5)
 collision_mask = 4
 
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="Player"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, -0.589873, -0.577135)
-shape = SubResource("SeparationRayShape3D_kr75r")
-
-[node name="CollisionShape3D3" type="CollisionShape3D" parent="Player"]
-transform = Transform3D(-4.37114e-08, -1, 4.37114e-08, 0, -4.37114e-08, -1, 1, -4.37114e-08, 1.91069e-15, 0.577135, -0.589873, 2.52274e-08)
-shape = SubResource("SeparationRayShape3D_kr75r")
-
-[node name="CollisionShape3D4" type="CollisionShape3D" parent="Player"]
-transform = Transform3D(-1, 8.74228e-08, -3.82137e-15, 0, -4.37114e-08, -1, -8.74228e-08, -1, 4.37114e-08, -5.04548e-08, -0.589873, 0.577135)
-shape = SubResource("SeparationRayShape3D_kr75r")
-
-[node name="CollisionShape3D5" type="CollisionShape3D" parent="Player"]
-transform = Transform3D(1.31134e-07, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, 1.31134e-07, -5.73206e-15, -0.577135, -0.589873, -7.56821e-08)
-shape = SubResource("SeparationRayShape3D_kr75r")
-
-[node name="CollisionShape3D6" type="CollisionShape3D" parent="Player"]
-transform = Transform3D(0.707107, 0.707107, -3.09086e-08, 0, -4.37114e-08, -1, -0.707107, 0.707107, -3.09086e-08, -0.408096, -0.589873, -0.408096)
-shape = SubResource("SeparationRayShape3D_kr75r")
-
-[node name="CollisionShape3D7" type="CollisionShape3D" parent="Player"]
-transform = Transform3D(0.707107, -0.707107, 3.09086e-08, 0, -4.37114e-08, -1, 0.707107, 0.707107, -3.09086e-08, 0.408096, -0.589873, -0.408096)
-shape = SubResource("SeparationRayShape3D_kr75r")
-
-[node name="CollisionShape3D8" type="CollisionShape3D" parent="Player"]
-transform = Transform3D(-0.707107, -0.707107, 3.09086e-08, 0, -4.37114e-08, -1, 0.707107, -0.707107, 3.09086e-08, 0.408096, -0.589873, 0.408096)
-shape = SubResource("SeparationRayShape3D_kr75r")
-
-[node name="CollisionShape3D9" type="CollisionShape3D" parent="Player"]
-transform = Transform3D(-0.707107, 0.707107, -3.09086e-08, 0, -4.37114e-08, -1, -0.707107, -0.707107, 3.09086e-08, -0.408096, -0.589873, 0.408096)
-shape = SubResource("SeparationRayShape3D_kr75r")
-
-[node name="GrabPosition" type="Node3D" parent="Player"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000196159, -0.280161, -0.333636)
+[node name="GrabPosition" type="Node3D" parent="Player/Head"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000196159, 0.719839, -0.333636)
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.62893, 0)
 fov = 75.4
 script = ExtResource("3_pesm3")
-targetPath = NodePath("../Player/CameraHolder")
+targetPath = NodePath("../Player/Head/CameraHolder")
 lerpValue = 0.5
 
 [node name="Arms" type="Node3D" parent="Camera3D"]
