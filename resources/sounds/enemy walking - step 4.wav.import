@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://csfd4j3l0ey3t"
+path="res://.godot/imported/enemy walking - step 4.wav-f313f5d8abf668bdf505c11ce33d6af3.sample"
+
+[deps]
+
+source_file="res://resources/sounds/enemy walking - step 4.wav"
+dest_files=["res://.godot/imported/enemy walking - step 4.wav-f313f5d8abf668bdf505c11ce33d6af3.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0
