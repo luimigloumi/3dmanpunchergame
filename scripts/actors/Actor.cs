@@ -23,13 +23,13 @@ public partial class Actor : CharacterBody3D
 	}
 
 	
-    public override void _PhysicsProcess(double delta)
-    {
+	public override void _PhysicsProcess(double delta)
+	{
 		
 		PhysicsDirectBodyState3D state = PhysicsServer3D.BodyGetDirectState(GetRid());
 		gravity = state.TotalGravity;
 
-    }
+	}
 
 	public virtual void OnHit(float damage, Vector3 hitPoint, Vector3 hitNormal, Node3D source) 
 	{

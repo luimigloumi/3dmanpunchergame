@@ -13,7 +13,6 @@ polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1), PackedInt32Arr
 [node name="Main" type="Node3D"]
 
 [node name="Root" parent="." instance=ExtResource("1_q8ups")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.305906, 0, 0.184018)
 
 [node name="Camera3D" parent="Root" index="1"]
 doppler_tracking = 2
@@ -69,6 +68,7 @@ navigation_mesh = SubResource("NavigationMesh_qd8i4")
 
 [node name="medicalassistant" parent="NavigationRegion3D" instance=ExtResource("3_soj4h")]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 23.4183, -1.24787, -10.5983)
+stepCastPath = null
 
 [node name="Node3D" parent="NavigationRegion3D" instance=ExtResource("3_b8w2l")]
 
