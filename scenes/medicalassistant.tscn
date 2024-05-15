@@ -8,14 +8,15 @@ margin = 0.001
 height = 2.34
 radius = 0.345
 
-[node name="Asssistant" type="RigidBody3D"]
+[node name="Assistant" type="CharacterBody3D" groups=["Enemy"]]
 collision_layer = 4
 collision_mask = 7
+floor_snap_length = 0.3
 script = ExtResource("1_syyi2")
 navAgentPath = NodePath("NavigationAgent3D")
 projectileCastPath = NodePath("ProjectilizedCast")
 grabPointPath = NodePath("GrabPoint")
-groundedCastPath = NodePath("CollisionShape3D/GroundedCast")
+stepCastPath = NodePath("StepCast")
 
 [node name="medicalassistant" parent="." instance=ExtResource("2_go2ad")]
 transform = Transform3D(-0.46, 0, -4.02145e-08, 0, 0.46, 0, 4.02145e-08, 0, -0.46, 0, 0.174976, 0)
@@ -39,3 +40,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.17498, 0)
 shape = SubResource("CylinderShape3D_folxy")
 target_position = Vector3(0, 0, 0)
 collision_mask = 5
+
+[node name="StepCast" type="ShapeCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.17498, 0)
+shape = SubResource("CylinderShape3D_folxy")
+target_position = Vector3(0, 0, 0)

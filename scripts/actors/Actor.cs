@@ -2,11 +2,11 @@ using Godot;
 using System;
 using System.Linq.Expressions;
 
-public partial class Actor : RigidBody3D
+public partial class Actor : CharacterBody3D
 {
-	
-	[Export] public NodePath groundedCastPath;
-	public ShapeCast3D groundedCast;
+
+	[Export] public NodePath stepCastPath;
+	public ShapeCast3D stepCast;
 
 	public float health = 5;
 	[Export]
@@ -17,17 +17,16 @@ public partial class Actor : RigidBody3D
 
 	public override void _Ready() {
 
-		LockRotation = true;
-
 		health = maxHealth;
-		groundedCast = GetNode<ShapeCast3D>(groundedCastPath);
+		stepCast = GetNode<ShapeCast3D>(stepCastPath);
 
 	}
 
 	
-    public override void _IntegrateForces(PhysicsDirectBodyState3D state)
+    public override void _PhysicsProcess(double delta)
     {
 		
+		PhysicsDirectBodyState3D state = PhysicsServer3D.BodyGetDirectState(GetRid());
 		gravity = state.TotalGravity;
 
     }
@@ -54,9 +53,35 @@ public partial class Actor : RigidBody3D
 		//meowmeowmeowmeowmeowmomeowmeowmeowmeowmeowmeo >w<
 	}
 
-	public bool IsOnFloor() {
+	public Vector3 StepStairs(Vector3 velocity, float delta) 
+	{
+		
+		stepCast.Position = new Vector3(velocity.X, 0.5f, velocity.Z);
+		stepCast.TargetPosition = new(0, -0.1f, 0);
+		stepCast.ForceShapecastUpdate();
+		if (!stepCast.IsColliding()) {
+			
+			for (int i = 0; i < 5; i++) {
 
-		return groundedCast.IsColliding();
+				stepCast.ForceShapecastUpdate();
+
+				if (!stepCast.IsColliding()) {
+
+					stepCast.Position += Vector3.Down * 0.1f;
+
+				} else {
+
+					GlobalPosition += stepCast.Position;
+					GD.Print(5);
+					break;
+
+				}
+
+			}
+
+		}
+
+		return velocity;
 
 	}
 	

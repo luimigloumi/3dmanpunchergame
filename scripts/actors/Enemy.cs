@@ -56,31 +56,33 @@ public partial class Enemy : Actor
 
 	}	
 
-	public override void _IntegrateForces(PhysicsDirectBodyState3D state) {
+	public override void _PhysicsProcess(double delta) {
 
 		if (ready) {
 
-			Vector3 velocity = LinearVelocity;
+			Vector3 velocity = Velocity;
 
 			switch(currentState) {
 
 				case EnemyState.Normal:
-					velocity = NormalPhysicsProcess(state.Step, velocity);
+					velocity = NormalPhysicsProcess((float)delta, velocity);
 				break;
 
 				case EnemyState.Grabbed:
-					velocity = GrabbedPhysicsProcess(state.Step, velocity);
+					velocity = GrabbedPhysicsProcess((float)delta, velocity);
 				break;
 
 				case EnemyState.Thrown:
-					velocity = ThrownPhysicsProcess(state.Step, velocity);
+					velocity = ThrownPhysicsProcess((float)delta, velocity);
 				break;
 
 			}
 
-			LinearVelocity = velocity;
+			Velocity = velocity;
 
-			base._PhysicsProcess(state.Step);
+			base._PhysicsProcess((float)delta);
+
+			MoveAndSlide();
 
 		}
 
