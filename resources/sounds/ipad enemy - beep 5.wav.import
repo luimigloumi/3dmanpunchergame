@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://ctm1f2us7t8t"
+path="res://.godot/imported/ipad enemy - beep 5.wav-21ce7ec304f00dd272faefb309cd4449.sample"
+
+[deps]
+
+source_file="res://resources/sounds/ipad enemy - beep 5.wav"
+dest_files=["res://.godot/imported/ipad enemy - beep 5.wav-21ce7ec304f00dd272faefb309cd4449.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://d273anslvsicn"
+path="res://.godot/imported/ipad enemy - beep 2.wav-7d4d996340f1d9a4f75a61a673468efb.sample"
+
+[deps]
+
+source_file="res://resources/sounds/ipad enemy - beep 2.wav"
+dest_files=["res://.godot/imported/ipad enemy - beep 2.wav-7d4d996340f1d9a4f75a61a673468efb.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0
