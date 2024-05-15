@@ -5,9 +5,6 @@ public partial class PlayerCamera : Node3D
 {
 
 	[Export]
-	public NodePath bodyPath;
-	public Node3D body;
-	[Export]
 	public NodePath playerPath;
 	public Player player;
 	[Export]
@@ -24,7 +21,6 @@ public partial class PlayerCamera : Node3D
 	public override void _Ready()
 	{
 
-		body = GetNode<Node3D>(bodyPath);
 		player = GetNode<Player>(playerPath);
 		Input.MouseMode = Input.MouseModeEnum.Captured;
 
@@ -39,7 +35,7 @@ public partial class PlayerCamera : Node3D
 			InputEventMouseMotion mouseEvent = @event as InputEventMouseMotion;
 
 			RotateX(-mouseEvent.Relative.Y * verticalSensitivity * 0.01f);
-			body.RotateY(-mouseEvent.Relative.X * horizontalSensitivity * 0.01f);
+			player.RotateY(-mouseEvent.Relative.X * horizontalSensitivity * 0.01f);
 
 		}
 

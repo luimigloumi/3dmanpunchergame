@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bkop6tq16cg71"
+path="res://.godot/imported/movement-turn 2.wav-e57833fd85ff8a671c6cbe6b9b8894d9.sample"
+
+[deps]
+
+source_file="res://resources/sounds/movement-turn 2.wav"
+dest_files=["res://.godot/imported/movement-turn 2.wav-e57833fd85ff8a671c6cbe6b9b8894d9.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

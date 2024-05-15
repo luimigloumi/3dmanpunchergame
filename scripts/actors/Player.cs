@@ -31,9 +31,6 @@ public partial class Player : Actor
 
 	[ExportCategory("References")]
 
-	[Export] public NodePath headPath;
-	public Node3D head;
-
 	[Export] public NodePath cameraPath;
 	public Camera3D camera;
 
@@ -120,13 +117,12 @@ public partial class Player : Actor
 		punchCast = GetNode<ShapeCast3D>(punchCastPath);
 		grabPoint = GetNode<Node3D>(grabPointPath);
 		camera = GetNode<Camera3D>(cameraPath);
-		head = GetNode<Node3D>(headPath);
 
 		coyoteTime = 0f;
 		jumpBuffer = 0f;
 		grabBuffer = 0f;
 		punchBuffer = 0f;
-		LinearVelocity = Vector3.Zero;
+		Velocity = Vector3.Zero;
 
 	}
 
@@ -251,7 +247,7 @@ public partial class Player : Actor
 					punchBuffer = 0;
 					grabBuffer = 0;	
 					
-					heldEnemy.LinearVelocity = -camera.GlobalTransform.Basis.Z * 20f + LinearVelocity;
+					heldEnemy.Velocity = -camera.GlobalTransform.Basis.Z * 20f + Velocity;
 					heldEnemy.GlobalPosition = grabPoint.GlobalPosition - Vector3.Up * 0.5f;
 					heldEnemy.currentState = EnemyState.Thrown;
 					heldEnemy.projectileCast.Enabled = false;
@@ -268,17 +264,17 @@ public partial class Player : Actor
 
 	}
 
-	public override void _IntegrateForces(PhysicsDirectBodyState3D state)
+	public override void _PhysicsProcess(double delta)
 	{
 
-		base._IntegrateForces(state);
+		base._PhysicsProcess(delta);
 		
-		Vector3 velocity = LinearVelocity;
+		Vector3 velocity = Velocity;
 		Vector2 inputVector = Input.GetVector("Left", "Right", "Forward", "Back").Normalized();
 
-		Vector3 movementDirection = inputVector.X * head.Transform.Basis.X + inputVector.Y * head.Transform.Basis.Z;
+		Vector3 movementDirection = inputVector.X * Transform.Basis.X + inputVector.Y * Transform.Basis.Z;
 
-		velocity += gravity * state.Step;
+		velocity += gravity * (float)delta;
 
 		switch(currentState) {
 
@@ -338,6 +334,8 @@ public partial class Player : Actor
 
 					Vector3 flatVel = new(velocity.X, 0, velocity.Z);
 
+					velocity = StepStairs(velocity, (float)delta);
+
 					if (jumpBuffer > 0f) {
 
 						jumps--;
@@ -355,6 +353,7 @@ public partial class Player : Actor
 						velocity = velocity.Lerp(new(movementDirection.X * movementSpeed, velocity.Y, movementDirection.Z * movementSpeed), 0.1f * groundTraction * (flatVel.Length() > movementSpeed * 1.5f ? highSpeedTractionMultiplier : 1));
 
 					}
+
 				} 
 
 				break;
@@ -434,7 +433,9 @@ public partial class Player : Actor
 
 		}
 
-		LinearVelocity = velocity;
+		Velocity = velocity;
+
+		MoveAndSlide();
 
 	}
 
