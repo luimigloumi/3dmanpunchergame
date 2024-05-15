@@ -25,12 +25,12 @@ public partial class Actor : RigidBody3D
 	}
 
 	
-    public override void _IntegrateForces(PhysicsDirectBodyState3D state)
-    {
+	public override void _IntegrateForces(PhysicsDirectBodyState3D state)
+	{
 		
 		gravity = state.TotalGravity;
 
-    }
+	}
 
 	public virtual void OnHit(float damage, Vector3 hitPoint, Vector3 hitNormal, Node3D source) 
 	{

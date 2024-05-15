@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://4nlh3nkor16x"
+path="res://.godot/imported/tobacco.obj-0b8bbd932e761f4fd6bff93ac7497b49.mesh"
+
+[deps]
+
+files=["res://.godot/imported/tobacco.obj-0b8bbd932e761f4fd6bff93ac7497b49.mesh"]
+
+source_file="res://resources/models/tobacco.obj"
+dest_files=["res://.godot/imported/tobacco.obj-0b8bbd932e761f4fd6bff93ac7497b49.mesh", "res://.godot/imported/tobacco.obj-0b8bbd932e761f4fd6bff93ac7497b49.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

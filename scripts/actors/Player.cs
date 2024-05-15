@@ -130,7 +130,7 @@ public partial class Player : Actor
 
 	}
 
-    public override void _Process(double delta)
+	public override void _Process(double delta)
 	{
 
 		
