@@ -39,7 +39,7 @@ maxJumps = 1
 jumpHeight = 8.0
 maximumJumpBuffer = 0.1
 prioritizedVMAnimations = ["Punch", "Grab"]
-chargePunchKickback = 13.0
+chargePunchKickback = 15.0
 stepCastPath = NodePath("StepCast")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Player"]
