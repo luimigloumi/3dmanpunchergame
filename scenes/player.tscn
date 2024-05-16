@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://cgqiols21e00m"]
+[gd_scene load_steps=10 format=3 uid="uid://cgqiols21e00m"]
 
 [ext_resource type="Script" path="res://scripts/actors/Player.cs" id="1_xuh7l"]
 [ext_resource type="Script" path="res://scripts/actors/PlayerCamera.cs" id="2_k4j2s"]
@@ -17,6 +17,9 @@ radius = 0.360839
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_0uo03"]
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_b6iko"]
+radius = 0.7
+
 [node name="Player" type="Node3D"]
 
 [node name="Player" type="CharacterBody3D" parent="." groups=["Player"]]
@@ -29,12 +32,14 @@ cameraPath = NodePath("../Camera3D")
 vmAnimatorPath = NodePath("../Camera3D/Arms/astronaut1p/AnimationPlayer")
 grabPointPath = NodePath("GrabPosition")
 punchCastPath = NodePath("CameraHolder/PunchCast")
-movementSpeed = 10.0
-airTraction = 0.8
+chargePunchCastPath = NodePath("CameraHolder/ChargeCast")
+vmPath = NodePath("../Camera3D/Arms/astronaut1p/metarig/Skeleton3D/Cylinder")
+movementSpeed = 8.0
 maxJumps = 1
 jumpHeight = 8.0
 maximumJumpBuffer = 0.1
 prioritizedVMAnimations = ["Punch", "Grab"]
+chargePunchKickback = 13.0
 stepCastPath = NodePath("StepCast")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Player"]
@@ -57,6 +62,12 @@ horizontalSensitivity = 0.5
 shape = SubResource("SphereShape3D_0uo03")
 target_position = Vector3(0, 0, -1.5)
 collision_mask = 4
+
+[node name="ChargeCast" type="ShapeCast3D" parent="Player/CameraHolder"]
+shape = SubResource("SphereShape3D_b6iko")
+target_position = Vector3(0, 0, -2.5)
+max_results = 5
+collision_mask = 5
 
 [node name="GrabPosition" type="Node3D" parent="Player"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000196159, 0.719839, -0.333636)

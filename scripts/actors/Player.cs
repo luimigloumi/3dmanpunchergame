@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using System.Diagnostics.Contracts;
 using System.Linq.Expressions;
 
 //TODO: Deactivate stair checkers in the air!!
@@ -20,7 +21,9 @@ public enum VMState {
 	PunchingFinish,
 	Grabbing,
 	Holding,
-	Throwing
+	Throwing,
+	Charging,
+	ChargePunching
 
 }
 
@@ -44,6 +47,11 @@ public partial class Player : Actor
 	[Export]
 	public NodePath punchCastPath;
 	public ShapeCast3D punchCast;
+	[Export]
+	public NodePath chargePunchCastPath;
+	public ShapeCast3D chargePunchCast;
+	[Export] public NodePath vmPath;
+	public MeshInstance3D vm;
 
 	#endregion
 
@@ -92,19 +100,27 @@ public partial class Player : Actor
 	public float punchBuffer = 0f;
 
 	[Export]
+	public float punchTimeMaximum = 0.2f;
+	public float punchTimer = 0;
+	[Export]
+	public float punchDamage = 1f;
+
+	[ExportSubgroup("Grab")]
+
+	[Export]
 	public float maxGrabBuffer = 0.2f;
 	public float grabBuffer = 0f;
 	[Export]
 	public float grabTimeMaximum = 0.5f;
 	public float grabTimer = 0;
 
-	[Export]
-	public float punchTimeMaximum = 0.2f;
-	public float punchTimer = 0;
-	[Export]
-	public float punchDamage = 1f;
-
 	public Enemy heldEnemy;
+
+	[ExportSubgroup("ChargePunch")]
+	[Export] public float chargePunchDamage = 5;
+	[Export] public float chargePunchKickback = 5;
+	[Export] public float chargePunchTime = 1f;
+	public float chargePunchTimer = 0;
 
 	#endregion
 
@@ -117,6 +133,8 @@ public partial class Player : Actor
 		punchCast = GetNode<ShapeCast3D>(punchCastPath);
 		grabPoint = GetNode<Node3D>(grabPointPath);
 		camera = GetNode<Camera3D>(cameraPath);
+		chargePunchCast = GetNode<ShapeCast3D>(chargePunchCastPath);
+		vm = GetNode<MeshInstance3D>(vmPath);
 
 		coyoteTime = 0f;
 		jumpBuffer = 0f;
@@ -128,8 +146,6 @@ public partial class Player : Actor
 
 	public override void _Process(double delta)
 	{
-
-		
 
 		coyoteTime = Mathf.Max(0f, coyoteTime - (float)delta);
 		jumpBuffer = Mathf.Max(0f, jumpBuffer - (float)delta);
@@ -144,6 +160,16 @@ public partial class Player : Actor
 
 		if (Input.IsActionJustPressed("Grab")) grabBuffer = maxGrabBuffer;
 
+		for (int i = 0; i < vm.Mesh.GetSurfaceCount(); i++) {
+
+			StandardMaterial3D mat = (StandardMaterial3D)vm.Mesh.SurfaceGetMaterial(i);
+
+			mat.AlbedoColor = new(mat.AlbedoColor.R, 1 - chargePunchTimer / chargePunchTime, 1 - chargePunchTimer / chargePunchTime);
+
+			vm.Mesh.SurfaceSetMaterial(i, mat);
+
+		}
+
 		switch(vmState) {
 
 			case VMState.Idle:
@@ -154,9 +180,9 @@ public partial class Player : Actor
 
 				}
 
-				if (punchBuffer > 0) {
+				if (Input.IsActionJustPressed("Attack")) {
 
-					Punch(0);
+					vmState = VMState.Charging;
 
 				}
 
@@ -260,6 +286,41 @@ public partial class Player : Actor
 
 			break;
 
+			case VMState.Charging:
+
+				Vector3 velocity = Velocity;
+
+				chargePunchTimer = Mathf.Min(chargePunchTime, chargePunchTimer + (float)delta);
+
+				if (!Input.IsActionPressed("Attack")) {
+
+					if (chargePunchTimer >= chargePunchTime) {
+						
+						velocity = ChargePunch(velocity);
+
+					} else {
+
+						Punch(0);
+						chargePunchTimer = 0;
+
+					}
+
+				}
+
+				Velocity = velocity;
+
+			break;
+
+			case VMState.ChargePunching:
+
+				if (punchTimer <= 0) {
+					
+					vmState = VMState.Idle;
+					
+				}
+
+			break;
+
 		}
 
 	}
@@ -333,8 +394,6 @@ public partial class Player : Actor
 				} else {
 
 					Vector3 flatVel = new(velocity.X, 0, velocity.Z);
-
-					velocity = StepStairs(velocity, (float)delta);
 
 					if (jumpBuffer > 0f) {
 
@@ -436,6 +495,32 @@ public partial class Player : Actor
 		Velocity = velocity;
 
 		MoveAndSlide();
+
+	}
+
+	public Vector3 ChargePunch(Vector3 velocity) {
+
+		chargePunchTimer = 0;
+		vmState = VMState.ChargePunching;
+		vmAnimator.Play("Punch");
+		if (chargePunchCast.IsColliding()) {
+
+			for (int i = 0; i < chargePunchCast.GetCollisionCount(); i++) 
+			{
+				if (chargePunchCast.GetCollider(i) is Actor en) {
+
+					en.OnHit(chargePunchDamage, chargePunchCast.GetCollisionPoint(i), chargePunchCast.GetCollisionNormal(i), this);
+
+				} else {
+
+					velocity = camera.Transform.Basis.Z * chargePunchKickback;
+
+				}
+			}
+
+		}
+		punchTimer = punchTimeMaximum * 3;
+		return velocity;
 
 	}
 

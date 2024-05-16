@@ -52,20 +52,5 @@ public partial class Actor : CharacterBody3D
 		
 		//meowmeowmeowmeowmeowmomeowmeowmeowmeowmeowmeo >w<
 	}
-
-	public Vector3 StepStairs(Vector3 velocity, float delta) 
-	{
-		
-		stepCast.Position = new Vector3(velocity.X, 0.3f, velocity.Z);
-		stepCast.TargetPosition = new(0, -0.25f, 0);
-		stepCast.ForceShapecastUpdate();
-		if (stepCast.IsColliding() && stepCast.GetCollisionPoint(0).Y - GlobalPosition.Y <= 0.3f) {
-			
-			GlobalPosition = new(GlobalPosition.X, stepCast.GetCollisionPoint(0).Y, GlobalPosition.Z);
-		}
-
-		return velocity;
-
-	}
 	
 }
