@@ -299,6 +299,7 @@ tracks/14/keys = PackedFloat32Array(0, 1, -0.499902, 8.20411e-14, 1.19186e-07, 0
 [sub_resource type="Animation" id="Animation_xgbxs"]
 resource_name = "USMPwalk"
 length = 0.791667
+loop_mode = 1
 tracks/0/type = "position_3d"
 tracks/0/imported = true
 tracks/0/enabled = true
@@ -532,3 +533,4 @@ skin = SubResource("Skin_mjet5")
 libraries = {
 "": SubResource("AnimationLibrary_dpt3r")
 }
+autoplay = "USMPwalk"
