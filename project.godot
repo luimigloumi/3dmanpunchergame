@@ -15,6 +15,10 @@ run/main_scene="res://scenes/main.tscn"
 config/features=PackedStringArray("4.2", "C#", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+SoundManager="*res://scripts/SoundManager.cs"
+
 [dotnet]
 
 project/assembly_name="3cmanpunchergame"

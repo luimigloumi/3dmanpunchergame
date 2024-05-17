@@ -1,7 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://cgqiols21e00m"]
+[gd_scene load_steps=11 format=3 uid="uid://cgqiols21e00m"]
 
 [ext_resource type="Script" path="res://scripts/actors/Player.cs" id="1_xuh7l"]
 [ext_resource type="Script" path="res://scripts/actors/PlayerCamera.cs" id="2_k4j2s"]
+[ext_resource type="PackedScene" uid="uid://ccxufruk07xgm" path="res://scenes/scn_smackEffect.tscn" id="2_tlioj"]
 [ext_resource type="Script" path="res://scripts/CameraFollow.cs" id="3_pesm3"]
 [ext_resource type="PackedScene" uid="uid://itmeo0lyf24v" path="res://resources/models/astronaut1p.blend" id="4_p2hoh"]
 [ext_resource type="Texture2D" uid="uid://df8gcmpayk3qw" path="res://resources/textures/ui/reticle.png" id="5_pdm2i"]
@@ -34,11 +35,19 @@ grabPointPath = NodePath("GrabPosition")
 punchCastPath = NodePath("CameraHolder/PunchCast")
 chargePunchCastPath = NodePath("CameraHolder/ChargeCast")
 vmPath = NodePath("../Camera3D/Arms/astronaut1p/metarig/Skeleton3D/Cylinder")
+smackScene = ExtResource("2_tlioj")
+punchSound = "res://resources/sounds/punch_3.wav"
+jumpSound = "res://resources/sounds/jump.wav"
+whooshSound = "res://resources/sounds/movement-turn 1.wav"
+chargePunchSound = "res://resources/sounds/punch_1.wav"
+grabSound = "res://resources/sounds/grab.wav"
+throwSound = "res://resources/sounds/movement-turn 2.wav"
 movementSpeed = 8.0
 maxJumps = 1
 jumpHeight = 8.0
 maximumJumpBuffer = 0.1
-prioritizedVMAnimations = ["Punch", "Grab"]
+prioritizedVMAnimations = ["Punch", "Grab", "PunchChargeup", "Punch2", "Punch3"]
+punchTimeMaximum = 0.25
 chargePunchKickback = 15.0
 stepCastPath = NodePath("StepCast")
 
@@ -117,6 +126,7 @@ bones/16/rotation = Quaternion(0.442392, 0.123414, -0.0292517, 0.887808)
 bones/17/rotation = Quaternion(0.643523, 0.0282183, 0.0849561, 0.760174)
 bones/18/rotation = Quaternion(0.411209, 0.0479334, 0.258935, 0.872675)
 bones/19/rotation = Quaternion(0.130402, -0.667393, 0.164904, 0.714415)
+bones/19/scale = Vector3(1, 1, 1)
 bones/20/rotation = Quaternion(0.658768, -0.00589017, -0.136537, 0.739829)
 bones/21/rotation = Quaternion(0.683886, 0.161489, 0.228918, 0.67366)
 bones/21/scale = Vector3(1, 1, 1)
@@ -152,6 +162,7 @@ bones/38/rotation = Quaternion(0.442392, -0.123414, 0.0292517, 0.887808)
 bones/39/rotation = Quaternion(0.643523, -0.0282183, -0.0849561, 0.760174)
 bones/40/rotation = Quaternion(0.411209, -0.0479335, -0.258935, 0.872675)
 bones/41/rotation = Quaternion(0.130402, 0.667393, -0.164904, 0.714415)
+bones/41/scale = Vector3(1, 1, 1)
 bones/42/rotation = Quaternion(0.658768, 0.00589013, 0.136537, 0.739829)
 bones/43/rotation = Quaternion(0.683886, -0.161489, -0.228918, 0.67366)
 bones/43/scale = Vector3(1, 1, 1)
@@ -198,7 +209,7 @@ theme_override_colors/font_color = Color(0.544226, 0.809478, 1, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_constants/shadow_offset_x = 0
 theme_override_constants/shadow_offset_y = 8
-text = "salt the earth and what remains? the god that put the stars above you was a dumbass who wouldnt have been able to appreci8 skibidi toilet"
+text = "STOP POSTING ABOUT AMONG US! I'M TIRED OF SEEING IT! MY FRIENDS ON TIKTOK SEND ME MEMES, ON DISCORD IT'S FUCKING MEMES! I was in a server, right? and ALL OF THE CHANNELS were just among us stuff. I-I showed my champion underwear to my girlfriend and t-the logo I flipped it and I said \"hey babe, when the underwear is sus HAHA DING DING DING DING DING DING DING DI DI DING\" I fucking looked at a trashcan and said \"THAT'S A BIT SUSSY\" I looked at my penis I think of an astronauts helmet and I go \"PENIS? MORE LIKE PENSUS\" AAAAAAAAAAAAAAHGESFG"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2

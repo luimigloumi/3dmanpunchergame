@@ -3,8 +3,6 @@ using System;
 using System.Diagnostics.Contracts;
 using System.Linq.Expressions;
 
-//TODO: Deactivate stair checkers in the air!!
-
 public enum PlayerState
 {
 	Idle,
@@ -34,6 +32,8 @@ public partial class Player : Actor
 
 	[ExportCategory("References")]
 
+	public SoundManager sm;
+
 	[Export] public NodePath cameraPath;
 	public Camera3D camera;
 
@@ -52,6 +52,18 @@ public partial class Player : Actor
 	public ShapeCast3D chargePunchCast;
 	[Export] public NodePath vmPath;
 	public MeshInstance3D vm;
+
+	[Export] public PackedScene smackScene;
+
+	[ExportCategory("Sounds")]
+
+	[Export(PropertyHint.File)] public string punchSound;
+	[Export(PropertyHint.File)] public string jumpSound;
+	[Export(PropertyHint.File)] public string whooshSound;
+	[Export(PropertyHint.File)] public string chargePunchSound;
+	[Export(PropertyHint.File)] public string grabSound;
+	[Export(PropertyHint.File)] public string throwSound;
+	
 
 	#endregion
 
@@ -135,6 +147,7 @@ public partial class Player : Actor
 		camera = GetNode<Camera3D>(cameraPath);
 		chargePunchCast = GetNode<ShapeCast3D>(chargePunchCastPath);
 		vm = GetNode<MeshInstance3D>(vmPath);
+		sm = GetNode<SoundManager>("/root/SoundManager");
 
 		coyoteTime = 0f;
 		jumpBuffer = 0f;
@@ -183,6 +196,7 @@ public partial class Player : Actor
 				if (Input.IsActionJustPressed("Attack")) {
 
 					vmState = VMState.Charging;
+					vmAnimator.Play("PunchChargeup");
 
 				}
 
@@ -190,6 +204,7 @@ public partial class Player : Actor
 
 					grabBuffer = 0;
 					vmState = VMState.Grabbing;
+					sm.PlayDirectionlessSound(new Sound(throwSound, 1, 0.5f + GD.Randf(), Vector3.Zero));
 					vmAnimator.Play("Grab");
 					vmAnimator.Seek(0);
 					grabTimer = grabTimeMaximum;
@@ -249,6 +264,8 @@ public partial class Player : Actor
 				if (punchCast.IsColliding()) {
 
 					Enemy en = punchCast.GetCollider(0) as Enemy;
+					
+					sm.PlayDirectionlessSound(new Sound(grabSound, 1, 0.5f + GD.Randf(), Vector3.Zero));
 
 					en.currentState = EnemyState.Grabbed;
 
@@ -270,6 +287,8 @@ public partial class Player : Actor
 
 				if (punchBuffer > 0 || grabBuffer > 0) {
 
+					sm.PlayDirectionlessSound(new Sound(throwSound, 1, 0.5f + GD.Randf(), Vector3.Zero));
+
 					punchBuffer = 0;
 					grabBuffer = 0;	
 					
@@ -280,6 +299,8 @@ public partial class Player : Actor
 
 					heldEnemy = null;
 
+					vmAnimator.Play("Grab");
+
 					vmState = VMState.Idle;
 
 				}
@@ -287,6 +308,12 @@ public partial class Player : Actor
 			break;
 
 			case VMState.Charging:
+
+				if (!vmAnimator.IsPlaying() || !prioritizedVMAnimations.Contains(vmAnimator.CurrentAnimation)) {
+
+					vmAnimator.Play("PunchChargeupLoop");
+
+				}
 
 				Vector3 velocity = Velocity;
 
@@ -365,6 +392,7 @@ public partial class Player : Actor
 						jumpBuffer = 0f;
 						coyoteTime = 0f;
 						currentState = PlayerState.Jumping;
+						sm.PlayDirectionlessSound(new Sound(jumpSound, 1, 0.5f + GD.Randf(), Vector3.Zero));
 
 					} else if (inputVector != Vector2.Zero) {
 
@@ -402,6 +430,7 @@ public partial class Player : Actor
 						jumpBuffer = 0f;
 						coyoteTime = 0f;
 						currentState = PlayerState.Jumping;
+						sm.PlayDirectionlessSound(new Sound(jumpSound, 1, 0.5f + GD.Randf(), Vector3.Zero));
 					
 					} else if (inputVector == Vector2.Zero) {
 
@@ -502,13 +531,14 @@ public partial class Player : Actor
 
 		chargePunchTimer = 0;
 		vmState = VMState.ChargePunching;
-		vmAnimator.Play("Punch");
+		vmAnimator.Play("ChargedPunch");
 		if (chargePunchCast.IsColliding()) {
 
 			for (int i = 0; i < chargePunchCast.GetCollisionCount(); i++) 
 			{
-				if (chargePunchCast.GetCollider(i) is Actor en) {
-
+				if (chargePunchCast.GetCollider(i) is Actor) {
+					
+					Actor en = chargePunchCast.GetCollider(i) as Actor;
 					en.OnHit(chargePunchDamage, chargePunchCast.GetCollisionPoint(i), chargePunchCast.GetCollisionNormal(i), this);
 
 				} else {
@@ -516,7 +546,18 @@ public partial class Player : Actor
 					velocity = camera.Transform.Basis.Z * chargePunchKickback;
 
 				}
+
+				OneShotParticles p = smackScene.Instantiate<OneShotParticles>();
+				GetParent().AddChild(p);
+				p.GlobalPosition = punchCast.GetCollisionPoint(i);
+
 			}
+
+			sm.PlayDirectionlessSound(new Sound(chargePunchSound, 1, 0.5f + GD.Randf(), Vector3.Zero));
+
+		} else {
+
+			sm.PlayDirectionlessSound(new Sound(whooshSound, 1, 0.5f + GD.Randf(), Vector3.Zero));
 
 		}
 		punchTimer = punchTimeMaximum * 3;
@@ -538,14 +579,14 @@ public partial class Player : Actor
 			case 1:
 			
 				vmState = VMState.PunchingSecond;
-				vmAnimator.Play("Punch");
+				vmAnimator.Play("Punch2");
 				
 			break;
 
 			case 2:
 			
 				vmState = VMState.PunchingFinish;
-				vmAnimator.Play("Punch");
+				vmAnimator.Play("Punch3");
 			
 			break;
 
@@ -554,12 +595,21 @@ public partial class Player : Actor
 		punchTimer = number == 2 ? punchTimeMaximum * 3f : punchTimeMaximum;
 		if (punchCast.IsColliding()) {
 
+			sm.PlayDirectionlessSound(new Sound(punchSound, 1, 0.5f + GD.Randf(), Vector3.Zero));
+
 			for (int i = 0; i < punchCast.GetCollisionCount(); i++) {
 
 				Actor en = punchCast.GetCollider(i) as Actor;
+				OneShotParticles p = smackScene.Instantiate<OneShotParticles>();
+				GetParent().AddChild(p);
+				p.GlobalPosition = punchCast.GetCollisionPoint(i);
 				en.OnHit(punchDamage, punchCast.GetCollisionPoint(0), punchCast.GetCollisionNormal(0), this);
 
 			}
+
+		} else {
+
+			sm.PlayDirectionlessSound(new Sound(whooshSound, 1, 0.5f + GD.Randf(), Vector3.Zero));
 
 		}
 
