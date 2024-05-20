@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://cgqiols21e00m"]
+[gd_scene load_steps=15 format=3 uid="uid://cgqiols21e00m"]
 
 [ext_resource type="Script" path="res://scripts/actors/Player.cs" id="1_xuh7l"]
 [ext_resource type="Script" path="res://scripts/actors/PlayerCamera.cs" id="2_k4j2s"]
@@ -6,6 +6,8 @@
 [ext_resource type="Script" path="res://scripts/CameraFollow.cs" id="3_pesm3"]
 [ext_resource type="PackedScene" uid="uid://itmeo0lyf24v" path="res://resources/models/astronaut1p.blend" id="4_p2hoh"]
 [ext_resource type="Texture2D" uid="uid://df8gcmpayk3qw" path="res://resources/textures/ui/reticle.png" id="5_pdm2i"]
+[ext_resource type="Texture2D" uid="uid://dlcuoee0hggs2" path="res://resources/textures/tex_overlay.png" id="7_2m7nj"]
+[ext_resource type="Script" path="res://scripts/HealthBar.cs" id="8_n035p"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_atad1"]
 margin = 0.001
@@ -21,6 +23,12 @@ radius = 0.360839
 [sub_resource type="SphereShape3D" id="SphereShape3D_b6iko"]
 radius = 0.7
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t1spn"]
+bg_color = Color(0.356966, 0, 0.165934, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kpwix"]
+bg_color = Color(4.28364e-06, 0.664517, 0.302396, 1)
+
 [node name="Player" type="Node3D"]
 
 [node name="Player" type="CharacterBody3D" parent="." groups=["Player"]]
@@ -29,6 +37,7 @@ collision_mask = 5
 floor_max_angle = 0.802851
 floor_snap_length = 0.3
 script = ExtResource("1_xuh7l")
+screenOverlayPath = NodePath("../UI/Overlay")
 cameraPath = NodePath("../Camera3D")
 vmAnimatorPath = NodePath("../Camera3D/Arms/astronaut1p/AnimationPlayer")
 grabPointPath = NodePath("GrabPosition")
@@ -64,8 +73,8 @@ target_position = Vector3(0, 0, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.62893, 0)
 script = ExtResource("2_k4j2s")
 playerPath = NodePath("..")
-verticalSensitivity = 0.4
-horizontalSensitivity = 0.5
+verticalSensitivity = 0.3
+horizontalSensitivity = 0.4
 
 [node name="PunchCast" type="ShapeCast3D" parent="Player/CameraHolder"]
 shape = SubResource("SphereShape3D_0uo03")
@@ -126,7 +135,6 @@ bones/16/rotation = Quaternion(0.442392, 0.123414, -0.0292517, 0.887808)
 bones/17/rotation = Quaternion(0.643523, 0.0282183, 0.0849561, 0.760174)
 bones/18/rotation = Quaternion(0.411209, 0.0479334, 0.258935, 0.872675)
 bones/19/rotation = Quaternion(0.130402, -0.667393, 0.164904, 0.714415)
-bones/19/scale = Vector3(1, 1, 1)
 bones/20/rotation = Quaternion(0.658768, -0.00589017, -0.136537, 0.739829)
 bones/21/rotation = Quaternion(0.683886, 0.161489, 0.228918, 0.67366)
 bones/21/scale = Vector3(1, 1, 1)
@@ -162,7 +170,6 @@ bones/38/rotation = Quaternion(0.442392, -0.123414, 0.0292517, 0.887808)
 bones/39/rotation = Quaternion(0.643523, -0.0282183, -0.0849561, 0.760174)
 bones/40/rotation = Quaternion(0.411209, -0.0479335, -0.258935, 0.872675)
 bones/41/rotation = Quaternion(0.130402, 0.667393, -0.164904, 0.714415)
-bones/41/scale = Vector3(1, 1, 1)
 bones/42/rotation = Quaternion(0.658768, 0.00589013, 0.136537, 0.739829)
 bones/43/rotation = Quaternion(0.683886, -0.161489, -0.228918, 0.67366)
 bones/43/scale = Vector3(1, 1, 1)
@@ -200,18 +207,29 @@ mouse_filter = 2
 texture = ExtResource("5_pdm2i")
 expand_mode = 1
 
-[node name="Label" type="Label" parent="UI"]
+[node name="Overlay" type="TextureRect" parent="UI"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("7_2m7nj")
+
+[node name="ProgressBar" type="ProgressBar" parent="UI"]
 layout_mode = 0
-offset_right = 1150.0
-offset_bottom = 176.0
-theme_type_variation = &"HeaderLarge"
-theme_override_colors/font_color = Color(0.544226, 0.809478, 1, 1)
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_constants/shadow_offset_x = 0
-theme_override_constants/shadow_offset_y = 8
-text = "STOP POSTING ABOUT AMONG US! I'M TIRED OF SEEING IT! MY FRIENDS ON TIKTOK SEND ME MEMES, ON DISCORD IT'S FUCKING MEMES! I was in a server, right? and ALL OF THE CHANNELS were just among us stuff. I-I showed my champion underwear to my girlfriend and t-the logo I flipped it and I said \"hey babe, when the underwear is sus HAHA DING DING DING DING DING DING DING DI DI DING\" I fucking looked at a trashcan and said \"THAT'S A BIT SUSSY\" I looked at my penis I think of an astronauts helmet and I go \"PENIS? MORE LIKE PENSUS\" AAAAAAAAAAAAAAHGESFG"
-horizontal_alignment = 1
-vertical_alignment = 1
-autowrap_mode = 2
+offset_left = 39.0
+offset_top = 37.0
+offset_right = 309.0
+offset_bottom = 64.0
+theme_override_styles/background = SubResource("StyleBoxFlat_t1spn")
+theme_override_styles/fill = SubResource("StyleBoxFlat_kpwix")
+max_value = 5.0
+step = 0.1
+value = 5.0
+show_percentage = false
+script = ExtResource("8_n035p")
+playerPath = NodePath("../../Player")
 
 [editable path="Camera3D/Arms/astronaut1p"]

@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using System.ComponentModel;
 using System.Diagnostics.Contracts;
 using System.Linq.Expressions;
 
@@ -27,10 +28,13 @@ public enum VMState {
 
 public partial class Player : Actor
 {
-	
+
 	#region References
 
 	[ExportCategory("References")]
+
+	[Export] public NodePath screenOverlayPath;
+	public TextureRect screenOverlay;
 
 	public SoundManager sm;
 
@@ -68,6 +72,9 @@ public partial class Player : Actor
 	#endregion
 
 	#region Variables
+
+	[Export] public float maxInvincibility = 1f;
+	public float invincibility = 0f;
 
 	[Export]
 	public PlayerState currentState = PlayerState.Idle;
@@ -147,6 +154,7 @@ public partial class Player : Actor
 		camera = GetNode<Camera3D>(cameraPath);
 		chargePunchCast = GetNode<ShapeCast3D>(chargePunchCastPath);
 		vm = GetNode<MeshInstance3D>(vmPath);
+		screenOverlay = GetNode<TextureRect>(screenOverlayPath);
 		sm = GetNode<SoundManager>("/root/SoundManager");
 
 		coyoteTime = 0f;
@@ -166,6 +174,7 @@ public partial class Player : Actor
 		punchTimer = Mathf.Max(0f, punchTimer - (float)delta);
 		grabBuffer = Mathf.Max(0f, grabBuffer - (float)delta);
 		grabTimer = Mathf.Max(0f, grabTimer - (float)delta);
+		invincibility = Mathf.Max(0f, invincibility - (float)delta);
 
 		if (Input.IsActionJustPressed("Jump")) jumpBuffer = maximumJumpBuffer;
 
@@ -614,5 +623,36 @@ public partial class Player : Actor
 		}
 
 	}
+
+    public override void OnHit(float damage, Vector3 hitPoint, Vector3 hitNormal, Node3D source)
+    {
+		if (invincibility <= 0) 
+		{
+
+			base.OnHit(damage, hitPoint, hitNormal, source);
+			HitFlash();
+			invincibility = maxInvincibility;
+
+		}
+    }
+
+	async void HitFlash() {
+
+		screenOverlay.Modulate = new(1,0,0,0.5f);
+
+		Tween twee = GetTree().CreateTween();
+		twee.TweenProperty(screenOverlay, "modulate", new Color(0,1,1,0.5f), 0.5f);
+
+		await ToSignal(GetTree().CreateTimer(maxInvincibility), "timeout");
+
+		Tween tween = GetTree().CreateTween();
+		tween.TweenProperty(screenOverlay, "modulate", new Color(0,1,1,0), 0.5f);
+
+	}
+
+    public override void OnDeath()
+    {
+        GetTree().Quit();
+    }
 
 }
