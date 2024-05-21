@@ -40,6 +40,8 @@ public partial class Enemy : Actor
 
 	public bool ready = false;
 
+	public bool electrified = false;
+
 	public uint defaultMask;
 	public uint defaultLayer;
 

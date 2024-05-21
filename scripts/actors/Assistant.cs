@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using System.ComponentModel;
 
 public enum AssistantState {
 
@@ -10,12 +11,26 @@ public enum AssistantState {
 public partial class Assistant : Enemy
 {
 
+	[Export(PropertyHint.File, "*.tscn")] public string projectileScene;
+
+	[Export] public NodePath sparksPath;
+	public GpuParticles3D sparks;
+
 	[Export] public float speed = 7f;
 	[Export] public float desiredDistance = 10f;
 
 	bool canAttack = true;
 
 	public AssistantState state = AssistantState.Attacking;
+
+
+	public override void _Ready() {
+
+		base._Ready();
+
+		sparks = GetNode<GpuParticles3D>(sparksPath);
+
+	}
 
 	public override Vector3 NormalPhysicsProcess(double delta, Vector3 velocity) {
 	
@@ -85,11 +100,33 @@ public partial class Assistant : Enemy
 	
 	public async void LaserBarrage() {
 
+		electrified = true;
+		sparks.Emitting = true;
+
 		for(int i = 0; i < 5; i++) {
 			
-			await ToSignal(GetTree().CreateTimer(0.2), "timeout");
+			await ToSignal(GetTree().CreateTimer(0.4), "timeout");
+			if (state == AssistantState.Attacking) {
+
+				PackedScene p = GD.Load<PackedScene>(projectileScene);
+				BitchassOrb proj = p.Instantiate<BitchassOrb>();
+				GetParent().AddChild(proj);
+				proj.Velocity = GlobalPosition.DirectionTo(player.GlobalPosition) * proj.speed;
+				proj.GlobalPosition = head.GlobalPosition;
+
+			} else {
+
+				break;
+
+			}
 
 		}
+
+		sparks.Emitting = false;
+		electrified = false;
+
+		await ToSignal(GetTree().CreateTimer(3), "timeout");
+
 		canAttack = true;
 
 	}

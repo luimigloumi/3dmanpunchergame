@@ -33,6 +33,8 @@ public partial class Player : Actor
 
 	[ExportCategory("References")]
 
+	[Export(PropertyHint.File, "*.tscn")] public string deathScenePath;
+
 	[Export] public NodePath screenOverlayPath;
 	public TextureRect screenOverlay;
 
@@ -67,6 +69,7 @@ public partial class Player : Actor
 	[Export(PropertyHint.File)] public string chargePunchSound;
 	[Export(PropertyHint.File)] public string grabSound;
 	[Export(PropertyHint.File)] public string throwSound;
+	[Export(PropertyHint.File)] public string hurtSound;
 	
 
 	#endregion
@@ -274,13 +277,22 @@ public partial class Player : Actor
 
 					Enemy en = punchCast.GetCollider(0) as Enemy;
 					
-					sm.PlayDirectionlessSound(new Sound(grabSound, 1, 0.5f + GD.Randf(), Vector3.Zero));
+					if (en.electrified) {
 
-					en.currentState = EnemyState.Grabbed;
+						OnHit(1, punchCast.GetCollisionPoint(0), -punchCast.GetCollisionNormal(0), en);
+						
 
-					vmState = VMState.Holding;
+					} else {
 
-					heldEnemy = en;
+						sm.PlayDirectionlessSound(new Sound(grabSound, 1, 0.5f + GD.Randf(), Vector3.Zero));
+
+						en.currentState = EnemyState.Grabbed;
+
+						vmState = VMState.Holding;
+
+						heldEnemy = en;
+
+					}
 
 				}
 
@@ -632,6 +644,7 @@ public partial class Player : Actor
 			base.OnHit(damage, hitPoint, hitNormal, source);
 			HitFlash();
 			invincibility = maxInvincibility;
+			sm.PlayDirectionlessSound(new Sound(hurtSound, 1, 0.75f + GD.Randf() * 0.5f, Vector3.Zero));
 
 		}
     }
@@ -652,7 +665,7 @@ public partial class Player : Actor
 
     public override void OnDeath()
     {
-        GetTree().Quit();
+        GetTree().ChangeSceneToFile(deathScenePath);
     }
 
 }

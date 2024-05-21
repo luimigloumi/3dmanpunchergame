@@ -1,0 +1,189 @@
+[gd_scene load_steps=15 format=3 uid="uid://bqq1rklg70ig8"]
+
+[ext_resource type="Script" path="res://scripts/LoadSceneButton.cs" id="1_eoqgo"]
+[ext_resource type="PackedScene" uid="uid://bwyb10spjoarq" path="res://scenes/loading.tscn" id="2_qrbvn"]
+
+[sub_resource type="SystemFont" id="SystemFont_h8u0c"]
+font_names = PackedStringArray("Monospace")
+
+[sub_resource type="LabelSettings" id="LabelSettings_waruh"]
+font = SubResource("SystemFont_h8u0c")
+font_size = 32
+font_color = Color(0.281187, 0.281187, 0.281187, 1)
+
+[sub_resource type="SystemFont" id="SystemFont_pj00x"]
+font_names = PackedStringArray("Monospace")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_40nme"]
+bg_color = Color(0.136826, 0.136826, 0.136826, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xpmqo"]
+bg_color = Color(0.18359, 0.18359, 0.18359, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_15act"]
+bg_color = Color(0.442911, 0.442911, 0.44291, 1)
+
+[sub_resource type="SystemFont" id="SystemFont_ky2y1"]
+font_names = PackedStringArray("Monospace")
+
+[sub_resource type="SystemFont" id="SystemFont_0gmlr"]
+font_names = PackedStringArray("Monospace")
+
+[sub_resource type="LabelSettings" id="LabelSettings_eski7"]
+font = SubResource("SystemFont_0gmlr")
+font_size = 50
+outline_size = 100
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Animation" id="Animation_22gn6"]
+resource_name = "blinky"
+length = 0.5
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_8qgtf"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_45yms"]
+_data = {
+"RESET": SubResource("Animation_8qgtf"),
+"blinky": SubResource("Animation_22gn6")
+}
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = -173.0
+offset_top = -29.0
+offset_right = 1279.0
+offset_bottom = 1120.0
+rotation = -0.18259
+text = "l + bozo + ratio + gay + cringe + get destroyed + skill issue + ungamer + literally the anti w + owned + l + bozo + ratio + gay + cringe + get destroyed + skill issue + ungamer + literally the anti w + owned + l + bozo + ratio + gay + cringe + get destroyed + skill issue + ungamer + literally the anti w + owned + l + bozo + ratio + gay + cringe + get destroyed + skill issue + ungamer + literally the anti w + owned + l + bozo + ratio + gay + cringe + get destroyed + skill issue + ungamer + literally the anti w + owned + l + bozo + ratio + gay + cringe + get destroyed + skill issue + ungamer + literally the anti w + owned + l + bozo + ratio + gay + cringe + get destroyed + skill issue + ungamer + literally the anti w + owned + l + bozo + ratio + gay + cringe + get destroyed + skill issue + ungamer + literally the anti w + owned + l + bozo + ratio + gay + cringe + get destroyed + skill issue + ungamer + literally the anti w + owned + l + bozo + ratio + gay + cringe + get destroyed + skill issue + ungamer + literally the anti w + owned + l + bozo + ratio + gay + cringe + get destroyed + skill issue + ungamer + literally the anti w + owned + l + bozo + ratio + gay + cringe + get destroyed + skill issue + ungamer + literally the anti w + owned + l + bozo + ratio + gay + cringe + get destroyed + skill issue + ungamer + literally the anti w + owned + l + bozo + ratio + gay + cringe + get destroyed + skill issue + ungamer + literally the anti w + owned + l + bozo + ratio + gay + cringe + get destroyed + skill issue + ungamer + literally the anti w + owned + l + bozo + ratio + gay + cringe + get destroyed + skill issue + ungamer + literally the anti w + owned + l + bozo + ratio + gay + cringe + get destroyed + skill issue + ungamer + literally the anti w + owned + l + bozo + ratio + gay + cringe + get destroyed + skill issue + ungamer + literally the anti w + owned + l + bozo + ratio + gay + cringe + get destroyed + skill issue + ungamer + literally the anti w + owned + l + bozo + ratio + gay + cringe + get destroyed + skill issue + ungamer + literally the anti w + owned + l + bozo + ratio + gay + cringe + get destroyed + skill issue + ungamer + literally the anti w + owned + "
+label_settings = SubResource("LabelSettings_waruh")
+autowrap_mode = 1
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -111.0
+offset_top = 42.0
+offset_right = 111.0
+offset_bottom = 95.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = SubResource("SystemFont_pj00x")
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxFlat_40nme")
+theme_override_styles/hover = SubResource("StyleBoxFlat_xpmqo")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_15act")
+text = "TRY AGAIN"
+script = ExtResource("1_eoqgo")
+scenePath = "res://scenes/main.tscn"
+loadingScene = ExtResource("2_qrbvn")
+
+[node name="Button2" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -93.0
+offset_top = 111.0
+offset_right = 93.0
+offset_bottom = 164.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = SubResource("SystemFont_ky2y1")
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxFlat_40nme")
+theme_override_styles/hover = SubResource("StyleBoxFlat_xpmqo")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_15act")
+text = "GIVE UP"
+script = ExtResource("1_eoqgo")
+scenePath = "res://scenes/start.tscn"
+loadingScene = ExtResource("2_qrbvn")
+
+[node name="Label2" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -299.0
+offset_top = 47.0
+offset_right = 299.0
+offset_bottom = 170.0
+grow_horizontal = 2
+text = "YOU ARE DEAD"
+label_settings = SubResource("LabelSettings_eski7")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label3" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 199.0
+offset_top = 71.0
+offset_right = 797.0
+offset_bottom = 194.0
+grow_horizontal = 2
+text = "_
+"
+label_settings = SubResource("LabelSettings_eski7")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Label3"]
+libraries = {
+"": SubResource("AnimationLibrary_45yms")
+}
+
+[connection signal="pressed" from="Button" to="Button" method="OnPressed"]
+[connection signal="pressed" from="Button2" to="Button2" method="OnPressed"]
