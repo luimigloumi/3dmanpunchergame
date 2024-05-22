@@ -1,10 +1,12 @@
-[gd_scene load_steps=10 format=3 uid="uid://cgqiols21e00m"]
+[gd_scene load_steps=17 format=3 uid="uid://cgqiols21e00m"]
 
 [ext_resource type="Script" path="res://scripts/actors/Player.cs" id="1_xuh7l"]
 [ext_resource type="Script" path="res://scripts/actors/PlayerCamera.cs" id="2_k4j2s"]
+[ext_resource type="PackedScene" uid="uid://ccxufruk07xgm" path="res://scenes/scn_smackEffect.tscn" id="2_tlioj"]
 [ext_resource type="Script" path="res://scripts/CameraFollow.cs" id="3_pesm3"]
 [ext_resource type="PackedScene" uid="uid://itmeo0lyf24v" path="res://resources/models/astronaut1p.blend" id="4_p2hoh"]
-[ext_resource type="Texture2D" uid="uid://df8gcmpayk3qw" path="res://resources/textures/ui/reticle.png" id="5_pdm2i"]
+[ext_resource type="Texture2D" uid="uid://dlcuoee0hggs2" path="res://resources/textures/tex_overlay.png" id="7_2m7nj"]
+[ext_resource type="Script" path="res://scripts/HealthBar.cs" id="8_n035p"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_atad1"]
 margin = 0.001
@@ -20,6 +22,32 @@ radius = 0.360839
 [sub_resource type="SphereShape3D" id="SphereShape3D_b6iko"]
 radius = 0.7
 
+[sub_resource type="SystemFont" id="SystemFont_sq1q7"]
+font_names = PackedStringArray("Monospace")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t1spn"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2jjw6"]
+bg_color = Color(0, 0.231373, 0, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 1)
+
+[sub_resource type="SystemFont" id="SystemFont_dqpd7"]
+font_names = PackedStringArray("Monospace")
+
+[sub_resource type="LabelSettings" id="LabelSettings_1d2uc"]
+font = SubResource("SystemFont_dqpd7")
+font_size = 24
+
 [node name="Player" type="Node3D"]
 
 [node name="Player" type="CharacterBody3D" parent="." groups=["Player"]]
@@ -28,17 +56,28 @@ collision_mask = 5
 floor_max_angle = 0.802851
 floor_snap_length = 0.3
 script = ExtResource("1_xuh7l")
+deathScenePath = "res://scenes/dead.tscn"
+screenOverlayPath = NodePath("../UI/Overlay")
 cameraPath = NodePath("../Camera3D")
 vmAnimatorPath = NodePath("../Camera3D/Arms/astronaut1p/AnimationPlayer")
 grabPointPath = NodePath("GrabPosition")
 punchCastPath = NodePath("CameraHolder/PunchCast")
 chargePunchCastPath = NodePath("CameraHolder/ChargeCast")
 vmPath = NodePath("../Camera3D/Arms/astronaut1p/metarig/Skeleton3D/Cylinder")
+smackScene = ExtResource("2_tlioj")
+punchSound = "res://resources/sounds/punch_3.wav"
+jumpSound = "res://resources/sounds/jump.wav"
+whooshSound = "res://resources/sounds/movement-turn 1.wav"
+chargePunchSound = "res://resources/sounds/punch_1.wav"
+grabSound = "res://resources/sounds/grab.wav"
+throwSound = "res://resources/sounds/movement-turn 2.wav"
+hurtSound = "res://resources/sounds/player damage 1.wav"
 movementSpeed = 8.0
 maxJumps = 1
 jumpHeight = 8.0
 maximumJumpBuffer = 0.1
-prioritizedVMAnimations = ["Punch", "Grab"]
+prioritizedVMAnimations = ["Punch", "Grab", "PunchChargeup", "Punch2", "Punch3"]
+punchTimeMaximum = 0.25
 chargePunchKickback = 15.0
 stepCastPath = NodePath("StepCast")
 
@@ -55,8 +94,8 @@ target_position = Vector3(0, 0, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.62893, 0)
 script = ExtResource("2_k4j2s")
 playerPath = NodePath("..")
-verticalSensitivity = 0.4
-horizontalSensitivity = 0.5
+verticalSensitivity = 0.3
+horizontalSensitivity = 0.4
 
 [node name="PunchCast" type="ShapeCast3D" parent="Player/CameraHolder"]
 shape = SubResource("SphereShape3D_0uo03")
@@ -172,35 +211,48 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 mouse_filter = 2
 
-[node name="TextureRect" type="TextureRect" parent="UI"]
+[node name="Overlay" type="TextureRect" parent="UI"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("7_2m7nj")
+
+[node name="ProgressBar" type="ProgressBar" parent="UI"]
+layout_mode = 0
+offset_left = 39.0
+offset_top = 37.0
+offset_right = 309.0
+offset_bottom = 64.0
+theme_override_fonts/font = SubResource("SystemFont_sq1q7")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/background = SubResource("StyleBoxFlat_t1spn")
+theme_override_styles/fill = SubResource("StyleBoxFlat_2jjw6")
+max_value = 5.0
+step = 0.1
+value = 5.0
+script = ExtResource("8_n035p")
+playerPath = NodePath("../../Player")
+
+[node name="Label" type="Label" parent="UI"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -25.0
-offset_top = -25.0
-offset_right = 25.0
-offset_bottom = 25.0
+offset_left = -28.5
+offset_top = -18.5
+offset_right = 28.5
+offset_bottom = 18.5
 grow_horizontal = 2
 grow_vertical = 2
-mouse_filter = 2
-texture = ExtResource("5_pdm2i")
-expand_mode = 1
-
-[node name="Label" type="Label" parent="UI"]
-layout_mode = 0
-offset_right = 1150.0
-offset_bottom = 176.0
-theme_type_variation = &"HeaderLarge"
-theme_override_colors/font_color = Color(0.544226, 0.809478, 1, 1)
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_constants/shadow_offset_x = 0
-theme_override_constants/shadow_offset_y = 8
-text = "salt the earth and what remains? the god that put the stars above you was a dumbass who wouldnt have been able to appreci8 skibidi toilet"
+text = "[•]"
+label_settings = SubResource("LabelSettings_1d2uc")
 horizontal_alignment = 1
 vertical_alignment = 1
-autowrap_mode = 2
 
 [editable path="Camera3D/Arms/astronaut1p"]
