@@ -1,0 +1,104 @@
+[gd_scene load_steps=7 format=3 uid="uid://bwyb10spjoarq"]
+
+[ext_resource type="Script" path="res://scripts/LoadingScreen.cs" id="1_4u06i"]
+
+[sub_resource type="SystemFont" id="SystemFont_ky2y1"]
+font_names = PackedStringArray("Monospace")
+
+[sub_resource type="LabelSettings" id="LabelSettings_n6ikp"]
+font = SubResource("SystemFont_ky2y1")
+font_size = 32
+font_color = Color(0.281187, 0.281187, 0.281187, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_yx6oj"]
+font = SubResource("SystemFont_ky2y1")
+font_size = 50
+outline_size = 100
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_glu3x"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cxqtg"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_4u06i")
+barPath = NodePath("ProgressBar")
+
+[node name="BG" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Label" type="Label" parent="BG"]
+offset_left = -173.0
+offset_top = -29.0
+offset_right = 1279.0
+offset_bottom = 1120.0
+rotation = -0.18259
+text = "it is loading, just wait for it is loading, just wait for it is loading, just wait for it is loading, just wait for it is loading, just wait for it is loading, just wait for it is loading, just wait for it is loading, just wait for it is loading, just wait for it is loading, just wait for it is loading, just wait for it is loading, just wait for it is loading, just wait for it is loading, just wait for it is loading, just wait for it is loading, just wait for it is loading, just wait for it is loading, just wait for it is loading, just wait for it is loading, just wait for it is loading, just wait for it is loading, just wait for it is loading, just wait for it is loading, just wait for it is loading, just wait for it is loading, just wait for it is loading, just wait for it is loading, just wait for it is loading, just wait for it is loading, just wait for it is loading, just wait for it is loading, just wait for it is loading, just wait for it is loading, just wait for it is loading, just wait for it is loading, just wait for it is loading, just wait for it is loading, just wait for it is loading, just wait for it is loading, just wait for it is loading, just wait for it is loading, just wait for it is loading, just wait for it is loading, just wait for it is loading, just wait for it is loading, just wait for it is loading, just wait for it is loading, just wait for it is loading, just wait for it is loading, just wait for it is loading, just wait for it is loading, just wait for it is loading, just wait for it is loading, just wait for it is loading, just wait for it is loading, just wait for it is loading, just wait for it is loading, just wait for it is loading, just wait for it is loading, just wait for it is loading, just wait for it is loading, just wait for it is loading, just wait for it is loading, just wait for it is loading, just wait for it is loading, just wait for it is loading, just wait for it is loading, just wait for it is loading, just wait for it is loading, just wait for it is loading, just wait for it is loading, just wait for it is loading, just wait for it is loading, just wait for it is loading, just wait for it is loading, just wait for it is loading, just wait for it is loading, just wait for it is loading, just wait for it is loading, just wait for it is loading, just wait for it is loading, just wait for it is loading, just wait for it is loading, just wait for it is loading, just wait for "
+label_settings = SubResource("LabelSettings_n6ikp")
+autowrap_mode = 1
+
+[node name="Label2" type="Label" parent="BG"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -299.0
+offset_top = -157.0
+offset_right = 299.0
+offset_bottom = -34.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Loading..."
+label_settings = SubResource("LabelSettings_yx6oj")
+horizontal_alignment = 1
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -329.0
+offset_top = -215.0
+offset_right = 329.0
+offset_bottom = -181.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/background = SubResource("StyleBoxFlat_glu3x")
+theme_override_styles/fill = SubResource("StyleBoxFlat_cxqtg")
+show_percentage = false
