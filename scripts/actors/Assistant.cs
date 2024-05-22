@@ -1,19 +1,36 @@
 using Godot;
 using System;
+using System.ComponentModel;
 
 public enum AssistantState {
 
-	Attacking, Healing, Pursuing, Frenzied
+	Attacking, Stunned, Pursuing, Frenzied
 
 }
 
 public partial class Assistant : Enemy
 {
 
+	[Export(PropertyHint.File, "*.tscn")] public string projectileScene;
+
+	[Export] public NodePath sparksPath;
+	public GpuParticles3D sparks;
+
 	[Export] public float speed = 7f;
 	[Export] public float desiredDistance = 10f;
 
+	bool canAttack = true;
+
 	public AssistantState state = AssistantState.Attacking;
+
+
+	public override void _Ready() {
+
+		base._Ready();
+
+		sparks = GetNode<GpuParticles3D>(sparksPath);
+
+	}
 
 	public override Vector3 NormalPhysicsProcess(double delta, Vector3 velocity) {
 	
@@ -28,10 +45,20 @@ public partial class Assistant : Enemy
 
 				LookAt(new(player.GlobalPosition.X, GlobalPosition.Y, player.GlobalPosition.Z), Vector3.Up);
 
-				if (GlobalPosition.DistanceTo(player.GlobalPosition) > desiredDistance) {
+				if (GlobalPosition.DistanceTo(player.GlobalPosition) > desiredDistance || !LineOfSight(player.GlobalPosition)) {
 
 					state = AssistantState.Pursuing;
 					break;
+
+				} else {
+
+					if (canAttack) 
+					{
+
+						canAttack = false;
+						LaserBarrage();
+
+					}
 
 				}
 
@@ -51,7 +78,7 @@ public partial class Assistant : Enemy
 
 				velocity = velocity.Lerp(new(flatDir.X * speed, velocity.Y, flatDir.Z * speed), 0.05f);
 
-				if (GlobalPosition.DistanceTo(player.GlobalPosition) <= desiredDistance) {
+				if (GlobalPosition.DistanceTo(player.GlobalPosition) <= desiredDistance && LineOfSight(player.GlobalPosition)) {
 
 					state = AssistantState.Attacking;
 					break;
@@ -68,6 +95,39 @@ public partial class Assistant : Enemy
 	public override void OnDeath() {
 
 		QueueFree();
+
+	}
+	
+	public async void LaserBarrage() {
+
+		electrified = true;
+		sparks.Emitting = true;
+
+		for(int i = 0; i < 5; i++) {
+			
+			await ToSignal(GetTree().CreateTimer(0.4), "timeout");
+			if (state == AssistantState.Attacking) {
+
+				PackedScene p = GD.Load<PackedScene>(projectileScene);
+				BitchassOrb proj = p.Instantiate<BitchassOrb>();
+				GetParent().AddChild(proj);
+				proj.Velocity = GlobalPosition.DirectionTo(player.GlobalPosition) * proj.speed;
+				proj.GlobalPosition = head.GlobalPosition;
+
+			} else {
+
+				break;
+
+			}
+
+		}
+
+		sparks.Emitting = false;
+		electrified = false;
+
+		await ToSignal(GetTree().CreateTimer(3), "timeout");
+
+		canAttack = true;
 
 	}
 
