@@ -2,7 +2,11 @@
 
 importer="wav"
 type="AudioStreamWAV"
+<<<<<<< HEAD
 uid="uid://eej4c6yjcalb"
+=======
+uid="uid://bqimdokcikfgb"
+>>>>>>> fed959f9e892ba1da3714f2cb33dca0fafc6ae9b
 path="res://.godot/imported/player_death.wav-2b71d70db5bc50a58c05ecce49e9fdba.sample"
 
 [deps]
