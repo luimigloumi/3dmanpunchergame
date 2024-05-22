@@ -636,8 +636,8 @@ public partial class Player : Actor
 
 	}
 
-    public override void OnHit(float damage, Vector3 hitPoint, Vector3 hitNormal, Node3D source)
-    {
+	public override void OnHit(float damage, Vector3 hitPoint, Vector3 hitNormal, Node3D source)
+	{
 		if (invincibility <= 0) 
 		{
 
@@ -647,7 +647,7 @@ public partial class Player : Actor
 			sm.PlayDirectionlessSound(new Sound(hurtSound, 1, 0.75f + GD.Randf() * 0.5f, Vector3.Zero));
 
 		}
-    }
+	}
 
 	async void HitFlash() {
 
@@ -663,9 +663,9 @@ public partial class Player : Actor
 
 	}
 
-    public override void OnDeath()
-    {
-        GetTree().ChangeSceneToFile(deathScenePath);
-    }
+	public override void OnDeath()
+	{
+		GetTree().ChangeSceneToFile(deathScenePath);
+	}
 
 }
