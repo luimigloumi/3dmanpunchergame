@@ -78,6 +78,7 @@ jumpHeight = 8.0
 maximumJumpBuffer = 0.1
 prioritizedVMAnimations = ["Punch", "Grab", "PunchChargeup", "Punch2", "Punch3"]
 punchTimeMaximum = 0.25
+chargePunchDamage = 2.0
 chargePunchKickback = 15.0
 stepCastPath = NodePath("StepCast")
 
