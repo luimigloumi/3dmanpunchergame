@@ -1,0 +1,43 @@
+[gd_scene load_steps=8 format=3 uid="uid://ccxufruk07xgm"]
+
+[ext_resource type="Texture2D" uid="uid://0e41cf2jlske" path="res://resources/textures/prt_smack.png" id="1_8bxkd"]
+[ext_resource type="Script" path="res://scripts/OneShotParticles.cs" id="2_2foky"]
+
+[sub_resource type="Curve" id="Curve_q0nxn"]
+max_value = 2.0
+_data = [Vector2(0.0144928, 1.12088), 0.0, -3.91758, 0, 0, Vector2(1, 0.0219779), -0.369874, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_klpy3"]
+curve = SubResource("Curve_q0nxn")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_idg82"]
+direction = Vector3(0, 0, 0)
+gravity = Vector3(0, 0, 0)
+scale_curve = SubResource("CurveTexture_klpy3")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3qmc6"]
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
+no_depth_test = true
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("1_8bxkd")
+billboard_mode = 3
+billboard_keep_scale = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="QuadMesh" id="QuadMesh_ypp0h"]
+material = SubResource("StandardMaterial3D_3qmc6")
+
+[node name="SmackEffect" type="GPUParticles3D"]
+emitting = false
+amount = 1
+lifetime = 0.5
+one_shot = true
+process_material = SubResource("ParticleProcessMaterial_idg82")
+draw_pass_1 = SubResource("QuadMesh_ypp0h")
+script = ExtResource("2_2foky")
