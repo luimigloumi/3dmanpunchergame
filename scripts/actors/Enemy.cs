@@ -12,6 +12,13 @@ public enum EnemyState {
 public partial class Enemy : Actor
 {
 
+	public bool alerted = false;
+
+	[Export(PropertyHint.Layers3DPhysics)] uint losMask = 0;
+	[Export] public NodePath headPath;
+
+	public Node3D head;
+
 	[Export]
 	public NodePath navAgentPath;
 	public NavigationAgent3D navAgent;
@@ -33,6 +40,8 @@ public partial class Enemy : Actor
 
 	public bool ready = false;
 
+	public bool electrified = false;
+
 	public uint defaultMask;
 	public uint defaultLayer;
 
@@ -45,8 +54,7 @@ public partial class Enemy : Actor
 		player = (Player)GetTree().GetFirstNodeInGroup("Player");
 		projectileCast = GetNode<ShapeCast3D>(projectileCastPath);
 		grabPoint = GetNode<Node3D>(grabPointPath);
-
-		grabPoint = GetNode<Node3D>(grabPointPath);
+		head = GetNode<Node3D>(headPath);
 		defaultMask = CollisionMask;
 		defaultLayer = CollisionLayer;
 
@@ -58,7 +66,7 @@ public partial class Enemy : Actor
 
 	public override void _PhysicsProcess(double delta) {
 
-		if (ready) {
+		if (ready && alerted) {
 
 			Vector3 velocity = Velocity;
 
@@ -83,6 +91,12 @@ public partial class Enemy : Actor
 			base._PhysicsProcess((float)delta);
 
 			MoveAndSlide();
+
+		}
+
+		if (LineOfSight(player.GlobalPosition)) {
+
+			alerted = true;
 
 		}
 
@@ -163,6 +177,18 @@ public partial class Enemy : Actor
 	public virtual void OnProjectileHit(Node3D col) 
 	{
 
+	}
+
+	public virtual bool LineOfSight(Vector3 point) {
+
+		PhysicsDirectSpaceState3D state = GetWorld3D().DirectSpaceState;
+		PhysicsRayQueryParameters3D parameters = new();
+		parameters.From = head.GlobalPosition;
+		parameters.To = point;
+		parameters.CollisionMask = losMask;
+		parameters.HitFromInside = false;
+		Godot.Collections.Dictionary result = state.IntersectRay(parameters);
+		return !(result.Count > 0);
 	}
 
 }
