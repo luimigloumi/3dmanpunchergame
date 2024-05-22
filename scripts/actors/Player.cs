@@ -570,7 +570,7 @@ public partial class Player : Actor
 
 				OneShotParticles p = smackScene.Instantiate<OneShotParticles>();
 				GetParent().AddChild(p);
-				p.GlobalPosition = punchCast.GetCollisionPoint(i);
+				p.GlobalPosition = chargePunchCast.GetCollisionPoint(i);
 
 			}
 

@@ -39,6 +39,21 @@ font_size = 50
 outline_size = 100
 outline_color = Color(0, 0, 0, 1)
 
+[sub_resource type="Animation" id="Animation_8qgtf"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
 [sub_resource type="Animation" id="Animation_22gn6"]
 resource_name = "blinky"
 length = 0.5
@@ -54,21 +69,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [true, false]
-}
-
-[sub_resource type="Animation" id="Animation_8qgtf"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:visible")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_45yms"]
@@ -184,6 +184,7 @@ label_settings = SubResource("LabelSettings_eski7")
 libraries = {
 "": SubResource("AnimationLibrary_45yms")
 }
+autoplay = "blinky"
 
 [connection signal="pressed" from="Button" to="Button" method="OnPressed"]
 [connection signal="pressed" from="Button2" to="Button2" method="OnPressed"]

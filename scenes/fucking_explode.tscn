@@ -1,0 +1,144 @@
+[gd_scene load_steps=22 format=3 uid="uid://bvdujeg6q2elu"]
+
+[ext_resource type="Texture2D" uid="uid://bjdc67tltcf5n" path="res://resources/textures/explosion-boom-Sheet.png" id="1_xbumg"]
+[ext_resource type="AudioStream" uid="uid://dnec6x8488vag" path="res://resources/sounds/deltarune-explosion.mp3" id="2_7n4it"]
+[ext_resource type="Script" path="res://scenes/AnimationDestroyWhenDone.cs" id="2_j3bcm"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2hwtj"]
+atlas = ExtResource("1_xbumg")
+region = Rect2(600, 277, 200, 277)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tr5ce"]
+atlas = ExtResource("1_xbumg")
+region = Rect2(800, 277, 200, 277)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xrqwv"]
+atlas = ExtResource("1_xbumg")
+region = Rect2(0, 554, 200, 277)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fe4h3"]
+atlas = ExtResource("1_xbumg")
+region = Rect2(200, 554, 200, 277)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0jx1p"]
+atlas = ExtResource("1_xbumg")
+region = Rect2(400, 554, 200, 277)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mp4fi"]
+atlas = ExtResource("1_xbumg")
+region = Rect2(600, 554, 200, 277)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2f0c4"]
+atlas = ExtResource("1_xbumg")
+region = Rect2(800, 554, 200, 277)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_degsx"]
+atlas = ExtResource("1_xbumg")
+region = Rect2(0, 831, 200, 277)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kbvek"]
+atlas = ExtResource("1_xbumg")
+region = Rect2(200, 831, 200, 277)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lsca3"]
+atlas = ExtResource("1_xbumg")
+region = Rect2(0, 0, 200, 277)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_812ur"]
+atlas = ExtResource("1_xbumg")
+region = Rect2(200, 0, 200, 277)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ttq0y"]
+atlas = ExtResource("1_xbumg")
+region = Rect2(400, 0, 200, 277)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mjunt"]
+atlas = ExtResource("1_xbumg")
+region = Rect2(600, 0, 200, 277)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1aw0t"]
+atlas = ExtResource("1_xbumg")
+region = Rect2(800, 0, 200, 277)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6d4fi"]
+atlas = ExtResource("1_xbumg")
+region = Rect2(0, 277, 200, 277)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pbc7s"]
+atlas = ExtResource("1_xbumg")
+region = Rect2(200, 277, 200, 277)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8g1cp"]
+atlas = ExtResource("1_xbumg")
+region = Rect2(400, 277, 200, 277)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5bkgv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2hwtj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tr5ce")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xrqwv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fe4h3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0jx1p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mp4fi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2f0c4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_degsx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kbvek")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lsca3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_812ur")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ttq0y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mjunt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1aw0t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6d4fi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pbc7s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8g1cp")
+}],
+"loop": false,
+"name": &"default",
+"speed": 20.0
+}]
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D"]
+billboard = 1
+sprite_frames = SubResource("SpriteFrames_5bkgv")
+frame = 16
+frame_progress = 1.0
+script = ExtResource("2_j3bcm")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("2_7n4it")
+volume_db = -16.796
+autoplay = true

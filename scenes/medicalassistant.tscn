@@ -1,7 +1,9 @@
-[gd_scene load_steps=13 format=3 uid="uid://ckq1ehhq1yf1n"]
+[gd_scene load_steps=15 format=3 uid="uid://ckq1ehhq1yf1n"]
 
 [ext_resource type="Script" path="res://scripts/actors/Assistant.cs" id="1_syyi2"]
 [ext_resource type="PackedScene" uid="uid://cdj2rkvw04gtl" path="res://resources/models/medicalassistant.blend" id="2_go2ad"]
+[ext_resource type="PackedScene" uid="uid://ccxufruk07xgm" path="res://scenes/scn_smackEffect.tscn" id="2_lcq64"]
+[ext_resource type="PackedScene" uid="uid://bvdujeg6q2elu" path="res://scenes/fucking_explode.tscn" id="3_3js14"]
 [ext_resource type="Texture2D" uid="uid://0e41cf2jlske" path="res://resources/textures/prt_smack.png" id="3_nck6n"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_folxy"]
@@ -62,7 +64,10 @@ headPath = NodePath("Head")
 navAgentPath = NodePath("NavigationAgent3D")
 projectileCastPath = NodePath("ProjectilizedCast")
 grabPointPath = NodePath("GrabPoint")
+bonkEffect = ExtResource("2_lcq64")
+deathEffect = ExtResource("3_3js14")
 stepCastPath = NodePath("StepCast")
+maxHealth = 3.0
 
 [node name="medicalassistant" parent="." instance=ExtResource("2_go2ad")]
 transform = Transform3D(-0.46, 0, -4.02145e-08, 0, 0.46, 0, 4.02145e-08, 0, -0.46, 0, 0.174976, 0)

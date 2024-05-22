@@ -91,12 +91,6 @@ public partial class Assistant : Enemy
 		return velocity;
 
 	}
-
-	public override void OnDeath() {
-
-		QueueFree();
-
-	}
 	
 	public async void LaserBarrage() {
 

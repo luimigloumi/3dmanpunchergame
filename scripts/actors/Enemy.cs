@@ -33,6 +33,9 @@ public partial class Enemy : Actor
 
 	public Player player;
 
+	[Export] public PackedScene bonkEffect;
+	[Export] public PackedScene deathEffect;
+
 	[Export] public float throwDamage = 3f;
 
 	[Export]
@@ -177,6 +180,10 @@ public partial class Enemy : Actor
 	public virtual void OnProjectileHit(Node3D col) 
 	{
 
+		Node3D bnkEffect = (Node3D)bonkEffect.Instantiate();
+		GetParent().AddChild(bnkEffect);
+		bnkEffect.GlobalPosition = GlobalPosition;
+
 	}
 
 	public virtual bool LineOfSight(Vector3 point) {
@@ -189,6 +196,16 @@ public partial class Enemy : Actor
 		parameters.HitFromInside = false;
 		Godot.Collections.Dictionary result = state.IntersectRay(parameters);
 		return !(result.Count > 0);
+	}
+
+	public override void OnDeath() {
+
+		Node3D dthEffect = (Node3D)deathEffect.Instantiate();
+		GetParent().AddChild(dthEffect);
+		dthEffect.GlobalPosition = GlobalPosition + Vector3.Up;
+		QueueFree();
+		isDead = true;
+
 	}
 
 }
