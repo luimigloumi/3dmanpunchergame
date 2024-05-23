@@ -1,0 +1,101 @@
+[gd_scene load_steps=6 format=3 uid="uid://dfh7pdwt3xnbv"]
+
+[ext_resource type="PackedScene" uid="uid://b3p3m3ft00gmv" path="res://button.tscn" id="1_ux125"]
+
+[sub_resource type="SystemFont" id="SystemFont_ky2y1"]
+font_names = PackedStringArray("Monospace")
+
+[sub_resource type="LabelSettings" id="LabelSettings_6g1r4"]
+font = SubResource("SystemFont_ky2y1")
+font_size = 32
+font_color = Color(0.281187, 0.281187, 0.281187, 1)
+
+[sub_resource type="SystemFont" id="SystemFont_32tan"]
+font_names = PackedStringArray("Monospace")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qvasr"]
+bg_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = -173.0
+offset_top = -29.0
+offset_right = 1279.0
+offset_bottom = 1120.0
+rotation = -0.18259
+text = "please accept this help so that it may please accept this help so that it may please accept this help so that it may please accept this help so that it may please accept this help so that it may please accept this help so that it may please accept this help so that it may please accept this help so that it may please accept this help so that it may please accept this help so that it may please accept this help so that it may please accept this help so that it may please accept this help so that it may please accept this help so that it may please accept this help so that it may please accept this help so that it may please accept this help so that it may please accept this help so that it may please accept this help so that it may please accept this help so that it may please accept this help so that it may please accept this help so that it may please accept this help so that it may please accept this help so that it may please accept this help so that it may please accept this help so that it may please accept this help so that it may please accept this help so that it may please accept this help so that it may please accept this help so that it may please accept this help so that it may please accept this help so that it may please accept this help so that it may please accept this help so that it may please accept this help so that it may please accept this help so that it may please accept this help so that it may please accept this help so that it may "
+label_settings = SubResource("LabelSettings_6g1r4")
+autowrap_mode = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 46.0
+offset_top = 51.0
+offset_right = 413.0
+offset_bottom = 491.0
+theme_override_fonts/normal_font = SubResource("SystemFont_32tan")
+theme_override_font_sizes/normal_font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_qvasr")
+bbcode_enabled = true
+text = "[center]BASIC MECHANICS:
+USE WASD TO MOVE.
+USE LEFT CLICK TO PUNCH. HOLD TO CHARGE UP AN EXTRA POWERFUL PUNCH THAT LAUNCHES YOU OFF WALLS.
+USE SPACE TO JUMP.
+USE RIGHT CLICK TO GRAB AND THROW ENEMIES."
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 424.0
+offset_top = 54.0
+offset_right = 643.0
+offset_bottom = 494.0
+theme_override_fonts/normal_font = SubResource("SystemFont_32tan")
+theme_override_font_sizes/normal_font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_qvasr")
+bbcode_enabled = true
+text = "[center]ASSISTANTS
+TABLET-LIKE ROBOTS THAT FIRE PROJECTILES IN SHORT BURSTS. DON'T GRAB THEM WHILE THEY ARE ELECTRIFIED."
+
+[node name="RichTextLabel3" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 675.0
+offset_top = 54.0
+offset_right = 894.0
+offset_bottom = 494.0
+theme_override_fonts/normal_font = SubResource("SystemFont_32tan")
+theme_override_font_sizes/normal_font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_qvasr")
+bbcode_enabled = true
+text = "[center]DRONES
+DRONES. THEY SHOOT PROJECTILES IF CLOSE ENOUGH. IF GRABBED, THEY EXPLODE QUICKLY, SO THROW THEM IMMEDIATELY."
+
+[node name="Button" parent="." instance=ExtResource("1_ux125")]
+layout_mode = 1
+offset_left = 418.0
+offset_top = -262.0
+offset_right = 474.0
+offset_bottom = -209.0
+text = "X"
+showLoadingScene = false
+scenePath = "res://scenes/start.tscn"

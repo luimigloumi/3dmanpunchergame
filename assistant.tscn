@@ -1,0 +1,17 @@
+[gd_scene load_steps=5 format=3 uid="uid://c03t6djqq13n7"]
+
+[ext_resource type="Script" path="res://scenes/EnemySpawner.cs" id="1_812h8"]
+[ext_resource type="PackedScene" uid="uid://ckq1ehhq1yf1n" path="res://scenes/medicalassistant.tscn" id="2_3ix3x"]
+[ext_resource type="PackedScene" uid="uid://cdj2rkvw04gtl" path="res://resources/models/medicalassistant.blend" id="3_s4cpo"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_7y5hr"]
+radius = 0.1
+height = 0.2
+
+[node name="ass istant" type="MeshInstance3D"]
+mesh = SubResource("SphereMesh_7y5hr")
+script = ExtResource("1_812h8")
+enemy = ExtResource("2_3ix3x")
+
+[node name="medicalassistant" parent="." instance=ExtResource("3_s4cpo")]
+transform = Transform3D(-0.46, 0, -4.02145e-08, 0, 0.46, 0, 4.02145e-08, 0, -0.46, 0, 0.174976, 0)

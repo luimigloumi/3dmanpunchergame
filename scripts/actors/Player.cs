@@ -38,8 +38,6 @@ public partial class Player : Actor
 	[Export] public NodePath screenOverlayPath;
 	public TextureRect screenOverlay;
 
-	public SoundManager sm;
-
 	[Export] public NodePath cameraPath;
 	public Camera3D camera;
 
@@ -69,7 +67,6 @@ public partial class Player : Actor
 	[Export(PropertyHint.File)] public string chargePunchSound;
 	[Export(PropertyHint.File)] public string grabSound;
 	[Export(PropertyHint.File)] public string throwSound;
-	[Export(PropertyHint.File)] public string hurtSound;
 	
 
 	#endregion
@@ -314,7 +311,7 @@ public partial class Player : Actor
 					grabBuffer = 0;	
 					
 					heldEnemy.Velocity = -camera.GlobalTransform.Basis.Z * 20f + Velocity;
-					heldEnemy.GlobalPosition = grabPoint.GlobalPosition - Vector3.Up * 0.5f;
+					heldEnemy.GlobalPosition = grabPoint.GlobalPosition;
 					heldEnemy.currentState = EnemyState.Thrown;
 					heldEnemy.projectileCast.Enabled = false;
 
@@ -641,10 +638,20 @@ public partial class Player : Actor
 		if (invincibility <= 0) 
 		{
 
-			base.OnHit(damage, hitPoint, hitNormal, source);
-			HitFlash();
-			invincibility = maxInvincibility;
+			health -= damage;
 			sm.PlayDirectionlessSound(new Sound(hurtSound, 1, 0.75f + GD.Randf() * 0.5f, Vector3.Zero));
+			if (health <= 0 && !isDead) 
+			{
+				OnDeath();
+			}
+
+			if (!isDead) {
+
+				HitFlash();
+				invincibility = maxInvincibility;
+
+			}
+			
 
 		}
 	}

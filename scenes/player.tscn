@@ -71,7 +71,6 @@ whooshSound = "res://resources/sounds/movement-turn 1.wav"
 chargePunchSound = "res://resources/sounds/punch_1.wav"
 grabSound = "res://resources/sounds/grab.wav"
 throwSound = "res://resources/sounds/movement-turn 2.wav"
-hurtSound = "res://resources/sounds/player damage 1.wav"
 movementSpeed = 8.0
 maxJumps = 1
 jumpHeight = 8.0
@@ -80,7 +79,7 @@ prioritizedVMAnimations = ["Punch", "Grab", "PunchChargeup", "Punch2", "Punch3"]
 punchTimeMaximum = 0.25
 chargePunchDamage = 2.0
 chargePunchKickback = 15.0
-stepCastPath = NodePath("StepCast")
+hurtSound = "res://resources/sounds/player damage 1.wav"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Player"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)

@@ -1,0 +1,31 @@
+[gd_scene load_steps=6 format=3 uid="uid://cjigj1i6f1gy3"]
+
+[ext_resource type="Script" path="res://Health.cs" id="1_sxyjg"]
+[ext_resource type="Texture2D" uid="uid://bfl75xo7lrkva" path="res://resources/textures/health bonus.png" id="2_yx2tg"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8xpvg"]
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
+shading_mode = 0
+albedo_texture = ExtResource("2_yx2tg")
+billboard_mode = 1
+
+[sub_resource type="QuadMesh" id="QuadMesh_5h8pt"]
+material = SubResource("StandardMaterial3D_8xpvg")
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_3g1v3"]
+radius = 0.470422
+
+[node name="Health" type="Area3D"]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_sxyjg")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("QuadMesh_5h8pt")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_3g1v3")
+
+[connection signal="body_entered" from="." to="." method="OnBodyEntered"]

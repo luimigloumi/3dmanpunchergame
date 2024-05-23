@@ -12,6 +12,8 @@ public enum EnemyState {
 public partial class Enemy : Actor
 {
 
+	[Signal] public delegate void OnDeathSignalEventHandler(Enemy e);
+
 	public bool alerted = false;
 
 	[Export(PropertyHint.Layers3DPhysics)] uint losMask = 0;
@@ -34,7 +36,7 @@ public partial class Enemy : Actor
 	public Player player;
 
 	[Export] public PackedScene bonkEffect;
-	[Export] public PackedScene deathEffect;
+	[Export] public Godot.Collections.Array<PackedScene> deathEffects;
 
 	[Export] public float throwDamage = 3f;
 
@@ -200,9 +202,14 @@ public partial class Enemy : Actor
 
 	public override void OnDeath() {
 
-		Node3D dthEffect = (Node3D)deathEffect.Instantiate();
-		GetParent().AddChild(dthEffect);
-		dthEffect.GlobalPosition = GlobalPosition + Vector3.Up;
+		foreach (PackedScene s in deathEffects) {
+			
+			Node3D dthEffect = (Node3D)s.Instantiate();
+			GetParent().AddChild(dthEffect);
+			dthEffect.GlobalPosition = GlobalPosition + Vector3.Up;
+			EmitSignal(SignalName.OnDeathSignal, this);
+
+		}
 		QueueFree();
 		isDead = true;
 

@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://bo2l2xd2jjeis"]
+[gd_scene load_steps=14 format=3 uid="uid://bo2l2xd2jjeis"]
 
 [ext_resource type="Script" path="res://scripts/LoadSceneButton.cs" id="1_ctmin"]
 [ext_resource type="PackedScene" uid="uid://bwyb10spjoarq" path="res://scenes/loading.tscn" id="2_4j3dw"]
+[ext_resource type="AudioStream" uid="uid://cptnyyg3l7mex" path="res://resources/sounds/start_screen_song.wav" id="3_i7jub"]
 
 [sub_resource type="SystemFont" id="SystemFont_ky2y1"]
 font_names = PackedStringArray("Monospace")
@@ -10,6 +11,9 @@ font_names = PackedStringArray("Monospace")
 font = SubResource("SystemFont_ky2y1")
 font_size = 32
 font_color = Color(0.281187, 0.281187, 0.281187, 1)
+
+[sub_resource type="SystemFont" id="SystemFont_vkgy5"]
+font_names = PackedStringArray("Monospace")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_40nme"]
 bg_color = Color(0.136826, 0.136826, 0.136826, 1)
@@ -22,6 +26,19 @@ border_width_bottom = 3
 bg_color = Color(0.18359, 0.18359, 0.18359, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_15act"]
+bg_color = Color(0.442911, 0.442911, 0.44291, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yt6r1"]
+bg_color = Color(0.136826, 0.136826, 0.136826, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ka45u"]
+bg_color = Color(0.18359, 0.18359, 0.18359, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_of7fi"]
 bg_color = Color(0.442911, 0.442911, 0.44291, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_rp667"]
@@ -59,8 +76,7 @@ label_settings = SubResource("LabelSettings_6g1r4")
 autowrap_mode = 1
 
 [node name="Button" type="Button" parent="."]
-layout_mode = 1
-anchors_preset = 8
+layout_mode = 0
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -71,7 +87,7 @@ offset_right = 72.0
 offset_bottom = 27.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_fonts/font = SubResource("SystemFont_ky2y1")
+theme_override_fonts/font = SubResource("SystemFont_vkgy5")
 theme_override_font_sizes/font_size = 40
 theme_override_styles/normal = SubResource("StyleBoxFlat_40nme")
 theme_override_styles/hover = SubResource("StyleBoxFlat_xpmqo")
@@ -79,6 +95,30 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_15act")
 text = "START"
 script = ExtResource("1_ctmin")
 scenePath = "res://scenes/main.tscn"
+loadingScene = ExtResource("2_4j3dw")
+
+[node name="Button3" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 406.0
+offset_top = 194.0
+offset_right = 457.0
+offset_bottom = 247.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = SubResource("SystemFont_ky2y1")
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxFlat_yt6r1")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ka45u")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_of7fi")
+text = "?"
+script = ExtResource("1_ctmin")
+showLoadingScene = false
+scenePath = "res://scenes/help.tscn"
 loadingScene = ExtResource("2_4j3dw")
 
 [node name="Button2" type="Button" parent="."]
@@ -96,9 +136,9 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = SubResource("SystemFont_ky2y1")
 theme_override_font_sizes/font_size = 40
-theme_override_styles/normal = SubResource("StyleBoxFlat_40nme")
-theme_override_styles/hover = SubResource("StyleBoxFlat_xpmqo")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_15act")
+theme_override_styles/normal = SubResource("StyleBoxFlat_yt6r1")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ka45u")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_of7fi")
 text = "LEAVE"
 script = ExtResource("1_ctmin")
 scenePath = "Quit"
@@ -122,5 +162,10 @@ label_settings = SubResource("LabelSettings_rp667")
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_i7jub")
+autoplay = true
+
 [connection signal="pressed" from="Button" to="Button" method="OnPressed"]
+[connection signal="pressed" from="Button3" to="Button3" method="OnPressed"]
 [connection signal="pressed" from="Button2" to="Button2" method="OnPressed"]

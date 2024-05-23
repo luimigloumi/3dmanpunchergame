@@ -1,6 +1,7 @@
 using Godot;
 using System;
 using System.ComponentModel;
+using System.Net.Mail;
 
 
 public partial class Drone : Enemy
@@ -8,6 +9,8 @@ public partial class Drone : Enemy
 
 	[Export(PropertyHint.File, "*.tscn")] public string projectileScene;
     [Export(PropertyHint.File, "*.tscn")] public string explodeScene;
+
+    [Export(PropertyHint.File)] public string grabSound;
 
 	[Export] public float speed = 4f;
 	[Export] public float desiredDistance = 20f;
@@ -47,6 +50,7 @@ public partial class Drone : Enemy
 			Node3D ex = e.Instantiate<Node3D>();
 			GetParent().AddChild(ex);
 			ex.GlobalPosition = head.GlobalPosition;
+            EmitSignal(SignalName.OnDeathSignal, this);
             QueueFree();
 
 		}
@@ -73,6 +77,7 @@ public partial class Drone : Enemy
             
             exploding = true;
             ExplodeTimer();
+            sm.PlayDirectionlessSound(new Sound(grabSound, 1, 1, GlobalPosition));
 
         }
 

@@ -1,0 +1,44 @@
+[gd_scene load_steps=7 format=3 uid="uid://b3p3m3ft00gmv"]
+
+[ext_resource type="Script" path="res://scripts/LoadSceneButton.cs" id="1_ca2gc"]
+[ext_resource type="PackedScene" uid="uid://bwyb10spjoarq" path="res://scenes/loading.tscn" id="2_qx1bl"]
+
+[sub_resource type="SystemFont" id="SystemFont_ky2y1"]
+font_names = PackedStringArray("Monospace")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_40nme"]
+bg_color = Color(0.136826, 0.136826, 0.136826, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xpmqo"]
+bg_color = Color(0.18359, 0.18359, 0.18359, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_15act"]
+bg_color = Color(0.442911, 0.442911, 0.44291, 1)
+
+[node name="Button" type="Button"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -72.0
+offset_top = -26.0
+offset_right = 72.0
+offset_bottom = 27.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = SubResource("SystemFont_ky2y1")
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxFlat_40nme")
+theme_override_styles/hover = SubResource("StyleBoxFlat_xpmqo")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_15act")
+text = "START"
+script = ExtResource("1_ca2gc")
+scenePath = "res://scenes/main.tscn"
+loadingScene = ExtResource("2_qx1bl")
+
+[connection signal="pressed" from="." to="." method="OnPressed"]

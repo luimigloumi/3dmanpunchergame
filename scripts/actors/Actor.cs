@@ -5,20 +5,21 @@ using System.Linq.Expressions;
 public partial class Actor : CharacterBody3D
 {
 
-	[Export] public NodePath stepCastPath;
-	public ShapeCast3D stepCast;
-
 	public float health = 5;
 	[Export]
 	public float maxHealth = 5;
 	public bool isDead = false;
+
+	[Export(PropertyHint.File)] public string hurtSound;
+
+	public SoundManager sm;
 
 	public Vector3 gravity = ProjectSettings.GetSetting("physics/3d/default_gravity").AsSingle() * ProjectSettings.GetSetting("physics/3d/default_gravity_vector").AsVector3();
 
 	public override void _Ready() {
 
 		health = maxHealth;
-		stepCast = GetNode<ShapeCast3D>(stepCastPath);
+		sm = GetNode<SoundManager>("/root/SoundManager");
 
 	}
 
@@ -35,6 +36,7 @@ public partial class Actor : CharacterBody3D
 	{
 
 		health -= damage;
+		sm.PlaySound(new Sound(hurtSound, 1, 0.75f + GD.Randf() * 0.5f, GlobalPosition));
 		if (health <= 0 && !isDead) 
 		{
 			OnDeath();

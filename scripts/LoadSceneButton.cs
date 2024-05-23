@@ -4,6 +4,8 @@ using System;
 public partial class LoadSceneButton : Button
 {
 
+	[Export] public bool showLoadingScene = true;
+
 	public void OnPressed() {
 
 		if (scenePath == "Quit") {
@@ -12,8 +14,16 @@ public partial class LoadSceneButton : Button
 
 		} else {
 
-			((KeepVariables)GetNode("/root/KeepVariables")).variables.Add("loadScenePath", scenePath);
-			GetTree().ChangeSceneToPacked(loadingScene);
+			if (showLoadingScene) {
+				
+				((KeepVariables)GetNode("/root/KeepVariables")).variables.Add("loadScenePath", scenePath);
+				GetTree().ChangeSceneToPacked(loadingScene);
+
+			} else {
+
+				GetTree().ChangeSceneToFile(scenePath);
+
+			}
 
 		}
 

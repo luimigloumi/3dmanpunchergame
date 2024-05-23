@@ -1,10 +1,18 @@
-[gd_scene load_steps=15 format=3 uid="uid://ckq1ehhq1yf1n"]
+[gd_scene load_steps=23 format=3 uid="uid://ckq1ehhq1yf1n"]
 
 [ext_resource type="Script" path="res://scripts/actors/Assistant.cs" id="1_syyi2"]
 [ext_resource type="PackedScene" uid="uid://cdj2rkvw04gtl" path="res://resources/models/medicalassistant.blend" id="2_go2ad"]
 [ext_resource type="PackedScene" uid="uid://ccxufruk07xgm" path="res://scenes/scn_smackEffect.tscn" id="2_lcq64"]
 [ext_resource type="PackedScene" uid="uid://bvdujeg6q2elu" path="res://scenes/fucking_explode.tscn" id="3_3js14"]
 [ext_resource type="Texture2D" uid="uid://0e41cf2jlske" path="res://resources/textures/prt_smack.png" id="3_nck6n"]
+[ext_resource type="PackedScene" uid="uid://cjigj1i6f1gy3" path="res://scenes/health.tscn" id="4_p1iuo"]
+[ext_resource type="Script" path="res://scenes/IdleSoundPlayer.cs" id="7_way0t"]
+[ext_resource type="AudioStream" uid="uid://rqrcwvv3qs3y" path="res://resources/sounds/ipad enemy - beep 1.wav" id="8_os1e4"]
+[ext_resource type="AudioStream" uid="uid://d273anslvsicn" path="res://resources/sounds/ipad enemy - beep 2.wav" id="9_2q2iq"]
+[ext_resource type="AudioStream" uid="uid://b37vpcjrp5xsu" path="res://resources/sounds/ipad enemy - beep 3.wav" id="10_4asdm"]
+[ext_resource type="AudioStream" uid="uid://mbk61ul24usy" path="res://resources/sounds/ipad enemy - beep 4.wav" id="11_na3cg"]
+[ext_resource type="AudioStream" uid="uid://ctm1f2us7t8t" path="res://resources/sounds/ipad enemy - beep 5.wav" id="12_3ytfl"]
+[ext_resource type="AudioStream" uid="uid://cf8dxupsst26v" path="res://resources/sounds/ipad enemy - static 1.wav" id="13_q34gs"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_folxy"]
 margin = 0.001
@@ -57,6 +65,7 @@ collision_layer = 4
 collision_mask = 7
 floor_snap_length = 0.3
 script = ExtResource("1_syyi2")
+sparkleSoundPath = NodePath("ElectrifiedPlayer")
 projectileScene = "res://scenes/bitchass_orb.tscn"
 sparksPath = NodePath("Sparkls")
 losMask = 1
@@ -65,9 +74,9 @@ navAgentPath = NodePath("NavigationAgent3D")
 projectileCastPath = NodePath("ProjectilizedCast")
 grabPointPath = NodePath("GrabPoint")
 bonkEffect = ExtResource("2_lcq64")
-deathEffect = ExtResource("3_3js14")
-stepCastPath = NodePath("StepCast")
+deathEffects = Array[PackedScene]([ExtResource("3_3js14"), ExtResource("4_p1iuo")])
 maxHealth = 3.0
+hurtSound = "res://resources/sounds/ipad_damage.wav"
 
 [node name="medicalassistant" parent="." instance=ExtResource("2_go2ad")]
 transform = Transform3D(-0.46, 0, -4.02145e-08, 0, 0.46, 0, 4.02145e-08, 0, -0.46, 0, 0.174976, 0)
@@ -112,3 +121,11 @@ emitting = false
 amount = 12
 process_material = SubResource("ParticleProcessMaterial_qrefy")
 draw_pass_1 = SubResource("QuadMesh_a7rj2")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+volume_db = -3.035
+script = ExtResource("7_way0t")
+sounds = [ExtResource("8_os1e4"), ExtResource("9_2q2iq"), ExtResource("10_4asdm"), ExtResource("11_na3cg"), ExtResource("12_3ytfl")]
+
+[node name="ElectrifiedPlayer" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("13_q34gs")

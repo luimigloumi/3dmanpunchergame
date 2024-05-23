@@ -11,6 +11,9 @@ public enum AssistantState {
 public partial class Assistant : Enemy
 {
 
+	[Export] public NodePath sparkleSoundPath;
+	public AudioStreamPlayer3D sparkleSound;
+
 	[Export(PropertyHint.File, "*.tscn")] public string projectileScene;
 
 	[Export] public NodePath sparksPath;
@@ -29,6 +32,7 @@ public partial class Assistant : Enemy
 		base._Ready();
 
 		sparks = GetNode<GpuParticles3D>(sparksPath);
+		sparkleSound = GetNode<AudioStreamPlayer3D>(sparkleSoundPath);
 
 	}
 
@@ -97,6 +101,8 @@ public partial class Assistant : Enemy
 		electrified = true;
 		sparks.Emitting = true;
 
+		sparkleSound.Play();
+
 		for(int i = 0; i < 5; i++) {
 			
 			await ToSignal(GetTree().CreateTimer(0.4), "timeout");
@@ -118,6 +124,8 @@ public partial class Assistant : Enemy
 
 		sparks.Emitting = false;
 		electrified = false;
+
+		sparkleSound.Stop();
 
 		await ToSignal(GetTree().CreateTimer(3), "timeout");
 
